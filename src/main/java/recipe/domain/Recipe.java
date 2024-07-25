@@ -18,6 +18,7 @@ public class Recipe {
 	private Difficulty difficulty;
 	private String quantity;
 	private LocalDateTime createdAt;
+	private LocalDateTime updatedAt;
 
 	public Recipe(Long id,
 				  Long memberId,
@@ -36,5 +37,6 @@ public class Recipe {
 		this.difficulty = difficulty;
 		this.quantity = quantity;
 		this.createdAt = LocalDateTime.now();
+		this.updatedAt = null;
 	}
 }
