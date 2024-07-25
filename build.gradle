@@ -41,9 +41,7 @@ dependencies {
     testCompileOnly 'org.projectlombok:lombok:1.18.34'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.34'
 
-
-
-    //
+    // JDBC
     implementation group: 'com.oracle.database.jdbc', name: 'ojdbc8', version: '19.23.0.0'
     implementation("com.oracle.database.security:oraclepki")
     implementation group: 'com.oracle.database.security', name: 'osdt_cert', version: '19.23.0.0'
