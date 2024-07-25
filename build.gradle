@@ -27,8 +27,27 @@ jlink {
 }
 
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+    testImplementation 'org.assertj:assertj-core:3.19.0'
+
+    testCompileOnly 'junit:junit:4.12'
+    testRuntimeOnly 'org.junit.vintage:junit-vintage-engine:5.3.1'
+
+    // lombok
+    compileOnly 'org.projectlombok:lombok:1.18.34'
+    annotationProcessor 'org.projectlombok:lombok:1.18.34'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.34'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.34'
+
+
+
+    //
+    implementation group: 'com.oracle.database.jdbc', name: 'ojdbc8', version: '19.23.0.0'
+    implementation("com.oracle.database.security:oraclepki")
+    implementation group: 'com.oracle.database.security', name: 'osdt_cert', version: '19.23.0.0'
+    implementation group: 'com.oracle.ojdbc', name: 'osdt_core', version: '19.3.0.0'
 }
 
 test {
