@@ -33,7 +33,7 @@ public class RecipeCreateTest {
 
     @Test
     @DisplayName("레시피 생성 테스트")
-    public void jdbcConnection() throws SQLException {
+    public void recipeCreateTest() throws SQLException {
         Object[][] stepsData = {
                 {1, "닭을 물에 넣고 끓인다."},
                 {2, "끓어 오르면 월계수 잎과 통후추, 소금을 넣고 15분 더 끓인다."},
