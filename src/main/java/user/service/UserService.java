@@ -1,6 +1,7 @@
 package user.service;
 
 import user.DBConnection;
+import user.domain.User;
 import user.dto.UserjoinRequestDto;
 
 import java.sql.*;
@@ -17,11 +18,6 @@ public class UserService {
             pstmt.setString(2, "1");
             pstmt.setString(3, userjoinRequestDto.getHint());
             pstmt.setString(4, userjoinRequestDto.getPassword());
-
-//            pstmt.setString(1, "qwe");
-//            pstmt.setString(2, "1");
-//            pstmt.setString(3, "aaaaaaa");
-//            pstmt.setString(4, "7878");
             pstmt.executeUpdate();
         } catch (SQLException e) {
             throw new SQLException(e);
