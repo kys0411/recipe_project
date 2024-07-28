@@ -1,6 +1,9 @@
 package recipe.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import recipe.constant.Category;
 import recipe.constant.Difficulty;
 
@@ -8,6 +11,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Recipe {
 	private Long id;
 	private Long memberId;
