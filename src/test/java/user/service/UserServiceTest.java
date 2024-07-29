@@ -17,13 +17,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class UserServiceTest {
     private static Connection conn;
-    private UserService userService;
 
     @BeforeEach
     public void setUp() throws SQLException, ClassNotFoundException {
         conn = getConnection();
         conn.setAutoCommit(false);
-        userService = new UserService();
     }
 
     @AfterEach
