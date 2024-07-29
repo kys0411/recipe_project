@@ -3,6 +3,8 @@ package user.service;
 import oracle.jdbc.driver.OracleDriver;
 import org.junit.jupiter.api.*;
 import org.assertj.core.api.Assertions;
+import user.constant.Role;
+import user.domain.User;
 import user.dto.UserjoinRequestDto;
 
 import java.sql.Connection;
@@ -11,6 +13,7 @@ import java.sql.SQLException;
 import java.util.Map;
 
 import static java.lang.System.getenv;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class UserServiceTest {
     private static Connection conn;
@@ -42,6 +45,19 @@ class UserServiceTest {
 
         Assertions.assertThatNoException()
                 .isThrownBy(() -> userService.join(userjoinRequestDto));
+    }
+
+    @Test
+    @DisplayName("회원 조회테스트")
+    void findUserTest() throws SQLException {
+        UserService userService = new UserService();
+        User userA = userService.findUser(8L);
+
+        assertThat(userA.getId()).isEqualTo(8L);
+        assertThat(userA.getNickname().trim()).isEqualTo("hjlee");
+        assertThat(userA.getRole()).isEqualTo(Role.NORMAL);
+        assertThat(userA.getHint()).isEqualTo("효주");
+        assertThat(userA.getPassword()).isEqualTo("1234");
     }
 
     private static Connection getConnection() throws ClassNotFoundException, SQLException {
