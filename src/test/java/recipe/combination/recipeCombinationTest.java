@@ -1,12 +1,9 @@
 package recipe.combination;
 
 import oracle.jdbc.driver.OracleDriver;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import recipe.domain.Recipe;
-import recipe.service.IngredientUtilizationRecipeService;
+import recipe.service.IngredientCombinationService;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -19,13 +16,13 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class recipeCombinationTest {
     private static Connection conn;
-    private IngredientUtilizationRecipeService ingService;
+    private static IngredientCombinationService ingService;
 
-    @BeforeEach
-    public void setUp() throws SQLException, ClassNotFoundException {
+    @BeforeAll
+    public static void setUp() throws SQLException, ClassNotFoundException {
         conn = getConnection();
         conn.setAutoCommit(false);
-        ingService = new IngredientUtilizationRecipeService();
+        ingService = new IngredientCombinationService();
     }
 
     @AfterEach
@@ -40,7 +37,7 @@ public class recipeCombinationTest {
         // Given
         String[] ingredientsArray = {"우유", "양파", "모짜렐라치즈"};
         // When
-        List<Recipe> recipes = ingService.getIngredientUtilizationRecipes(ingredientsArray, conn);
+        List<Recipe> recipes = ingService.getIngredientCombinationRecipes(ingredientsArray, conn);
         // Then
         assertThat(recipes).isNotNull();
     }
