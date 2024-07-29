@@ -20,7 +20,7 @@ public class UserService {
             pstmt.setString(4, userjoinRequestDto.getPassword());
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            throw new SQLException(e);
+            e.printStackTrace();
         } finally {
             conn.close();
             pstmt.close();
