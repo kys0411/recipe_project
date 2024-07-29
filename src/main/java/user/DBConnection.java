@@ -21,14 +21,13 @@ public class DBConnection {
             String pass = env.get("DB_PASS");
             conn = DriverManager.getConnection(url, id, pass);
             System.out.println("db연결 성공");
-
-            return conn;
         } catch (ClassNotFoundException e) {
             System.out.println(e.getMessage());
-            return null;
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-            return null;
         }
+
+        return conn;
     }
 }
