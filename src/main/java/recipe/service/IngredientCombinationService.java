@@ -10,10 +10,9 @@ import recipe.domain.Recipe;
 import java.sql.*;
 import java.util.*;
 
-public class IngredientUtilizationRecipeService {
-    public List<Recipe> getIngredientUtilizationRecipes(String[] ingredientsArray, Connection conn) throws SQLException {
-        List<Recipe> recipes = new ArrayList<Recipe>();
-        Recipe recipe = null;
+public class IngredientCombinationService {
+    public List<Recipe> getIngredientCombinationRecipes(String[] ingredientsArray, Connection conn) throws SQLException {
+        List<Recipe> recipes = new ArrayList<>();
 
         ArrayDescriptor descriptor = ArrayDescriptor.createDescriptor("INGREDIENT_ARRAY", conn);
         ARRAY ingredients = new ARRAY(descriptor, conn, ingredientsArray);
@@ -26,7 +25,7 @@ public class IngredientUtilizationRecipeService {
         ResultSet rs = (ResultSet) cStmt.getObject(1);
 
         while (rs.next()) {
-            recipe = Recipe.builder()
+            Recipe recipe = Recipe.builder()
                     .id(rs.getLong("recipe_id"))
                     .memberId(rs.getLong("member_id"))
                     .category(Category.fromDescription(rs.getString("category")))
