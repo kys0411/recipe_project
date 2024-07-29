@@ -49,7 +49,7 @@ public class RecipeCreateTest {
                 {"통후추", "15알"}
         };
 
-        Recipe recipe = new Recipe(302L, 11L, Category.APPETIZER, "백숙", "닭을 끓여 요리한 음식", null, Difficulty.EASY, "2인분");
+        Recipe recipe = new Recipe(11L, Category.APPETIZER, "백숙", "닭을 끓여 요리한 음식", stepsData, ingredientsData, Difficulty.EASY, "2인분");
         recipeService.getCreateTestResult(recipe, stepsData, ingredientsData, conn);
     }
 
