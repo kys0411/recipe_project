@@ -1,24 +1,39 @@
 package review.domain;
 
-import lombok.Getter;
+import javafx.scene.control.CheckBox;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
-@Getter
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Review {
-	private Long id;
-	private Long memberId;
-	private Long recipeId;
-	private int rating;
-	private String content;
-	private LocalDateTime createdAt;
 
-	public Review(Long id, Long memberId, Long recipeId, int rating, String content) {
+	private long id;
+	private long memberId;
+	private long rating;
+	private String content;
+	private Date date;
+	private long recipeId;
+	private String nickName;
+	private String recipeName;
+	private CheckBox cbDelete;
+
+	public Review(long id, CheckBox cbDelete) {
 		this.id = id;
-		this.memberId = memberId;
-		this.recipeId = recipeId;
-		this.rating = rating;
-		this.content = content;
-		this.createdAt = LocalDateTime.now();
+		this.cbDelete = new CheckBox();
+	}
+
+	public CheckBox getCbDelete() {
+		return cbDelete;
+	}
+
+	public void setCbDelete(CheckBox cbDelete) {
+		this.cbDelete = cbDelete;
 	}
 }
