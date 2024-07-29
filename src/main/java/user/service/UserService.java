@@ -27,4 +27,34 @@ public class UserService {
             pstmt.close();
         }
     }
+
+    public User findUser(Long id) throws SQLException {
+        Connection conn = DBConnection.getConnection();
+        PreparedStatement pstmt = null;
+        ResultSet rs;
+        User user = null;
+
+        try {
+            String sql = "select * from MEMBER where MEMBER_ID = ?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setLong(1, id);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                user = User.builder()
+                        .id(rs.getLong("member_id"))
+                        .nickname(rs.getString("nickname"))
+                        .role(Role.fromType(rs.getString("role")))
+                        .hint(rs.getString("hint"))
+                        .password(rs.getString("password"))
+                        .build();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            conn.close();
+            pstmt.close();
+        }
+        
+        return user;
+    }
 }
