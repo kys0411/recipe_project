@@ -43,7 +43,7 @@ dependencies {
 
     // JDBC
     implementation group: 'com.oracle.database.jdbc', name: 'ojdbc8', version: '19.23.0.0'
-    implementation("com.oracle.database.security:oraclepki")
+    implementation group: 'com.oracle.database.security', name: 'oraclepki', version: '23.4.0.24.05'
     implementation group: 'com.oracle.database.security', name: 'osdt_cert', version: '19.23.0.0'
     implementation group: 'com.oracle.ojdbc', name: 'osdt_core', version: '19.3.0.0'
 }

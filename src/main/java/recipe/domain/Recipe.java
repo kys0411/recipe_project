@@ -20,26 +20,27 @@ public class Recipe {
 	private Category category;
 	private String title;
 	private String description;
-	private List<String> steps;
+	private Object[][] steps;
+	private Object[][] ingredients;
 	private Difficulty difficulty;
 	private String quantity;
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;
 
-	public Recipe(Long id,
-				  Long memberId,
+	public Recipe(Long memberId,
 				  Category category,
 				  String title,
 				  String description,
-				  List<String> steps,
+				  Object[][] steps,
+				  Object[][] ingredients,
 				  Difficulty difficulty,
 				  String quantity) {
-		this.id = id;
 		this.memberId = memberId;
 		this.category = category;
 		this.title = title;
 		this.description = description;
 		this.steps = steps;
+		this.ingredients = ingredients;
 		this.difficulty = difficulty;
 		this.quantity = quantity;
 		this.createdAt = LocalDateTime.now();
