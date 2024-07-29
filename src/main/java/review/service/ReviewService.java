@@ -18,5 +18,4 @@ public interface ReviewService {
     //레시피 후기 삭제
     public void deleteRecipeReview(long id) throws Exception;
 
-
 }

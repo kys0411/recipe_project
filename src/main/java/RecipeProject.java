@@ -28,7 +28,6 @@ public class RecipeProject extends Application {
 		reviewService.selectMemberReview(memberId);
 
         launch(args);
-
 	}
 
 	@Override
@@ -49,6 +48,5 @@ public class RecipeProject extends Application {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 }

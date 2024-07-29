@@ -57,6 +57,7 @@ public class ReviewController implements Initializable {
                 for (Review review : reviewList) {
                     System.out.println(review);
                 }
+
                 ObservableList<Review> list = FXCollections.observableArrayList(reviewList);
 
                 colCbDelete.setCellValueFactory(new PropertyValueFactory<>("cbDelete"));
@@ -82,11 +83,8 @@ public class ReviewController implements Initializable {
                         }));
 
                         System.out.println("전체 체크박스");
-
                     }
-
                 });
-
             }
         } catch (Exception e) {
             e.printStackTrace();

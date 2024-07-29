@@ -25,7 +25,6 @@ public class ReviewServiceImpl implements ReviewService {
             System.out.println("------------");
         }
         return reviewDao.selectMemberReview(memberId);
-        //return reviews;
     }
 
     @Override
@@ -40,7 +39,6 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     public void deleteRecipeReview(long id) throws Exception {
-
+        reviewDao.deleteRecipeReview(id);
     }
-
 }
