@@ -13,7 +13,7 @@ public class RecipeQueryRepositoryTest {
     RecipeQueryRepository recipeQueryRepository = new RecipeQueryRepository(dbConnection);
 
     @Test
-    @DisplayName("레시피 상세 조회 성공 테스트 - 레시피 아이디로 조회한 결과가 기대값과 같다.")
+    @DisplayName("레시피 상세 조회 성공 테스트 - 레시피 아이디로 조회한 결과가 기대값과 같아야 한다.")
     public void find_Recipe_By_Id_Success() throws SQLException, ClassNotFoundException {
         // when
         Recipe result = recipeQueryRepository.findRecipeById(85L).get();
