@@ -32,7 +32,9 @@ public class ReviewServiceImpl implements ReviewService {
 
         for (Review review : reviews) {
             System.out.println("Review ID: " + review.getId());
+            System.out.println("Review Name: " + review.getRecipeName());
             System.out.println("Member ID: " + review.getMemberId());
+            System.out.println("NickName : " + review.getNickName());
             System.out.println("Rating: " + review.getRating());
             System.out.println("Content: " + review.getContent());
             System.out.println("Date: " + review.getDate());

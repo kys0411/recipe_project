@@ -1,23 +1,23 @@
 package review.Controller;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TableColumn;
+import javafx.scene.Node;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import review.domain.Review;
 import review.service.ReviewService;
 import review.impl.ReviewServiceImpl;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableView;
-
+import javafx.event.ActionEvent;
 
 public class ReviewController implements Initializable {
 
@@ -26,43 +26,72 @@ public class ReviewController implements Initializable {
     @FXML
     private TableColumn<Review, CheckBox> colCbDelete;
     @FXML
-    private TableColumn<Review, Integer> reviewId;
+    private TableColumn<Review, Long> reviewId;
     @FXML
-    private TableColumn<Review, Integer> memberId;
+    private TableColumn<Review, String> recipeName;
+/*
     @FXML
-    private TableColumn<Review, Integer> recipeId;
+    private TableColumn<Review, Long> memberId;
+*/
+    @FXML
+    private TableColumn<Review, String> nickName;
+    @FXML
+    private TableColumn<Review, Long> recipeId;
     @FXML
     private TableColumn<Review, String> content;
     @FXML
-    private TableColumn<Review, Integer> rating;
+    private TableColumn<Review, Long> rating;
     @FXML
     private TableColumn<Review, Date> reviewDate;
 
-
     private ReviewService reviewService = new ReviewServiceImpl();
+
+    Stage stage;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        /*데이터 초기화*/
-        List<Review> reviewList = new ArrayList<Review>();
-        //reviewList = reviewService.selectMemberReview();
+        // 데이터 초기화
+        try {
+            List<Review> reviewList = reviewService.selectMemberReview(18L);
+            if (reviewList != null) {
+                for (Review review : reviewList) {
+                    System.out.println(review);
+                }
+                ObservableList<Review> list = FXCollections.observableArrayList(reviewList);
 
-        for(Review review : reviewList) {
-            System.out.println(review);
+                colCbDelete.setCellValueFactory(new PropertyValueFactory<>("cbDelete"));
+                reviewId.setCellValueFactory(new PropertyValueFactory<>("id"));
+                nickName.setCellValueFactory(new PropertyValueFactory<>("nickName"));
+                recipeName.setCellValueFactory(new PropertyValueFactory<>("recipeName"));
+                //recipeId.setCellValueFactory(new PropertyValueFactory<>("recipeId"));
+                content.setCellValueFactory(new PropertyValueFactory<>("content"));
+                rating.setCellValueFactory(new PropertyValueFactory<>("rating"));
+                reviewDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+
+                // TableView 에 데이터 리스트 지정
+                selectReviewMember.setItems(list);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+    }
 
-        ObservableList<Review> list = FXCollections.observableArrayList(reviewList);
+    /**
+     * 후기 등록하기
+     * @param event
+     */
+    public void close(ActionEvent event){
 
-        reviewId.setCellValueFactory(new PropertyValueFactory<Review, Integer>("reviewId"));
-        memberId.setCellValueFactory(new PropertyValueFactory<>("memberId"));
-        recipeId.setCellValueFactory(new PropertyValueFactory<>("recipeId"));
-        content.setCellValueFactory(new PropertyValueFactory<>("content"));
-        rating.setCellValueFactory(new PropertyValueFactory<>("rating"));
-        reviewDate.setCellValueFactory(new PropertyValueFactory<>("reviewDate"));
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("프로그램 종료");
+        alert.setHeaderText("프로그램을 종료하시겠습니까?");
+        alert.setContentText("프로그래이 종료됩니다.");
 
-        //TableView 에 데이터 리스트 지정
-        selectReviewMember.setItems(list);
-
+        if(alert.showAndWait().get() == ButtonType.OK){
+            System.out.println("프로그램 종료");
+            stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+            stage.close();
+        }
     }
 
     public void manageReviews() {

@@ -1,36 +1,43 @@
 package review.domain;
 
-import java.awt.*;
+import javafx.scene.control.CheckBox;
+
 import java.util.Date;
 
-
-//Field
 public class Review {
 
-	//Field
-	private Checkbox colCbDelete;
 	private long id;
 	private long memberId;
-
-	public Checkbox getColCbDelete() {
-		return colCbDelete;
-	}
-
-	public void setColCbDelete(Checkbox colCbDelete) {
-		this.colCbDelete = colCbDelete;
-	}
-
 	private long rating;
 	private String content;
 	private Date date;
 	private long recipeId;
+	private String nickName;
+	private String recipeName;
+	private CheckBox cbDelete;
 
-	//Constructor
-	public Review() {
+	// Constructors
+	public Review() {}
 
+	public Review(long id, long memberId, long rating, String content, Date date, long recipeId) {
+		this.id = id;
+		this.memberId = memberId;
+		this.rating = rating;
+		this.content = content;
+		this.date = date;
+		this.recipeId = recipeId;
+		this.cbDelete = new CheckBox();
 	}
 
-	//Method
+	public CheckBox getCbDelete() {
+		return cbDelete;
+	}
+
+	public void setCbDelete(CheckBox cbDelete) {
+		this.cbDelete = cbDelete;
+	}
+
+	// Getters and Setters
 	public long getId() {
 		return id;
 	}
@@ -79,13 +86,20 @@ public class Review {
 		this.recipeId = recipeId;
 	}
 
-	public Review(long id, long memberId, long rating, String content, Date date, long recipeId) {
-		this.id = id;
-		this.memberId = memberId;
-		this.rating = rating;
-		this.content = content;
-		this.date = date;
-		this.recipeId = recipeId;
+	public String getNickName() {
+		return nickName;
+	}
+
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
+
+	public String getRecipeName() {
+		return recipeName;
+	}
+
+	public void setRecipeName(String recipeName) {
+		this.recipeName = recipeName;
 	}
 
 	@Override
@@ -97,11 +111,8 @@ public class Review {
 				", content='" + content + '\'' +
 				", date=" + date +
 				", recipeId=" + recipeId +
+				", nickName='" + nickName + '\'' +
+				", recipeName='" + recipeName + '\'' +
 				'}';
 	}
-
 }
-
-
-
-

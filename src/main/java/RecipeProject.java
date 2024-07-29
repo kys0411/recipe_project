@@ -3,11 +3,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
+import review.Controller.ReviewController;
 import review.domain.Review;
 import review.impl.ReviewServiceImpl;
 import review.service.ReviewService;
-import review.Controller.ReviewController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +47,8 @@ public class RecipeProject extends Application {
 			stage.show();
 
 		} catch (Exception e) {
-			throw new RuntimeException(e);
+			e.printStackTrace();
+			//throw new RuntimeException(e);
 		}
 
 	}

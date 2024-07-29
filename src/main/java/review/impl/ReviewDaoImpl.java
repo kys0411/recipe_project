@@ -32,70 +32,14 @@ public class ReviewDaoImpl implements ReviewDao {
         return DriverManager.getConnection(url, id, pass);
     }
 
-/*    @Override
-    public List<Review> selectMemberReview(int memberId) throws Exception {
-        List<Review> reviews = new ArrayList<>();
-        String sql = "SELECT review_id, member_id, rating, content, review_date, recipe_id FROM review WHERE member_id = ?";
-
-        try (Connection conn = getConnection();
-            PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
-            pstmt.setInt(1, memberId);
-            ResultSet rs = pstmt.executeQuery();
-
-            while (rs.next()) {
-                Review review = new Review();
-                review.setId(rs.getLong("review_id"));
-                review.setMemberId(rs.getLong("member_id"));
-                review.setRecipeId(rs.getLong("recipe_id"));
-                review.setRating(rs.getInt("rating"));
-                review.setContent(rs.getString("content"));
-                review.setDate(rs.getDate("review_date"));
-
-                reviews.add(review);
-            }
-            //pstmt.setInt(1,reviews.size());
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return reviews;
-    }*/
-
-/*    @Override
-    public List<Review> selectMemberReview(long memberId) throws Exception {
-        List<Review> reviews = new ArrayList<>();
-        String sql = "SELECT review_id, member_id, rating, content, review_date, recipe_id FROM review WHERE member_id = ?";
-
-        try (Connection conn = getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
-            pstmt.setLong(1, memberId);
-            ResultSet rs = pstmt.executeQuery();
-
-            while (rs.next()) {
-                Review review = new Review();
-                review.setId(rs.getLong("review_id"));
-                review.setMemberId(rs.getLong("member_id"));
-                review.setRecipeId(rs.getLong("recipe_id"));
-                review.setRating(rs.getInt("rating"));
-                review.setContent(rs.getString("content"));
-                review.setDate(rs.getDate("review_date"));
-
-                reviews.add(review);
-            }
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return reviews;
-    }*/
-
     @Override
     public List<Review> selectMemberReview(long memberId) throws Exception {
         List<Review> reviews = new ArrayList<>();
-        String sql = "SELECT review_id, member_id, rating, content, review_date, recipe_id FROM review WHERE member_id = ?";
+        //String sql = "SELECT review_id, member_id, rating, content, review_date, recipe_id FROM review WHERE member_id = ?";
+
+        String sql = "SELECT r.review_id, r.member_id, r.recipe_id, c.recipe_name, m.nickname, r.rating, r.content, r.review_date " +
+                "FROM member m, review r, recipe c " +
+                "WHERE r.member_id = m.member_id(+) AND r.recipe_id = c.recipe_id(+) AND r.member_id = ?";
 
         try (Connection conn = getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)){
@@ -108,7 +52,9 @@ public class ReviewDaoImpl implements ReviewDao {
                 review.setId(rs.getLong("review_id"));
                 review.setMemberId(rs.getLong("member_id"));
                 review.setRecipeId(rs.getLong("recipe_id"));
-                review.setRating(rs.getInt("rating"));
+                review.setRecipeName(rs.getString("recipe_name"));
+                review.setNickName(rs.getString("nickname"));
+                review.setRating(rs.getLong("rating"));
                 review.setContent(rs.getString("content"));
                 review.setDate(rs.getDate("review_date"));
 

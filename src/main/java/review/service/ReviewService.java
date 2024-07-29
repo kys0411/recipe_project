@@ -7,7 +7,6 @@ import java.util.List;
 public interface ReviewService {
 
     //등록한 레시피 조회
-    //public void selectMemberReview(long memberId) throws Exception;
     List<Review> selectMemberReview(long memberId) throws Exception;
 
     //레시피 후기 생성
