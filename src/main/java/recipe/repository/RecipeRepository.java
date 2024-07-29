@@ -38,7 +38,6 @@ public class RecipeRepository {
         cStmt.setArray(8, ingredients);
         cStmt.execute();
 
-        conn.rollback();
         conn.close();
     }
 }
