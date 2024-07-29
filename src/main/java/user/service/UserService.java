@@ -16,7 +16,7 @@ public class UserService {
             String sql = "insert into member(member_id, nickname, role, hint, password) values(SEQ_MEMBER_ID.nextval, ?, ?, ?, ?)";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, userjoinRequestDto.getNickname());
-            pstmt.setString(2, Role.NORMAL.getRoleType());
+            pstmt.setString(2, Role.NORMAL.getType());
             pstmt.setString(3, userjoinRequestDto.getHint());
             pstmt.setString(4, userjoinRequestDto.getPassword());
             pstmt.executeUpdate();
