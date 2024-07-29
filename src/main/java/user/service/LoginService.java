@@ -40,7 +40,7 @@ public class LoginService {
 
             rs = pstmt.executeQuery();
             while (rs.next()) {
-                if (rs.getString("nickname").equals(nickname) && rs.getString("password").equals(password)) {
+                if (rs.getString("nickname").trim().equals(nickname) && rs.getString("password").equals(password)) {
                     return User.builder()
                             .id(rs.getLong("member_id"))
                             .nickname(rs.getString("nickname"))
