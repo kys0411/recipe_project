@@ -11,7 +11,7 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     public List<Review> selectMemberReview(long memberId) throws Exception {
-        List<Review> reviews = reviewDao.selectMemberReview((int) memberId);
+        List<Review> reviews = reviewDao.selectMemberReview(memberId);
 
         for (Review review : reviews) {
             System.out.println("Review ID: " + review.getId());
