@@ -6,9 +6,9 @@ import lombok.Getter;
 public enum Role {
 	ADMIN("0"), NORMAL("1");
 
-	private final String roleType;
+	private final String type;
 
-	Role(String roleType) {
-		this.roleType = roleType;
+	Role(String type) {
+		this.type = type;
 	}
 }
