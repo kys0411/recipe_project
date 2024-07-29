@@ -1,23 +1,25 @@
 package review.Controller;
 
-import java.net.URL;
-import java.util.Date;
-import java.util.List;
-import java.util.ResourceBundle;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.event.EventHandler;
+
 import review.domain.Review;
-import review.service.ReviewService;
 import review.impl.ReviewServiceImpl;
-import javafx.fxml.Initializable;
-import javafx.event.ActionEvent;
+import review.service.ReviewService;
+
+import java.net.URL;
+import java.util.Date;
+import java.util.List;
+import java.util.ResourceBundle;
 
 public class ReviewController implements Initializable {
 
@@ -29,20 +31,18 @@ public class ReviewController implements Initializable {
     private TableColumn<Review, Long> reviewId;
     @FXML
     private TableColumn<Review, String> recipeName;
-/*
-    @FXML
-    private TableColumn<Review, Long> memberId;
-*/
     @FXML
     private TableColumn<Review, String> nickName;
-    @FXML
-    private TableColumn<Review, Long> recipeId;
     @FXML
     private TableColumn<Review, String> content;
     @FXML
     private TableColumn<Review, Long> rating;
     @FXML
     private TableColumn<Review, Date> reviewDate;
+    @FXML
+    private CheckBox checkBoxDelete;
+    @FXML
+    private CheckBox cbAll;
 
     private ReviewService reviewService = new ReviewServiceImpl();
 
@@ -63,13 +63,30 @@ public class ReviewController implements Initializable {
                 reviewId.setCellValueFactory(new PropertyValueFactory<>("id"));
                 nickName.setCellValueFactory(new PropertyValueFactory<>("nickName"));
                 recipeName.setCellValueFactory(new PropertyValueFactory<>("recipeName"));
-                //recipeId.setCellValueFactory(new PropertyValueFactory<>("recipeId"));
                 content.setCellValueFactory(new PropertyValueFactory<>("content"));
                 rating.setCellValueFactory(new PropertyValueFactory<>("rating"));
                 reviewDate.setCellValueFactory(new PropertyValueFactory<>("date"));
 
                 // TableView 에 데이터 리스트 지정
                 selectReviewMember.setItems(list);
+                cbAll.setOnMouseClicked(new EventHandler<Event>() {
+
+                    @Override
+                    public void handle(Event event) {
+
+                        CheckBox checkBox = (CheckBox) event.getSource();
+                        boolean checkAll = checkBox.isSelected();
+
+                        selectReviewMember.getItems().stream().forEach((review -> {
+                            review.getCbDelete().setSelected(checkAll);
+                        }));
+
+                        System.out.println("전체 체크박스");
+
+                    }
+
+                });
+
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -101,7 +118,14 @@ public class ReviewController implements Initializable {
             reviewService.selectMemberReview(memberId);
 
             // 레시피 후기 생성 예제
-            Review newReview = new Review(1, memberId, 5, "Great recipe!", new Date(), 10);
+            Review newReview = Review.builder()
+                    .id(1)
+                    .memberId(19)
+                    .rating(5)
+                    .content("레시피 강추!")
+                    .date(new Date())
+                    .recipeId(4)
+                    .build();
             reviewService.insertRecipeReview(newReview);
 
             // 레시피 후기 수정 예제

@@ -1,19 +1,16 @@
 package review.impl;
 
-import java.util.List;
-import java.util.ArrayList;
-
-import java.sql.ResultSet;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.util.Map;
-
 import oracle.jdbc.driver.OracleDriver;
 import review.Dao.ReviewDao;
 import review.domain.Review;
 
-import static java.lang.System.getenv;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class ReviewDaoImpl implements ReviewDao {
 
@@ -35,7 +32,6 @@ public class ReviewDaoImpl implements ReviewDao {
     @Override
     public List<Review> selectMemberReview(long memberId) throws Exception {
         List<Review> reviews = new ArrayList<>();
-        //String sql = "SELECT review_id, member_id, rating, content, review_date, recipe_id FROM review WHERE member_id = ?";
 
         String sql = "SELECT r.review_id, r.member_id, r.recipe_id, c.recipe_name, m.nickname, r.rating, r.content, r.review_date " +
                 "FROM member m, review r, recipe c " +

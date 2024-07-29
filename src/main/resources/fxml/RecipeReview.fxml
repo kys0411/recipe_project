@@ -16,7 +16,7 @@
         <columns>
           <TableColumn fx:id="colCbDelete" prefWidth="30.0">
                <graphic>
-                  <CheckBox mnemonicParsing="false" prefHeight="25.0" prefWidth="7.0" />
+                  <CheckBox fx:id="cbAll" mnemonicParsing="false" prefHeight="25.0" prefWidth="7.0" />
                </graphic>
             </TableColumn>
             <TableColumn fx:id="reviewId" prefWidth="78.0" text="후기번호" />

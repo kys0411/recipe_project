@@ -48,7 +48,6 @@ public class RecipeProject extends Application {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			//throw new RuntimeException(e);
 		}
 
 	}
