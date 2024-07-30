@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="880.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.InsertRecipeReview">
+   <children>
+      <AnchorPane layoutY="5.0" prefHeight="600.0" prefWidth="880.0">
+         <children>
+            <Label layoutX="305.0" layoutY="46.0" text="레시피 후기">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Label>
+            <Label layoutX="40.0" layoutY="159.0" prefHeight="57.0" prefWidth="156.0" text="별개수 :">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="43.0" layoutY="259.0" prefHeight="36.0" prefWidth="108.0" text="내용 :">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="462.0" layoutY="159.0" prefHeight="57.0" prefWidth="156.0" text="작성자 :">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <TextField layoutX="610.0" layoutY="171.0" prefHeight="33.0" prefWidth="223.0" promptText="닉네임을 입력해주세요." />
+            <TextField layoutX="167.0" layoutY="171.0" prefHeight="33.0" prefWidth="247.0" promptText="점수를 입력해주세요.(1~5)" />
+            <TextArea layoutX="43.0" layoutY="314.0" prefHeight="157.0" prefWidth="783.0" promptText="후기를 입력해 주세요.">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </TextArea>
+            <Button layoutX="40.0" layoutY="517.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="목록" />
+            <Button layoutX="733.0" layoutY="517.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="수정" />
+            <Button layoutX="618.0" layoutY="517.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="삭제" />
+         </children></AnchorPane>
+   </children>
+</AnchorPane>

@@ -45,7 +45,7 @@ public class RecipeQueryRepository {
         return Optional.ofNullable(resultRecipe);
     }
 
-    private Object[][] getRecipeSteps(Connection conn, Long id) throws SQLException {
+    public Object[][] getRecipeSteps(Connection conn, Long id) throws SQLException {
         String sql = "SELECT s.step_number, s.step_description FROM recipe_step s WHERE s.recipe_id = ?";
 
         PreparedStatement pstmt = conn.prepareStatement(sql, TYPE_SCROLL_INSENSITIVE, CONCUR_UPDATABLE);
@@ -67,7 +67,7 @@ public class RecipeQueryRepository {
         return recipeSteps;
     }
 
-    private Object[][] getIngredients(Connection conn, Long id) throws SQLException {
+    public Object[][] getIngredients(Connection conn, Long id) throws SQLException {
         String sql = """
                  SELECT i.ingredient_id, i.ingredient_name, r_i.measurement
                  FROM recipe_ingredient r_i JOIN ingredient i

@@ -1,4 +1,4 @@
-package recipe.repository;
+package recipe.repository.recipe;
 
 import common.DBConnection;
 import org.assertj.core.api.Assertions;
@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import recipe.constant.Category;
 import recipe.constant.Difficulty;
 import recipe.domain.Recipe;
+import recipe.repository.RecipeRepository;
 
 public class RecipeRepositoryTest {
     DBConnection dbConnection = new DBConnection();
