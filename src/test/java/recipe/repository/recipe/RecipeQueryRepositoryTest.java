@@ -1,9 +1,11 @@
-package recipe.repository;
+package recipe.repository.recipe;
 
 import common.DBConnection;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import recipe.domain.Recipe;
+import recipe.repository.RecipeQueryRepository;
+
 import java.sql.SQLException;
 
 import static org.assertj.core.api.Assertions.assertThat;
