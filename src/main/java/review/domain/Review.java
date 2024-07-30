@@ -17,14 +17,15 @@ public class Review {
 	private long id;
 	private long memberId;
 	private long rating;
+	private String starRating;
 	private String content;
 	private Date date;
 	private long recipeId;
 	private String nickName;
 	private String recipeName;
-	private CheckBox cbDelete;
+	private CheckBox cbDelete = new CheckBox();
 
-	public Review(long id, CheckBox cbDelete) {
+	public Review(long id) {
 		this.id = id;
 		this.cbDelete = new CheckBox();
 	}
