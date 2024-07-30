@@ -2,15 +2,16 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import review.Controller.ReviewController;
 import review.domain.Review;
 import review.impl.ReviewServiceImpl;
 import review.service.ReviewService;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class RecipeProject extends Application {
 
@@ -31,18 +32,30 @@ public class RecipeProject extends Application {
 	}
 
 	@Override
-	public void start(Stage stage) throws Exception {
+	public void start(Stage stage) {
 
 		try {
-			Parent root = FXMLLoader.load(Objects.requireNonNull(
-					getClass().getClassLoader().getResource("fxml/RecipeReview.fxml")
-			));
+			// FXML 파일의 경로가 올바른지 확인
+			URL fxmlLocation = getClass().getResource("/fxml/RecipeReview.fxml");
+			if (fxmlLocation == null) {
+				throw new IllegalArgumentException("FXML file not found: /fxml/RecipeReview.fxml");
+			}
 
-			stage.setTitle("Recipe Program");
+			Parent root = FXMLLoader.load(fxmlLocation);
+
+			//스테이지 설정(이미지 아이콘 지정 추가)
+			Image icon = new Image("reviewIcon.png");
+			stage.getIcons().add(icon);
+			stage.setTitle("Recipe Review");
+
+			//stage 객체로 프로그램 크기 변경막기
+			stage.setResizable(false);
+			stage.show();
+
+			stage.setTitle("Recipe Review");
 			stage.setResizable(false);
 
 			stage.setScene(new Scene(root, 800, 600));
-
 			stage.show();
 
 		} catch (Exception e) {
