@@ -21,7 +21,7 @@ class LoginServiceTest {
     }
 
     @Test
-    @DisplayName("로그인 실패테스트")
+    @DisplayName("로그인 아이디, 비밀번호 다르게 입력할 경우 실패테스트")
     void loginFail() throws SQLException {
         loginService.login("hjlee", "12345");
 
