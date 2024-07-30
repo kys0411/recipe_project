@@ -1,16 +1,17 @@
 package like.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Like {
 	private Long id;
 	private Long memberId;
 	private Long recipeId;
-
-	public Like(Long id, Long memberId, Long recipeId) {
-		this.id = id;
-		this.memberId = memberId;
-		this.recipeId = recipeId;
-	}
+	private String status;
 }
