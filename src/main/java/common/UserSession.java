@@ -1,7 +1,9 @@
 package common;
 
+import lombok.Getter;
 import user.domain.User;
 
+@Getter
 public class UserSession {
     private static UserSession instance;
 
