@@ -5,31 +5,31 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="review.Controller.ReviewController">
-   <children>
-      <Label layoutX="287.0" layoutY="22.0" text="레시피 후기">
-         <font>
-            <Font size="45.0" />
-         </font>
-      </Label>
-      <TableView fx:id="selectReviewMember" layoutX="39.0" layoutY="100.0" prefHeight="400.0" prefWidth="722.0">
-        <columns>
-          <TableColumn fx:id="colCbDelete" prefWidth="30.0">
-               <graphic>
-                  <CheckBox fx:id="cbAll" mnemonicParsing="false" prefHeight="25.0" prefWidth="7.0" />
-               </graphic>
-            </TableColumn>
-            <TableColumn fx:id="reviewId" prefWidth="78.0" text="후기번호" />
-            <TableColumn fx:id="nickName" prefWidth="86.0" text="작성자" />
-            <TableColumn fx:id="recipeName" prefWidth="84.0" text="레시피" />
-            <TableColumn fx:id="content" prefWidth="303.0" text="내용" />
-            <TableColumn fx:id="rating" prefWidth="45.0" text="별점" />
-            <TableColumn fx:id="reviewDate" prefWidth="114.0" text="작성일" />
-        </columns>
-      </TableView>
-      <Button layoutX="39.0" layoutY="519.0" mnemonicParsing="false" onAction="#close" prefHeight="40.0" prefWidth="100.0" text="나가기" />
-      <Button layoutX="661.0" layoutY="519.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="삭제" />
-      <Button layoutX="548.0" layoutY="519.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="수정" />
-      <Button layoutX="435.0" layoutY="519.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="후기등록" />
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="880.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="review.Controller.ReviewController">
+    <children>
+        <Label layoutX="320.0" layoutY="32.0" text="레시피 후기">
+            <font>
+                <Font size="45.0" />
+            </font>
+        </Label>
+        <TableView fx:id="selectReviewMember" layoutX="26.0" layoutY="100.0" prefHeight="463.0" prefWidth="833.0">
+            <columns>
+                <TableColumn fx:id="colCbDelete" prefWidth="30.0">
+                    <graphic>
+                        <CheckBox fx:id="cbAll" mnemonicParsing="false" prefHeight="25.0" prefWidth="7.0" />
+                    </graphic>
+                </TableColumn>
+                <TableColumn fx:id="reviewId" prefWidth="79.0" text="후기번호" />
+                <TableColumn fx:id="nickName" prefWidth="77.0" text="작성자" />
+                <TableColumn fx:id="recipeName" prefWidth="87.0" text="레시피" />
+                <TableColumn fx:id="content" prefWidth="350.0" text="내용" />
+                <TableColumn fx:id="starRating" prefWidth="112.0" text="추천점수" />
+                <TableColumn fx:id="reviewDate" prefWidth="97.0" text="작성일" />
+            </columns>
+        </TableView>
+        <Button layoutX="26.0" layoutY="583.0" mnemonicParsing="false" onAction="#close" prefHeight="40.0" prefWidth="100.0" text="나가기" />
+        <Button layoutX="759.0" layoutY="583.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="삭제" />
+        <Button layoutX="646.0" layoutY="583.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="수정" />
+        <Button layoutX="533.0" layoutY="583.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="후기등록" />
+    </children>
 </AnchorPane>
