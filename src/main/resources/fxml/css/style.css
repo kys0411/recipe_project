@@ -1,0 +1,28 @@
+@font-face {
+    font-family: 'Pretendard';
+    src: url("fonts/Pretendard-Regular.ttf");
+}
+
+.root-class {
+    -fx-font-family: 'Pretendard';
+    -fx-font-size: 15;
+}
+
+.bottom-shadow {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 10, 0.5, 0, 4);
+    -fx-padding: 0 0 100 0; /* 하단 패딩 추가로 그림자가 더 잘 보이게 */
+}
+
+.step-hBox {
+    -fx-font-family: 'Pretendard';
+    -fx-border-style: solid inside;
+    -fx-border-width: 0 0 1px 0;
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: lightgray;
+    -fx-pref-width: 400; /* Adjust width as needed */
+}
+
+.recipeImage {
+    -fx-border-style: solid inside;
+    -fx-border-radius: 10px;
+}
