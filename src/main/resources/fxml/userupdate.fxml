@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user.controller.UserUpdateController">
+    <children>
+        <Label alignment="CENTER" layoutX="225.0" layoutY="54.0" prefHeight="19.0" prefWidth="200.0" text="회원 수정" textFill="#1e1d1d">
+            <font>
+                <Font name="Verdana Bold" size="23.0" />
+            </font>
+        </Label>
+        <Label layoutX="210.0" layoutY="220.0" text="username" />
+        <Label layoutX="211.0" layoutY="286.0" text="password" />
+        <TextField fx:id="usernameTextField" layoutX="325.0" layoutY="215.0" prefHeight="29.0" prefWidth="152.0" promptText="username" />
+        <PasswordField fx:id="passwordPasswordField" layoutX="326.0" layoutY="281.0" prefHeight="29.0" prefWidth="151.0" promptText="password" />
+        <Button fx:id="registerButton" layoutX="210.0" layoutY="609.0" mnemonicParsing="false" onAction="#updateButtonOnAction" prefHeight="29.0" prefWidth="219.0" text="확인" />
+        <Button fx:id="cancelButton" layoutX="210.0" layoutY="683.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="29.0" prefWidth="219.0" text="취소" />
+        <Label layoutX="246.0" layoutY="419.0" text="hint" />
+        <TextField fx:id="hintTextField" layoutX="326.0" layoutY="414.0" prefHeight="29.0" prefWidth="152.0" promptText="hint" />
+        <Label layoutX="156.0" layoutY="346.0" text="confirmpassword" />
+        <PasswordField fx:id="confirmpasswordPasswordField" layoutX="326.0" layoutY="341.0" prefHeight="29.0" prefWidth="151.0" promptText="confirmpassword" />
+    </children>
+</AnchorPane>

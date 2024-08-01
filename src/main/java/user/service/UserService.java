@@ -3,6 +3,7 @@ package user.service;
 import user.DBConnection;
 import user.constant.Role;
 import user.domain.User;
+import user.dto.UserUpdateRequestDto;
 import user.dto.UserjoinRequestDto;
 
 import java.sql.*;
@@ -56,5 +57,32 @@ public class UserService {
         }
         
         return user;
+    }
+
+    public void update(Long id, UserUpdateRequestDto userUpdateRequestDto) throws SQLException {
+        Connection conn = DBConnection.getConnection();
+        PreparedStatement pstmt = null;
+        User user = null;
+
+        try {
+            String sql = """
+                         update MEMBER
+                         set NICKNAME = ?,
+                         hint = ?,
+                         PASSWORD = ?
+                         where MEMBER_ID = ?   
+                            """;
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, userUpdateRequestDto.getNickname().trim());
+            pstmt.setString(2, userUpdateRequestDto.getHint());
+            pstmt.setString(3, userUpdateRequestDto.getPassword());
+            pstmt.setLong(4, id);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            conn.close();
+            pstmt.close();
+        }
     }
 }
