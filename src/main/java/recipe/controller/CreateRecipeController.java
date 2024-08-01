@@ -2,15 +2,16 @@ package recipe.controller;
 
 import common.UserSession;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import lombok.RequiredArgsConstructor;
 import recipe.constant.Category;
 import recipe.constant.Difficulty;
@@ -19,6 +20,7 @@ import recipe.repository.RecipeRepository;
 import recipe.service.CreateRecipeService;
 import common.DBConnection;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -48,6 +50,9 @@ public class CreateRecipeController implements Initializable {
 
 	@FXML
 	private VBox stepContainer;
+
+	@FXML
+	private Button createButton;
 
 
 	@FXML
@@ -116,7 +121,7 @@ public class CreateRecipeController implements Initializable {
 	}
 
 	@FXML
-	public void handleCreateRecipe() {
+	public void handleCreateRecipe() throws IOException {
 		String title = titleField.getText();
 		System.out.println(title);
 		String description = descriptionField.getText();
@@ -143,6 +148,25 @@ public class CreateRecipeController implements Initializable {
 				.build();
 
 		createRecipeService.create(recipe);
+
+		showAlert(Alert.AlertType.INFORMATION, "레시피 등록 성공", "레시피 등록 성공");
+
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Main.fxml"));
+		Parent mainScreen = fxmlLoader.load();
+
+		Stage stage = (Stage) createButton.getScene().getWindow();
+
+		Scene scene = new Scene(mainScreen);
+		stage.setScene(scene);
+		stage.show();
+	}
+
+	private void showAlert(Alert.AlertType alertType, String title, String content) {
+		Alert alert = new Alert(alertType);
+		alert.setTitle(title);
+		alert.setHeaderText(null);
+		alert.setContentText(content);
+		alert.showAndWait();
 	}
 
 	// ingredient, step 입력 값으로 Object 생성
