@@ -23,18 +23,23 @@
                </font>
             </Button>
            
-            <Button fx:id="btnRecipe" layoutX="119.0" layoutY="305.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="94.0" prefWidth="412.0" text="레시피">
+            <Button fx:id="btnRecipe" layoutX="119.0" layoutY="294.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="94.0" prefWidth="412.0" text="레시피 조회">
                <font>
                   <Font size="30.0" />
                </font>
             </Button>
-            <Button fx:id="btnReview" layoutX="119.0" layoutY="418.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="94.0" prefWidth="412.0" text="레시피후기">
+            <Button fx:id="btnCreateRecipe" layoutX="119.0" layoutY="400.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="94.0" prefWidth="412.0" text="레시피 생성">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnReview" layoutX="119.0" layoutY="504.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="94.0" prefWidth="412.0" text="레시피후기">
                <font>
                   <Font size="30.0" />
                </font>
             </Button>
 
-            <Button fx:id="btnLogout" layoutX="119.0" layoutY="535.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="94.0" prefWidth="412.0" text="로그아웃">
+            <Button fx:id="btnLogout" layoutX="119.0" layoutY="608.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="94.0" prefWidth="412.0" text="로그아웃">
                <font>
                   <Font size="30.0" />
                </font>
