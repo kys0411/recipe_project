@@ -8,40 +8,22 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user.controller.UserUpdateController">
-    <left>
-        <AnchorPane prefHeight="407.0" prefWidth="228.0" style="-fx-background-color: #263F73;" BorderPane.alignment="CENTER">
-            <children>
-                <Label alignment="CENTER" layoutX="14.0" layoutY="67.0" prefHeight="19.0" prefWidth="200.0" text="레시피" textFill="#f2eeee">
-                    <font>
-                        <Font name="Verdana Bold" size="23.0" />
-                    </font>
-                    <effect>
-                        <DropShadow />
-                    </effect>
-                </Label>
-            </children>
-        </AnchorPane>
-    </left>
-    <right>
-        <AnchorPane prefHeight="400.0" prefWidth="337.0" BorderPane.alignment="CENTER">
-            <children>
-                <Label alignment="CENTER" layoutX="46.0" layoutY="47.0" prefHeight="19.0" prefWidth="200.0" text="회원 수정" textFill="#1e1d1d">
-                    <font>
-                        <Font name="Verdana Bold" size="23.0" />
-                    </font>
-                </Label>
-                <Label layoutX="-22.0" layoutY="229.0" text="username" />
-                <Label layoutX="-23.0" layoutY="295.0" text="password" />
-                <TextField fx:id="usernameTextField" layoutX="79.0" layoutY="224.0" prefHeight="29.0" prefWidth="152.0" promptText="username" />
-                <PasswordField fx:id="passwordPasswordField" layoutX="80.0" layoutY="290.0" prefHeight="29.0" prefWidth="151.0" promptText="password" />
-                <Button fx:id="registerButton" layoutX="12.0" layoutY="635.0" mnemonicParsing="false" onAction="#updateButtonOnAction" prefHeight="29.0" prefWidth="219.0" text="확인" />
-                <Button fx:id="cancelButton" layoutX="12.0" layoutY="692.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="29.0" prefWidth="219.0" text="취소" />
-                <Label layoutX="12.0" layoutY="428.0" text="hint" />
-                <TextField fx:id="hintTextField" layoutX="79.0" layoutY="423.0" prefHeight="29.0" prefWidth="152.0" promptText="hint" />
-                <Label layoutX="-74.0" layoutY="355.0" text="confirmpassword" />
-                <PasswordField fx:id="confirmpasswordPasswordField" layoutX="80.0" layoutY="350.0" prefHeight="29.0" prefWidth="151.0" promptText="confirmpassword" />
-            </children>
-        </AnchorPane>
-    </right>
-</BorderPane>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user.controller.UserUpdateController">
+    <children>
+        <Label alignment="CENTER" layoutX="225.0" layoutY="54.0" prefHeight="19.0" prefWidth="200.0" text="회원 수정" textFill="#1e1d1d">
+            <font>
+                <Font name="Verdana Bold" size="23.0" />
+            </font>
+        </Label>
+        <Label layoutX="210.0" layoutY="220.0" text="username" />
+        <Label layoutX="211.0" layoutY="286.0" text="password" />
+        <TextField fx:id="usernameTextField" layoutX="325.0" layoutY="215.0" prefHeight="29.0" prefWidth="152.0" promptText="username" />
+        <PasswordField fx:id="passwordPasswordField" layoutX="326.0" layoutY="281.0" prefHeight="29.0" prefWidth="151.0" promptText="password" />
+        <Button fx:id="registerButton" layoutX="210.0" layoutY="609.0" mnemonicParsing="false" onAction="#updateButtonOnAction" prefHeight="29.0" prefWidth="219.0" text="확인" />
+        <Button fx:id="cancelButton" layoutX="210.0" layoutY="683.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="29.0" prefWidth="219.0" text="취소" />
+        <Label layoutX="246.0" layoutY="419.0" text="hint" />
+        <TextField fx:id="hintTextField" layoutX="326.0" layoutY="414.0" prefHeight="29.0" prefWidth="152.0" promptText="hint" />
+        <Label layoutX="156.0" layoutY="346.0" text="confirmpassword" />
+        <PasswordField fx:id="confirmpasswordPasswordField" layoutX="326.0" layoutY="341.0" prefHeight="29.0" prefWidth="151.0" promptText="confirmpassword" />
+    </children>
+</AnchorPane>
