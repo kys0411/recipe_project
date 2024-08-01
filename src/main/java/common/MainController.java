@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
@@ -54,6 +55,7 @@ public class MainController {
             fxmlFile = "/fxml/recipeReview.fxml";
         } else if (clickedButton == btnLogout) {
            loginService.logout();
+            showAlert(Alert.AlertType.INFORMATION, "로그아웃", "로그아웃 되었습니다.");
            fxmlFile = "/fxml/login.fxml";
         }
 
@@ -73,5 +75,13 @@ public class MainController {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    private void showAlert(Alert.AlertType alertType, String title, String content) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }
