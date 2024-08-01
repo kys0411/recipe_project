@@ -9,9 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import user.domain.User;
@@ -55,16 +53,8 @@ public class MainController {
         } else if (clickedButton == btnReview) {
             fxmlFile = "/fxml/recipeReview.fxml";
         } else if (clickedButton == btnLogout) {
-            // 로그아웃 처리 로직
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("로그아웃");
-            alert.setHeaderText("로그아웃 하시겠습니까?");
-            alert.setContentText("프로그램이 종료됩니다.");
-            if (alert.showAndWait().get() == ButtonType.OK) {
-                System.out.println("프로그램 종료");
-                ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
-            }
-            return;
+           loginService.logout();
+           fxmlFile = "/fxml/login.fxml";
         }
 
         switchScene(event, fxmlFile);
