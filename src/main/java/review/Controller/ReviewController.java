@@ -5,14 +5,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import javafx.event.EventHandler;
-
 import review.domain.Review;
 import review.impl.ReviewServiceImpl;
 import review.service.ReviewService;
@@ -36,8 +39,12 @@ public class ReviewController implements Initializable {
     private TableColumn<Review, String> nickName;
     @FXML
     private TableColumn<Review, String> content;
+/*
     @FXML
     private TableColumn<Review, Long> rating;
+*/
+    @FXML
+    private TableColumn<Review, Long> starRating;
     @FXML
     private TableColumn<Review, Date> reviewDate;
     @FXML
@@ -66,7 +73,7 @@ public class ReviewController implements Initializable {
                 nickName.setCellValueFactory(new PropertyValueFactory<>("nickName"));
                 recipeName.setCellValueFactory(new PropertyValueFactory<>("recipeName"));
                 content.setCellValueFactory(new PropertyValueFactory<>("content"));
-                rating.setCellValueFactory(new PropertyValueFactory<>("rating"));
+                starRating.setCellValueFactory(new PropertyValueFactory<>("starRating"));
                 reviewDate.setCellValueFactory(new PropertyValueFactory<>("date"));
 
                 // TableView 에 데이터 리스트 지정
@@ -99,9 +106,9 @@ public class ReviewController implements Initializable {
     public void close(ActionEvent event){
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("프로그램 종료");
-        alert.setHeaderText("프로그램을 종료하시겠습니까?");
-        alert.setContentText("프로그래이 종료됩니다.");
+        alert.setTitle("레시피 후기 종료");
+        alert.setHeaderText("레시피 후기를 종료하시겠습니까?");
+        alert.setContentText("프로그램이 종료됩니다.");
 
         if(alert.showAndWait().get() == ButtonType.OK){
             System.out.println("프로그램 종료");

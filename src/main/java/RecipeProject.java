@@ -59,7 +59,7 @@ public class RecipeProject extends Application {
 			stage.setTitle("Recipe Review");
 			stage.setResizable(false);
 
-			stage.setScene(new Scene(root, 800, 600));
+			stage.setScene(new Scene(root, 880, 650));
 			stage.show();
 
 		} catch (Exception e) {
