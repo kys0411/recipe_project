@@ -27,6 +27,7 @@
       <Button fx:id="likerecipeButton" layoutX="142.0" layoutY="365.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="86.0" prefWidth="134.0" text="좋아요 레시피" />
       <Button fx:id="recipeButton" layoutX="142.0" layoutY="484.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="86.0" prefWidth="134.0" text="레시피 조회" />
       <Button fx:id="reviewButton" layoutX="142.0" layoutY="601.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="86.0" prefWidth="134.0" text="후기 조회" />
-      <Button fx:id="mainpageButton" layoutX="428.0" layoutY="665.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="86.0" prefWidth="134.0" text="메인페이지" />
+      <Button fx:id="mainpageButton" layoutX="394.0" layoutY="601.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="86.0" prefWidth="134.0" text="메인페이지" />
+      <Button fx:id="memberupdateButton" layoutX="394.0" layoutY="484.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="86.0" prefWidth="134.0" text="회원 수정" />
    </children>
 </AnchorPane>
