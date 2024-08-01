@@ -22,6 +22,7 @@ import review.service.ReviewService;
 import java.net.URL;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ReviewController implements Initializable {
@@ -38,16 +39,10 @@ public class ReviewController implements Initializable {
     private TableColumn<Review, String> nickName;
     @FXML
     private TableColumn<Review, String> content;
-/*
-    @FXML
-    private TableColumn<Review, Long> rating;
-*/
     @FXML
     private TableColumn<Review, Long> starRating;
     @FXML
     private TableColumn<Review, Date> reviewDate;
-    @FXML
-    private CheckBox checkBoxDelete;
     @FXML
     private CheckBox cbAll;
 
@@ -77,18 +72,14 @@ public class ReviewController implements Initializable {
 
                 // TableView 에 데이터 리스트 지정
                 selectReviewMember.setItems(list);
-                cbAll.setOnMouseClicked(new EventHandler<Event>() {
 
+                // 전체 리뷰후기 선택 이벤트 cbAll(CheckBoxAll)
+                cbAll.setOnMouseClicked(new EventHandler<Event>() {
                     @Override
                     public void handle(Event event) {
-
                         CheckBox checkBox = (CheckBox) event.getSource();
                         boolean checkAll = checkBox.isSelected();
-
-                        selectReviewMember.getItems().stream().forEach((review -> {
-                            review.getCbDelete().setSelected(checkAll);
-                        }));
-
+                        selectReviewMember.getItems().forEach(review -> review.getCbDelete().setSelected(checkAll));
                         System.out.println("전체 체크박스");
                     }
                 });
@@ -99,20 +90,50 @@ public class ReviewController implements Initializable {
     }
 
     /**
-     * 후기 등록하기
+     * 레시피 후기 등록하기
      * @param event
      */
-    public void close(ActionEvent event){
-
+    public void close(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("레시피 후기 종료");
         alert.setHeaderText("레시피 후기를 종료하시겠습니까?");
         alert.setContentText("프로그램이 종료됩니다.");
 
-        if(alert.showAndWait().get() == ButtonType.OK){
+        if (alert.showAndWait().get() == ButtonType.OK) {
             System.out.println("프로그램 종료");
-            stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.close();
+        }
+    }
+
+    /*
+     * 레시피 후기 전체, 선택 삭제하기
+     * @param event
+     */
+    public void deleteRecipeReview(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("레시피 후기 삭제");
+        alert.setHeaderText("선택한 후기를 삭제하시겠습니까?");
+        alert.setContentText("이 작업은 되돌릴 수 없습니다.");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            selectReviewMember.getItems().removeIf(review -> {
+                CheckBox cbDelete = review.getCbDelete();
+                boolean checked = cbDelete.isSelected();
+
+                if (checked) {
+                    long id = review.getId();
+                    try {
+                        reviewService.deleteRecipeReview(id);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                return checked;
+            });
+
+            initialize(null, null); // 테이블 갱신
         }
     }
 

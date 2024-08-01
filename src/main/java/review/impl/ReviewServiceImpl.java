@@ -38,7 +38,7 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public void deleteRecipeReview(long id) throws Exception {
-        reviewDao.deleteRecipeReview(id);
+    public long deleteRecipeReview(long id) throws Exception {
+        return reviewDao.deleteRecipeReview(id);
     }
 }

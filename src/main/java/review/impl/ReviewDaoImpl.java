@@ -25,10 +25,10 @@ public class ReviewDaoImpl implements ReviewDao {
                 "WHERE r.member_id = m.member_id(+) AND r.recipe_id = c.recipe_id(+) AND r.member_id = ?";
 
         try (Connection conn = dbConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)){
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-             pstmt.setLong(1,memberId);
-             ResultSet rs = pstmt.executeQuery();
+            pstmt.setLong(1, memberId);
+            ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
                 Review review = new Review();
@@ -37,30 +37,39 @@ public class ReviewDaoImpl implements ReviewDao {
                 review.setRecipeId(rs.getLong("recipe_id"));
                 review.setRecipeName(rs.getString("recipe_name"));
                 review.setNickName(rs.getString("nickname"));
-                review.setStarRating(rs.getString("star_rating"));  // 새로운 star_rating 열 추가
+                review.setStarRating(rs.getString("star_rating"));
                 review.setContent(rs.getString("content"));
                 review.setDate(rs.getDate("review_date"));
-                review.setCbDelete(new CheckBox());  // CheckBox 초기화 추가
+                review.setCbDelete(new CheckBox());
 
                 reviews.add(review);
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         return reviews;
     }
 
-    public void insertRecipeReview(Review review) throws Exception{
-
+    public void insertRecipeReview(Review review) throws Exception {
+        // 구현 필요
     }
 
-    public void updateRecipeReview(Review review) throws Exception{
-
+    public void updateRecipeReview(Review review) throws Exception {
+        // 구현 필요
     }
 
-    public void deleteRecipeReview(long reviewId) throws Exception{
+    public long deleteRecipeReview(long reviewId) throws Exception {
+        String sql = "DELETE FROM review WHERE review_id = ?";
 
+        try (Connection conn = dbConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setLong(1, reviewId);
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return reviewId;
     }
-
 }
