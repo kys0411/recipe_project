@@ -9,6 +9,7 @@ import review.domain.Review;
 import review.impl.ReviewServiceImpl;
 import review.service.ReviewService;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,9 +33,12 @@ public class RecipeProject extends Application {
 	}
 
 	@Override
-	public void start(Stage stage) {
-
-		try {
+	public void start(Stage stage) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
+		stage.setTitle("레시피");
+		stage.setScene(new Scene(root,600, 400));
+		stage.show();
+		/*try {
 			// FXML 파일의 경로가 올바른지 확인
 			URL fxmlLocation = getClass().getResource("/fxml/RecipeReview.fxml");
 			if (fxmlLocation == null) {
@@ -60,6 +64,6 @@ public class RecipeProject extends Application {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 }
