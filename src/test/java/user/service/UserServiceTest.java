@@ -5,6 +5,7 @@ import org.junit.jupiter.api.*;
 import org.assertj.core.api.Assertions;
 import user.constant.Role;
 import user.domain.User;
+import user.dto.UserUpdateRequestDto;
 import user.dto.UserjoinRequestDto;
 
 import java.sql.Connection;
@@ -43,6 +44,23 @@ class UserServiceTest {
 
         Assertions.assertThatNoException()
                 .isThrownBy(() -> userService.join(userjoinRequestDto));
+    }
+
+    @Test
+    @DisplayName("회원 수정테스트")
+    void updateUserTest() throws SQLException {
+        UserUpdateRequestDto userUpdateRequestDto = UserUpdateRequestDto.builder()
+                .nickname("updatename")
+                .hint("updatehint")
+                .password("updatepassword")
+                .build();
+
+        UserService userService = new UserService();
+        userService.update(1L, userUpdateRequestDto);
+
+        User findUser = userService.findUser(1L);
+
+        assertThat(findUser.getNickname().trim()).isEqualTo("updatename");
     }
 
     @Test
