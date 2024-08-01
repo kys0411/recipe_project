@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="recipe.controller.RecipeController">
+    <children>
+        <ScrollPane prefHeight="1019.0" prefWidth="1000.0">
+            <content>
+                <VBox prefHeight="1288.0" prefWidth="1000.0">
+                    <children>
+                        <Label prefHeight="93.0" prefWidth="619.0" text="레시피 작성">
+                            <font>
+                                <Font size="45.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets left="350.0" />
+                            </VBox.margin>
+                        </Label>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                            <children>
+                                <Label text="제목">
+                                    <font>
+                                        <Font size="30.0" />
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets left="20.0" />
+                                    </HBox.margin>
+                                </Label>
+                                <TextField fx:id="titleField" prefHeight="54.0" prefWidth="720.0" promptText="레시피 제목을 입력하세요">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets left="20.0" />
+                                    </HBox.margin>
+                                </TextField>
+                            </children>
+                        </HBox>
+                        <Label text="설명">
+                            <font>
+                                <Font size="30.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets left="20.0" />
+                            </VBox.margin>
+                        </Label>
+                        <TextArea fx:id="descriptionField" prefHeight="127.0" prefWidth="873.0" promptText="레시피에 대한 간단한 설명을 해주세요">
+                            <font>
+                                <Font size="23.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets left="20.0" right="20.0" />
+                            </VBox.margin>
+                        </TextArea>
+                        <HBox prefHeight="63.0" prefWidth="1000.0">
+                            <children>
+                                <Label text="난이도">
+                                    <font>
+                                        <Font size="30.0" />
+                                    </font>
+                                </Label>
+                                <ChoiceBox fx:id="difficultyBox" prefHeight="33.0" prefWidth="165.0" />
+                                <Label text="인원 수">
+                                    <font>
+                                        <Font size="30.0" />
+                                    </font>
+                                </Label>
+                                <ChoiceBox fx:id="quantityBox" prefHeight="33.0" prefWidth="173.0" />
+                                <Label text="카테고리">
+                                    <font>
+                                        <Font size="30.0" />
+                                    </font>
+                                </Label>
+                                <ChoiceBox fx:id="categoryBox" prefHeight="33.0" prefWidth="207.0" />
+                            </children>
+                            <VBox.margin>
+                                <Insets left="20.0" top="20.0" />
+                            </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="35.0" prefWidth="980.0">
+                            <children>
+                                <Label text="재료">
+                                    <font>
+                                        <Font size="30.0" />
+                                    </font>
+                                </Label>
+                                <Button fx:id="addIngredientButton" onAction="#handleAddIngredient" text="Add">
+                                    <HBox.margin>
+                                        <Insets left="50.0" />
+                                    </HBox.margin>
+                                </Button>
+                            </children>
+                            <VBox.margin>
+                                <Insets left="20.0" />
+                            </VBox.margin>
+                        </HBox>
+                        <VBox fx:id="ingredientContainer" prefHeight="214.0" prefWidth="1000.0">
+                            <children>
+                                <HBox prefHeight="30.0" prefWidth="980.0" spacing="10">
+                                    <children>
+                                        <TextField prefHeight="30.0" prefWidth="200.0" promptText="재료" />
+                                        <TextField layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="200.0" promptText="수량" />
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets left="20.0" top="15.0" />
+                                    </VBox.margin>
+
+                                </HBox>
+                            </children>
+                        </VBox>
+                          <HBox prefHeight="0.0" prefWidth="980.0">
+                              <children>
+                                  <Label text="순서">
+                                      <font>
+                                          <Font size="30.0" />
+                                      </font>
+                                  </Label>
+                                  <Button fx:id="addStepButton" mnemonicParsing="false" onAction="#handleAddStep" text="Add">
+                                      <HBox.margin>
+                                          <Insets left="50.0" />
+                                      </HBox.margin>
+                                  </Button>
+                              </children>
+                              <VBox.margin>
+                                  <Insets left="20.0" />
+                              </VBox.margin>
+                          </HBox>
+                        <VBox fx:id="stepContainer" prefHeight="235.0" prefWidth="1000.0">
+                            <children>
+                                <HBox prefHeight="47.0" prefWidth="828.0">
+                                    <children>
+                                        <TextField prefHeight="33.0" prefWidth="616.0" promptText="레시피 과정을 작성해주세요">
+                                            <HBox.margin>
+                                                <Insets />
+                                            </HBox.margin>
+                                        </TextField>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets />
+                                    </VBox.margin>
+                                </HBox>
+                            </children>
+                        </VBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="20">
+                            <children>
+                                <Button fx:id="createButton" mnemonicParsing="false" onAction="#handleCreateRecipe" text="생성" />
+                                <Button mnemonicParsing="false" text="취소" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </children>
+</AnchorPane>
