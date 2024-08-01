@@ -10,19 +10,23 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import recipe.constant.Category;
 import recipe.constant.Difficulty;
 import recipe.domain.Recipe;
+import recipe.repository.RecipeRepository;
 import recipe.service.CreateRecipeService;
+import common.DBConnection;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-@NoArgsConstructor(force = true)
 @RequiredArgsConstructor
 public class CreateRecipeController implements Initializable {
+	DBConnection dbConnection = new DBConnection();
+	RecipeRepository recipeRepository = new RecipeRepository(dbConnection);
+	private final CreateRecipeService createRecipeService = new CreateRecipeService(recipeRepository);
+
 	@FXML
 	private TextField titleField = new TextField();
 
@@ -44,7 +48,6 @@ public class CreateRecipeController implements Initializable {
 	@FXML
 	private VBox stepContainer;
 
-	private final CreateRecipeService createRecipeService;
 
 	@FXML
 	@Override
@@ -120,51 +123,12 @@ public class CreateRecipeController implements Initializable {
 		String quantity = quantityBox.getValue();
 		String category = categoryBox.getValue();
 
-		int size = ingredientContainer.getChildren().size();
-		Object[][] ingredientArray = new Object[size][2];
-
-		for (Node node : ingredientContainer.getChildren()) {
-			int i = 0;
-			if (node instanceof HBox) {
-				Object[] ingredientElements = new Object[2];
-
-				int j = 0;
-				for (Node hBoxNode : ((HBox) node).getChildren()) {
-					if (hBoxNode instanceof TextField) {
-						TextField textField = (TextField) hBoxNode;
-						ingredientElements[j++] = textField;
-					}
-				}
-
-				ingredientArray[i++] = ingredientElements;
-			}
-		}
+		int ingredientSize = ingredientContainer.getChildren().size();
+		Object[][] ingredientArray = setNodeStepAndIngredient(ingredientSize, "ingredient", ingredientContainer);
 
 
 		int stepContainerSize = stepContainer.getChildren().size();
-		Object[][] stepArray = new Object[stepContainerSize][2];
-
-		int stepNumber = 1;
-
-		for (Node node : stepContainer.getChildren()) {
-			int i = 0;
-			if (node instanceof HBox) {
-				Object[] stepElements = new Object[2];
-
-				int j = 0;
-				for (Node hBoxNode : ((HBox) node).getChildren()) {
-					stepElements[j++] = stepNumber++;
-
-					if (hBoxNode instanceof TextField) {
-						TextField step = (TextField) hBoxNode;
-
-						stepElements[j] = step;
-					}
-				}
-
-				stepArray[i++] = stepElements;
-			}
-		}
+		Object[][] stepArray = setNodeStepAndIngredient(stepContainerSize, "step", stepContainer);
 
 		Recipe recipe = Recipe.builder()
 				.memberId(1L)
@@ -178,5 +142,33 @@ public class CreateRecipeController implements Initializable {
 				.build();
 
 		createRecipeService.create(recipe);
+	}
+
+	// ingredient, step 입력 값으로 Object 생성
+	private Object[][] setNodeStepAndIngredient(int size, String flag, VBox container) {
+		Object[][] stepIngredientArray = new Object[size][2];
+
+		int i = 0;
+		int stepNumber = 1;
+		for (Node node : container.getChildren()) {
+			if (node instanceof HBox) {
+				Object[] stepIngredientElements = new Object[2];
+				int j = 0;
+				for (Node hBoxNode : ((HBox) node).getChildren()) {
+					if (flag.equals("step")) {
+						stepIngredientElements[j++] = stepNumber++;
+						if (hBoxNode instanceof TextField textField) {
+							stepIngredientElements[j] = textField.getText();
+						}
+					} else {
+						if (hBoxNode instanceof TextField textField) {
+							stepIngredientElements[j++] = textField.getText();
+						}
+					}
+				}
+				stepIngredientArray[i++] = stepIngredientElements;
+			}
+		}
+		return stepIngredientArray;
 	}
 }
