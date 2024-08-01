@@ -26,6 +26,8 @@ public class MyInfoController {
     private Button reviewButton;
     @FXML
     private Button mainpageButton;
+    @FXML
+    private Button memberupdateButton;
 
     @FXML
     public void initialize() {
@@ -48,6 +50,8 @@ public class MyInfoController {
             //TODO 리뷰
         } else if (clickedButton == mainpageButton) {
             fxmlFile = "/fxml/Main.fxml";
+        } else if (clickedButton == memberupdateButton) {
+            fxmlFile = "/fxml/userupdate.fxml";
         }
 
         switchScene(event, fxmlFile);
