@@ -79,7 +79,7 @@ public class UserUpdateController {
 
     @FXML
     public void cancelButtonOnAction(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Main.fxml"));
         Parent mainScreen = fxmlLoader.load();
 
         Stage stage = (Stage) cancelButton.getScene().getWindow();
