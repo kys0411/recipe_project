@@ -27,6 +27,8 @@ public class MainController {
     @FXML
     private Button btnRecipe;
     @FXML
+    private Button btnCreateRecipe;
+    @FXML
     private Button btnReview;
     @FXML
     private Button btnLogout;
@@ -51,6 +53,8 @@ public class MainController {
             fxmlFile = "/fxml/myInfo.fxml";
         } else if (clickedButton == btnRecipe) {
             fxmlFile = "/fxml/recipeDetail.fxml";
+        } else if (clickedButton == btnCreateRecipe) {
+            fxmlFile = "/fxml/createRecipe.fxml";
         } else if (clickedButton == btnReview) {
             fxmlFile = "/fxml/recipeReview.fxml";
         } else if (clickedButton == btnLogout) {
