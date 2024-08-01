@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="800.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user.controller.MyInfoController">
+   <children>
+      <Label alignment="CENTER" layoutX="198.0" layoutY="103.0" prefHeight="74.0" prefWidth="291.0" text="회원 상세정보" textAlignment="CENTER" textOverrun="CLIP">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="121.0" layoutY="285.0" prefHeight="54.0" prefWidth="126.0" text="닉네임 :">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="nicknameLabel" alignment="CENTER" layoutX="313.0" layoutY="285.0" prefHeight="54.0" prefWidth="126.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="likerecipeButton" layoutX="142.0" layoutY="365.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="86.0" prefWidth="134.0" text="좋아요 레시피" />
+      <Button fx:id="recipeButton" layoutX="142.0" layoutY="484.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="86.0" prefWidth="134.0" text="레시피 조회" />
+      <Button fx:id="reviewButton" layoutX="142.0" layoutY="601.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="86.0" prefWidth="134.0" text="후기 조회" />
+      <Button fx:id="mainpageButton" layoutX="428.0" layoutY="665.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="86.0" prefWidth="134.0" text="메인페이지" />
+   </children>
+</AnchorPane>
