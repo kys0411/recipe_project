@@ -17,22 +17,22 @@
                   <Font name="System Bold" size="45.0" />
                </font>
             </Label>
-            <Button fx:id="btnMyInfo" layoutX="102.0" layoutY="191.0" mnemonicParsing="false" prefHeight="94.0" prefWidth="412.0" text="내정보" onAction="#handleButtonAction">
+            <Button fx:id="btnMyInfo" layoutX="102.0" layoutY="191.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="94.0" prefWidth="412.0" text="내정보">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>
             </Button>
-            <Button fx:id="btnRecipe" layoutX="102.0" layoutY="306.0" mnemonicParsing="false" prefHeight="94.0" prefWidth="412.0" text="레시피" onAction="#handleButtonAction">
+            <Button fx:id="btnRecipe" layoutX="102.0" layoutY="306.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="94.0" prefWidth="412.0" text="레시피">
                <font>
                   <Font size="30.0" />
                </font>
             </Button>
-            <Button fx:id="btnReview" layoutX="102.0" layoutY="419.0" mnemonicParsing="false" prefHeight="94.0" prefWidth="412.0" text="레시피후기" onAction="#handleButtonAction">
+            <Button fx:id="btnReview" layoutX="102.0" layoutY="419.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="94.0" prefWidth="412.0" text="레시피후기">
                <font>
                   <Font size="30.0" />
                </font>
             </Button>
-            <Button fx:id="btnLogout" layoutX="102.0" layoutY="536.0" mnemonicParsing="false" prefHeight="94.0" prefWidth="412.0" text="로그아웃" onAction="#handleButtonAction">
+            <Button fx:id="btnLogout" layoutX="102.0" layoutY="536.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="94.0" prefWidth="412.0" text="로그아웃">
                <font>
                   <Font size="30.0" />
                </font>
@@ -42,6 +42,7 @@
                   <Image url="@../../../../../Downloads/icon.png" />
                </image>
             </ImageView>
+            <Label fx:id="memberLabel" layoutX="218.0" layoutY="122.0" prefHeight="39.0" prefWidth="209.0" text="Label" />
          </children>
       </AnchorPane>
    </children>

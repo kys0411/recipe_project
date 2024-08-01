@@ -12,12 +12,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import user.domain.User;
+import user.service.LoginService;
 
 import java.io.IOException;
 
 public class MainController {
 
+    @FXML
+    private Label memberLabel;
     @FXML
     private Button btnMyInfo;
     @FXML
@@ -26,6 +31,16 @@ public class MainController {
     private Button btnReview;
     @FXML
     private Button btnLogout;
+
+    private LoginService loginService = new LoginService();
+
+    @FXML
+    public void initialize() {
+        User loggedUser = UserSession.getInstance().getLoggedUser();
+        if (loggedUser != null) {
+            memberLabel.setText("환영합니다, " + loggedUser.getNickname().trim() + "님!");
+        }
+    }
 
     // 각 버튼 클릭 시 호출될 메서드
     @FXML
