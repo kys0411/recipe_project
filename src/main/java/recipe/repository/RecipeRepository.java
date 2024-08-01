@@ -26,10 +26,11 @@ public class RecipeRepository {
 		ArrayDescriptor ingredientDesc = createDescriptor("INGREDIENT_TAB", conn);
 		ARRAY ingredients = new ARRAY(ingredientDesc, conn, recipe.getIngredients());
 
+
 		String plSql = "{ CALL create_full_recipe2(?, ?, ?, ?, ?, ?, ?, ?) }";
 		CallableStatement cStmt = conn.prepareCall(plSql);
 
-		cStmt.setInt(1, Math.toIntExact(recipe.getMemberId()));
+		cStmt.setLong(1, recipe.getMemberId());
 		cStmt.setString(2, recipe.getCategory().getDescription());
 		cStmt.setString(3, recipe.getTitle());
 		cStmt.setString(4, recipe.getDifficulty().getDescription());
