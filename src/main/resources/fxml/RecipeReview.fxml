@@ -1,35 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="880.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="review.Controller.ReviewController">
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="review.Controller.ReviewController">
     <children>
-        <Label layoutX="320.0" layoutY="32.0" text="레시피 후기">
-            <font>
-                <Font size="45.0" />
-            </font>
-        </Label>
-        <TableView fx:id="selectReviewMember" layoutX="26.0" layoutY="100.0" prefHeight="463.0" prefWidth="833.0">
+        <TableView fx:id="selectReviewMember" layoutX="6.0" layoutY="182.0" prefHeight="518.0" prefWidth="640.0">
             <columns>
                 <TableColumn fx:id="colCbDelete" prefWidth="30.0">
                     <graphic>
                         <CheckBox fx:id="cbAll" mnemonicParsing="false" prefHeight="25.0" prefWidth="7.0" />
                     </graphic>
                 </TableColumn>
-                <TableColumn fx:id="reviewId" prefWidth="79.0" text="후기번호" />
-                <TableColumn fx:id="nickName" prefWidth="77.0" text="작성자" />
-                <TableColumn fx:id="recipeName" prefWidth="87.0" text="레시피" />
-                <TableColumn fx:id="content" prefWidth="350.0" text="내용" />
-                <TableColumn fx:id="starRating" prefWidth="112.0" text="추천점수" />
-                <TableColumn fx:id="reviewDate" prefWidth="97.0" text="작성일" />
+                <TableColumn fx:id="reviewId" prefWidth="42.0" text="번호" />
+                <TableColumn fx:id="nickName" prefWidth="64.0" text="작성자" />
+                <TableColumn fx:id="recipeName" prefWidth="79.0" text="레시피" />
+                <TableColumn fx:id="content" prefWidth="247.0" text="내용" />
+                <TableColumn fx:id="starRating" prefWidth="86.0" text="추천점수" />
+                <TableColumn fx:id="reviewDate" prefWidth="101.0" text="작성일" />
             </columns>
         </TableView>
-        <Button layoutX="26.0" layoutY="583.0" mnemonicParsing="false" onAction="#close" prefHeight="40.0" prefWidth="100.0" text="나가기" />
-        <Button layoutX="759.0" layoutY="583.0" mnemonicParsing="false" onAction="#deleteRecipeReview" prefHeight="40.0" prefWidth="100.0" text="삭제" />
-        <Button layoutX="646.0" layoutY="583.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="수정" />
-        <Button layoutX="533.0" layoutY="583.0" mnemonicParsing="false" onAction="#insertRecipeReview" prefHeight="40.0" prefWidth="100.0" text="후기등록" />
+        <Button layoutX="9.0" layoutY="731.0" mnemonicParsing="false" onAction="#close" prefHeight="40.0" prefWidth="100.0" text="나가기" />
+        <Button layoutX="539.0" layoutY="731.0" mnemonicParsing="false" onAction="#deleteRecipeReview" prefHeight="40.0" prefWidth="100.0" text="삭제" />
+        <Button layoutX="420.0" layoutY="731.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="수정" />
+        <Button layoutX="308.0" layoutY="731.0" mnemonicParsing="false" onAction="#insertRecipeReview" prefHeight="40.0" prefWidth="100.0" text="후기등록" />
+      <Label layoutX="205.0" layoutY="56.0" text="레시피 후기" textAlignment="JUSTIFY">
+         <font>
+            <Font name="System Bold" size="45.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="138.0" fitWidth="126.0" layoutX="10.0" layoutY="24.0">
+         <image>
+            <Image url="@../reviewIcon.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>

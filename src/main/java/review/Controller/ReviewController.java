@@ -1,8 +1,4 @@
 package review.Controller;
-/*
- * 작성일 2024-08-01
- * 작성자 황석현
- * */
 
 import common.UserSession;
 import javafx.collections.FXCollections;
