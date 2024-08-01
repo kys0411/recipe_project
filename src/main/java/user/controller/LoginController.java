@@ -45,7 +45,7 @@ public class LoginController {
 
             if (UserSession.getInstance().getLoggedUser() != null) {
                 showAlert(Alert.AlertType.INFORMATION, "로그인 성공", "환영합니다, " + UserSession.getInstance().getLoggedUser().getNickname().trim() + "님!");
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/RecipeReview.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Main.fxml"));
                 Parent mainScreen = fxmlLoader.load();
 
                 Stage stage = (Stage) loginButton.getScene().getWindow();
