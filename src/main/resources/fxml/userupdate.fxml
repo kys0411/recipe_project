@@ -23,7 +23,7 @@
         <Button fx:id="cancelButton" layoutX="210.0" layoutY="683.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="29.0" prefWidth="219.0" text="취소" />
         <Label layoutX="246.0" layoutY="419.0" text="hint" />
         <TextField fx:id="hintTextField" layoutX="326.0" layoutY="414.0" prefHeight="29.0" prefWidth="152.0" promptText="hint" />
-        <Label layoutX="156.0" layoutY="346.0" text="confirmpassword" />
+        <Label layoutX="161.0" layoutY="346.0" prefHeight="19.0" prefWidth="129.0" text="confirmpassword" />
         <PasswordField fx:id="confirmpasswordPasswordField" layoutX="326.0" layoutY="341.0" prefHeight="29.0" prefWidth="151.0" promptText="confirmpassword" />
     </children>
 </AnchorPane>
