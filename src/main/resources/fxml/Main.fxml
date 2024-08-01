@@ -22,6 +22,7 @@
                   <Font name="System Bold" size="30.0" />
                </font>
             </Button>
+           
             <Button fx:id="btnRecipe" layoutX="119.0" layoutY="305.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="94.0" prefWidth="412.0" text="레시피">
                <font>
                   <Font size="30.0" />
@@ -32,6 +33,7 @@
                   <Font size="30.0" />
                </font>
             </Button>
+
             <Button fx:id="btnLogout" layoutX="119.0" layoutY="535.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="94.0" prefWidth="412.0" text="로그아웃">
                <font>
                   <Font size="30.0" />
@@ -42,6 +44,7 @@
                   <Image url="@../reviewIcon.png" />
                </image>
             </ImageView>
+            <Label fx:id="memberLabel" layoutX="218.0" layoutY="122.0" prefHeight="39.0" prefWidth="209.0" text="Label" />
          </children>
       </AnchorPane>
    </children>

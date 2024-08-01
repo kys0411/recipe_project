@@ -40,9 +40,9 @@ public class RecipeProject extends Application {
 
 		try {
 			// FXML 파일의 경로가 올바른지 확인
-			URL fxmlLocation = getClass().getResource("/fxml/Main.fxml");
+			URL fxmlLocation = getClass().getResource("/fxml/login.fxml");
 			if (fxmlLocation == null) {
-				throw new IllegalArgumentException("FXML file not found: /fxml/Main.fxml");
+				throw new IllegalArgumentException("FXML file not found: /fxml/login.fxml");
 			}
 
 			Parent root = FXMLLoader.load(fxmlLocation);
@@ -60,6 +60,7 @@ public class RecipeProject extends Application {
 			stage.setResizable(false);
 
 			stage.setScene(new Scene(root, 650, 800));
+
 			stage.show();
 
 		} catch (Exception e) {

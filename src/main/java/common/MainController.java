@@ -11,13 +11,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import user.domain.User;
+import user.service.LoginService;
 
 import java.io.IOException;
 
 public class MainController {
 
+    @FXML
+    private Label memberLabel;
     @FXML
     private Button btnMyInfo;
     @FXML
@@ -27,6 +31,16 @@ public class MainController {
     @FXML
     private Button btnLogout;
 
+    private LoginService loginService = new LoginService();
+
+    @FXML
+    public void initialize() {
+        User loggedUser = UserSession.getInstance().getLoggedUser();
+        if (loggedUser != null) {
+            memberLabel.setText("환영합니다, " + loggedUser.getNickname().trim() + "님!");
+        }
+    }
+
     // 각 버튼 클릭 시 호출될 메서드
     @FXML
     private void handleButtonAction(ActionEvent event) throws Exception {
@@ -34,22 +48,15 @@ public class MainController {
         String fxmlFile = "";
 
         if (clickedButton == btnMyInfo) {
-            fxmlFile = "/fxml/MyInfo.fxml";
+            fxmlFile = "/fxml/myInfo.fxml";
         } else if (clickedButton == btnRecipe) {
             fxmlFile = "/fxml/recipeDetail.fxml";
         } else if (clickedButton == btnReview) {
-            fxmlFile = "/fxml/RecipeReview.fxml";
+            fxmlFile = "/fxml/recipeReview.fxml";
         } else if (clickedButton == btnLogout) {
-            // 로그아웃 처리 로직
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("로그아웃");
-            alert.setHeaderText("로그아웃 하시겠습니까?");
-            alert.setContentText("프로그램이 종료됩니다.");
-            if (alert.showAndWait().get() == ButtonType.OK) {
-                System.out.println("프로그램 종료");
-                ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
-            }
-            return;
+           loginService.logout();
+            showAlert(Alert.AlertType.INFORMATION, "로그아웃", "로그아웃 되었습니다.");
+           fxmlFile = "/fxml/login.fxml";
         }
 
         switchScene(event, fxmlFile);
@@ -68,5 +75,13 @@ public class MainController {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    private void showAlert(Alert.AlertType alertType, String title, String content) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }
