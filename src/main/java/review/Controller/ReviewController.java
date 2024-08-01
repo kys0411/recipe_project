@@ -1,5 +1,6 @@
 package review.Controller;
 
+import common.UserSession;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -54,7 +55,7 @@ public class ReviewController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // 데이터 초기화
         try {
-            List<Review> reviewList = reviewService.selectMemberReview(18L);
+            List<Review> reviewList = reviewService.selectMemberReview(UserSession.getInstance().getLoggedUser().getId());
             if (reviewList != null) {
                 for (Review review : reviewList) {
                     System.out.println(review);
