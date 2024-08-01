@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="900.0" prefWidth="600.0" styleClass="root-class" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="recipe.controller.RecipeController">
+    <children>
+        <BorderPane prefHeight="900.0" prefWidth="600.0">
+            <top>
+            <HBox prefHeight="55.0" prefWidth="600.0">
+               <children>
+                        <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="290.0" onMouseClicked="#handleBackButtonClick" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../back-arrow.png" />
+                            </image>
+                        </ImageView>
+                  <Pane prefHeight="55.0" prefWidth="544.0">
+                     <children>
+                        <Button fx:id="" layoutX="410.0" layoutY="9.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="113.0" text="수정하기" />
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+            </top>
+         <left>
+                <VBox prefHeight="883.0" prefWidth="600.0">
+                    <children>
+                        <ScrollPane maxWidth="-Infinity" prefHeight="844.0" prefWidth="600.0">
+                            <content>
+                                <VBox prefHeight="840.0" prefWidth="582.0">
+                                    <children>
+                                        <StackPane prefHeight="150.0" prefWidth="200.0">
+                                            <children>
+                                                <ImageView fx:id="recipeImage" fitHeight="253.0" fitWidth="556.0" pickOnBounds="true">
+                                                    <image>
+                                                        <Image url="@../치킨.jpg" />
+                                                    </image>
+                                                    <StackPane.margin>
+                                                        <Insets left="11.0" />
+                                                    </StackPane.margin>
+                                                </ImageView>
+                                            </children>
+                                        </StackPane>
+                                        <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="153.0" prefWidth="600.0">
+                                            <children>
+                                                <VBox maxWidth="-Infinity" prefHeight="121.0" prefWidth="600.0">
+                                                    <children>
+                                                        <Pane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="459.0">
+                                                            <children>
+                                                                <Text fx:id="recipeTitleText" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: 900; -fx-font-family: 'Pretendard'; -fx-font-size: 36" text="버섯 샐러드" textOrigin="TOP">
+                                                                </Text>
+                                                            </children>
+                                                            <padding>
+                                                                <Insets bottom="20.0" />
+                                                            </padding>
+                                                        </Pane>
+                                                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="446.0">
+                                                            <children>
+                                                                <Text fx:id="recipeDescriptionText" layoutX="3.0" layoutY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="데리야끼 소스에 조린 버섯에 발사믹 드레싱을 곁들이는 파사파사 샐러드 만들어봤어요." textOrigin="TOP" wrappingWidth="453.953125" />
+                                                            </children>
+                                                        </Pane>
+                                                        <HBox prefHeight="19.0" prefWidth="575.0">
+                                                            <children>
+                                                                <Text fx:id="recipeQuantityText" strokeType="OUTSIDE" strokeWidth="0.0" text="2인분">
+                                                                    <HBox.margin>
+                                                                        <Insets right="24.0" />
+                                                                    </HBox.margin>
+                                                                </Text>
+                                                                <Text fx:id="recipeCategoryText" strokeType="OUTSIDE" strokeWidth="0.0" text="전채" textOrigin="TOP">
+                                                                    <HBox.margin>
+                                                                        <Insets right="24.0" />
+                                                                    </HBox.margin>
+                                                                </Text>
+                                                                <Text fx:id="recipeDifficultyText" strokeType="OUTSIDE" strokeWidth="0.0" text="쉬움">
+                                                                    <HBox.margin>
+                                                                        <Insets right="24.0" />
+                                                                    </HBox.margin>
+                                                                </Text>
+                                                                <Text fx:id="recipeMemberText" strokeType="OUTSIDE" strokeWidth="0.0" text="쉬움">
+                                                                </Text>
+
+                                                                        </children>
+                                                            <VBox.margin>
+                                                                <Insets left="5.0" top="5.0" />
+                                                            </VBox.margin>
+                                                        </HBox>
+                                                    </children>
+                                                    <padding>
+                                                        <Insets top="15.0" />
+                                                    </padding>
+                                                    <HBox.margin>
+                                                        <Insets left="15.0" />
+                                                    </HBox.margin>
+                                                </VBox>
+                                            </children>
+                                            <opaqueInsets>
+                                                <Insets left="20.0" />
+                                            </opaqueInsets>
+                                        </HBox>
+                              <HBox alignment="CENTER_LEFT" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="89.0" prefWidth="567.0">
+                                 <children>
+                                    <VBox maxWidth="-Infinity" prefHeight="89.0" prefWidth="547.0">
+                                       <children>
+                                          <Pane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="459.0">
+                                             <children>
+                                                <Text fx:id="recipeTitleText1" layoutX="-5.0" layoutY="-4.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: 900; -fx-font-family: 'Pretendard'; -fx-font-size: 36" text="재료" textOrigin="TOP" />
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="50.0" />
+                                             </padding>
+                                          </Pane>
+                                          <Pane fx:id="ingredientPane" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="446.0" styleClass="ingredientComponent">
+                                             <children>
+                                                <HBox prefHeight="19.0" prefWidth="575.0">
+                                                   <padding>
+                                                      <Insets top="10.0" />
+                                                   </padding>
+                                                </HBox>
+                                             </children>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                          </Pane>
+                                       </children>
+                                       <padding>
+                                          <Insets top="15.0" />
+                                       </padding>
+                                       <HBox.margin>
+                                          <Insets left="20.0" />
+                                       </HBox.margin>
+                                    </VBox>
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets left="20.0" />
+                                 </opaqueInsets>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </VBox.margin>
+                              </HBox>
+                                        <VBox prefHeight="662.0" prefWidth="598.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10px;">
+                                            <children>
+                                                <HBox prefHeight="65.0" prefWidth="598.0">
+                                                    <children>
+                                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Pretendard" text="조리순서" textOrigin="TOP">
+                                                            <font>
+                                                                <Font name="Cambria Bold" size="32.0" />
+                                                            </font>
+                                                            <HBox.margin>
+                                                                <Insets left="20.0" top="10.0" />
+                                                            </HBox.margin>
+                                                        </Text>
+                                                    </children>
+                                                </HBox>
+                                                <VBox fx:id="recipeStepsVBox" prefHeight="83.0" prefWidth="556.0" style="-fx-background-color: #FFFFFF;">
+                                                    <VBox.margin>
+                                                        <Insets left="14.0" right="14.0" />
+                                                    </VBox.margin>
+                                                    <padding>
+                                                        <Insets top="8.0" />
+                                                    </padding>
+                                    </VBox>
+                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                    <children>
+                                                        <HBox prefHeight="39.0" prefWidth="598.0">
+                                                            <children>
+                                                                <Pane prefHeight="39.0" prefWidth="144.0">
+                                                                    <children>
+                                                                        <Text fx:id="recipeCreateText" fill="#a4a4a4" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textOrigin="TOP" />
+                                                                    </children>
+                                                                </Pane>
+                                                                <Pane prefHeight="200.0" prefWidth="200.0">
+                                                                    <children>
+                                                                        <Text fx:id="recipeUpdateText" fill="#a4a4a4" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textOrigin="TOP" />
+                                                                    </children>
+                                                                </Pane>
+                                                            </children>
+                                                            <VBox.margin>
+                                                                <Insets left="20.0" top="20.0" />
+                                                            </VBox.margin>
+                                                        </HBox>
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                            <VBox.margin>
+                                                <Insets left="14.0" right="8.0" />
+                                            </VBox.margin>
+                                            <cursor>
+                                                <Cursor fx:constant="DEFAULT" />
+                                            </cursor>
+                                        </VBox>
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="8.0" left="8.0" right="15.0" top="8.0" />
+                                    </padding>
+                                </VBox>
+                            </content>
+                        </ScrollPane>
+                    </children>
+                </VBox>
+         </left>
+        </BorderPane>
+    </children>
+</AnchorPane>
