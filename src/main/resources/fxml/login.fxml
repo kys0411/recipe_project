@@ -1,44 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="607.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user.controller.LoginController">
-   <left>
-      <AnchorPane prefHeight="407.0" prefWidth="228.0" style="-fx-background-color: #263F73;" BorderPane.alignment="CENTER">
-         <children>
-            <Label alignment="CENTER" layoutX="14.0" layoutY="67.0" prefHeight="19.0" prefWidth="200.0" text="레시피" textFill="#f2eeee">
-               <font>
-                  <Font name="Verdana Bold" size="23.0" />
-               </font>
-               <effect>
-                  <DropShadow />
-               </effect>
-            </Label>
-         </children>
-      </AnchorPane>
-   </left>
-   <right>
-      <AnchorPane prefHeight="400.0" prefWidth="337.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label alignment="CENTER" layoutX="46.0" layoutY="47.0" prefHeight="19.0" prefWidth="200.0" text="로그인" textFill="#1e1d1d">
-               <font>
-                  <Font name="Verdana Bold" size="23.0" />
-               </font>
-            </Label>
-            <Label layoutX="32.0" layoutY="115.0" text="username" />
-            <Label layoutX="32.0" layoutY="156.0" text="password" />
-            <TextField fx:id="usernameTextField" layoutX="119.0" layoutY="110.0" prefHeight="29.0" prefWidth="152.0" promptText="username" />
-            <PasswordField fx:id="passwordPasswordField" layoutX="119.0" layoutY="151.0" prefHeight="29.0" prefWidth="151.0" promptText="password" />
-            <Button fx:id="loginButton" layoutX="46.0" layoutY="224.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="29.0" prefWidth="219.0" text="로그인" />
-            <Button fx:id="cancelButton" layoutX="46.0" layoutY="272.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="29.0" prefWidth="219.0" text="취소" />
-            <Button fx:id="joinButton" layoutX="46.0" layoutY="320.0" mnemonicParsing="false" onAction="#joinButtonOnAction" prefHeight="29.0" prefWidth="219.0" text="회원가입" />
-         </children>
-      </AnchorPane>
-   </right>
-</BorderPane>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user.controller.LoginController">
+   <children>
+      <Label alignment="CENTER" layoutX="215.0" layoutY="60.0" prefHeight="19.0" prefWidth="200.0" text="로그인" textFill="#1e1d1d">
+         <font>
+            <Font name="Verdana Bold" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="228.0" layoutY="142.0" text="username" />
+      <Label layoutX="229.0" layoutY="192.0" text="password" />
+      <TextField fx:id="usernameTextField" layoutX="339.0" layoutY="134.0" prefHeight="29.0" prefWidth="152.0" promptText="username" />
+      <PasswordField fx:id="passwordPasswordField" layoutX="339.0" layoutY="184.0" prefHeight="29.0" prefWidth="151.0" promptText="password" />
+      <Button fx:id="loginButton" layoutX="229.0" layoutY="370.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="29.0" prefWidth="219.0" text="로그인" />
+      <Button fx:id="cancelButton" layoutX="229.0" layoutY="441.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="29.0" prefWidth="219.0" text="취소" />
+      <Button fx:id="joinButton" layoutX="229.0" layoutY="512.0" mnemonicParsing="false" onAction="#joinButtonOnAction" prefHeight="29.0" prefWidth="219.0" text="회원가입" />
+   </children>
+</AnchorPane>
