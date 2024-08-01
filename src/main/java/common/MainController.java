@@ -34,11 +34,11 @@ public class MainController {
         String fxmlFile = "";
 
         if (clickedButton == btnMyInfo) {
-            fxmlFile = "/fxml/MyInfo.fxml";
+            fxmlFile = "/fxml/myInfo.fxml";
         } else if (clickedButton == btnRecipe) {
             fxmlFile = "/fxml/recipeDetail.fxml";
         } else if (clickedButton == btnReview) {
-            fxmlFile = "/fxml/RecipeReview.fxml";
+            fxmlFile = "/fxml/recipeReview.fxml";
         } else if (clickedButton == btnLogout) {
             // 로그아웃 처리 로직
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
