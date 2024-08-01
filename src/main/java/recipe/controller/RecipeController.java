@@ -169,7 +169,8 @@ public class RecipeController implements Initializable {
     // 뒤로가기
     @FXML
     public void handleBackButtonClick() throws IOException {
-        Parent mainRoot = FXMLLoader.load(getClass().getResource("fxml/RecipeReview.fxml"));
+        //Parent mainRoot = FXMLLoader.load(getClass().getResource("fxml/RecipeReview.fxml"));
+        Parent mainRoot = FXMLLoader.load(getClass().getResource("fxml/Main.fxml"));
         Stage stage = (Stage) backButton.getScene().getWindow();
         stage.setScene(new Scene(mainRoot));
     }
