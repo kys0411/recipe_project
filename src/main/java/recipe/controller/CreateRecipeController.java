@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
 
 @NoArgsConstructor(force = true)
 @RequiredArgsConstructor
-public class RecipeController implements Initializable {
+public class CreateRecipeController implements Initializable {
 	@FXML
 	private TextField titleField = new TextField();
 
