@@ -1,4 +1,8 @@
 package review.impl;
+/*
+ * 작성일 2024-08-01
+ * 작성자 황석현
+ * */
 
 import common.DBConnection;
 import javafx.scene.control.CheckBox;
@@ -22,7 +26,8 @@ public class ReviewDaoImpl implements ReviewDao {
         String sql = "SELECT r.review_id, r.member_id, r.recipe_id, c.recipe_name, m.nickname, " +
                 "LPAD('★', r.rating, '★') AS star_rating, r.content, r.review_date " +
                 "FROM member m, review r, recipe c " +
-                "WHERE r.member_id = m.member_id(+) AND r.recipe_id = c.recipe_id(+) AND r.member_id = ?";
+                "WHERE r.member_id = m.member_id(+) AND r.recipe_id = c.recipe_id(+) AND r.member_id = ?"+
+                "ORDER BY r.review_id ASC";
 
         try (Connection conn = dbConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {

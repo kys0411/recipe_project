@@ -1,25 +1,33 @@
 package review.Controller;
+/*
+ * 작성일 2024-08-01
+ * 작성자 황석현
+ * */
 
-import common.UserSession;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import review.domain.Review;
 import review.impl.ReviewServiceImpl;
 import review.service.ReviewService;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 import java.util.List;
@@ -55,7 +63,7 @@ public class ReviewController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // 데이터 초기화
         try {
-            List<Review> reviewList = reviewService.selectMemberReview(UserSession.getInstance().getLoggedUser().getId());
+            List<Review> reviewList = reviewService.selectMemberReview(18L);
             if (reviewList != null) {
                 for (Review review : reviewList) {
                     System.out.println(review);
@@ -74,6 +82,9 @@ public class ReviewController implements Initializable {
                 // TableView 에 데이터 리스트 지정
                 selectReviewMember.setItems(list);
 
+                // 테이블 갱신하고 전체 CheckBox 해제상태 설정유지
+                cbAll.setSelected(false);
+
                 // 전체 리뷰후기 선택 이벤트 cbAll(CheckBoxAll)
                 cbAll.setOnMouseClicked(new EventHandler<Event>() {
                     @Override
@@ -84,13 +95,43 @@ public class ReviewController implements Initializable {
                         System.out.println("전체 체크박스");
                     }
                 });
+
+                //테이블 뷰 더블클릭 이벤트 (글번호 Id → ReviewId)
+                selectReviewMember.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent mouseEvent) {
+                        if(mouseEvent.getClickCount() == 2 && selectReviewMember.getSelectionModel().getSelectedItem() != null){
+                            System.out.println("더블클릭");
+
+                            long reviewId = selectReviewMember.getSelectionModel().getSelectedItem().getId();
+                            try {
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource(UI.READ.getPath()));
+                                Parent root = loader.load();
+
+                                ReviewDetailController reviewDetailController = loader.getController();
+                                try {
+                                    reviewDetailController.selectReviewMember(reviewId);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+
+                                Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
+                                Scene scene = new Scene(root);
+                                stage.setScene(scene);
+                                stage.show();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                });
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    /**
+    /*
      * 레시피 후기 등록하기
      * @param event
      */
@@ -136,6 +177,72 @@ public class ReviewController implements Initializable {
 
             initialize(null, null); // 테이블 갱신
         }
+    }
+
+    /*
+    * 화면이동 (NavigationEvent)
+    * @param event
+    * @param fxml
+    * @throws IOException
+    * */
+    public void switchScene(ActionEvent event, String fxml) throws IOException {
+        //메인(부모) url 으로부터 네비게이션 하기위한 url 경로를 받는 메서드 구현
+        Parent root = FXMLLoader.load(getClass().getResource(fxml));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    /*
+     * 화면이동 (지정된 root 인스턴스)
+     * @param event
+     * @param fxml
+     * @param root
+     * */
+    public void switchScene(MouseEvent event, String fxml, Parent root) {
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+    /*
+     * fxml 에 지정된 Controller 가져오기
+     * @param fxml
+     * @return
+     * @throws IOException
+     *
+     * */
+    public Object getController (String fxml) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(UI.READ.getPath()));
+        Parent root = loader.load();
+        ReviewDetailController reviewDetailController = loader.getController();
+        return loader.getController();
+    }
+
+    public Stage getStage() {
+        return stage;
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
+    /*
+    *레시피후기 등록화면 Navigation
+    * @param event
+    * */
+    public void insertRecipeReview(ActionEvent event) {
+        try {
+            //switchScene(event, "/fxml/insertRecipeReview.fxml");
+            switchScene(event, UI.INSERT.getPath());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void manageReviews() {

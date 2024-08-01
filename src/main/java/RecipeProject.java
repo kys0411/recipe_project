@@ -9,10 +9,13 @@ import review.domain.Review;
 import review.impl.ReviewServiceImpl;
 import review.service.ReviewService;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+/*
+ * 작성일 2024-08-01
+ * 작성자 황석현
+ * */
 
 public class RecipeProject extends Application {
 
@@ -29,20 +32,17 @@ public class RecipeProject extends Application {
 		long memberId = 15;
 		reviewService.selectMemberReview(memberId);
 
-        launch(args);
+		launch(args);
 	}
 
 	@Override
-	public void start(Stage stage) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
-		stage.setTitle("레시피");
-		stage.setScene(new Scene(root,600, 400));
-		stage.show();
-		/*try {
+	public void start(Stage stage) {
+
+		try {
 			// FXML 파일의 경로가 올바른지 확인
-			URL fxmlLocation = getClass().getResource("/fxml/RecipeReview.fxml");
+			URL fxmlLocation = getClass().getResource("/fxml/Main.fxml");
 			if (fxmlLocation == null) {
-				throw new IllegalArgumentException("FXML file not found: /fxml/RecipeReview.fxml");
+				throw new IllegalArgumentException("FXML file not found: /fxml/Main.fxml");
 			}
 
 			Parent root = FXMLLoader.load(fxmlLocation);
@@ -59,11 +59,11 @@ public class RecipeProject extends Application {
 			stage.setTitle("Recipe Review");
 			stage.setResizable(false);
 
-			stage.setScene(new Scene(root, 880, 650));
+			stage.setScene(new Scene(root, 600, 800));
 			stage.show();
 
 		} catch (Exception e) {
 			e.printStackTrace();
-		}*/
+		}
 	}
 }

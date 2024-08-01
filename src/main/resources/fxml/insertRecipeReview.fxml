@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="880.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.InsertRecipeReview">
+<AnchorPane prefHeight="600.0" prefWidth="880.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="review.Controller.ReviewController">
    <children>
       <AnchorPane layoutY="5.0" prefHeight="600.0" prefWidth="880.0">
          <children>
-            <Label layoutX="305.0" layoutY="46.0" text="레시피 후기">
+            <Label layoutX="257.0" layoutY="46.0" text="레시피 후기 등록">
                <font>
                   <Font size="48.0" />
                </font>

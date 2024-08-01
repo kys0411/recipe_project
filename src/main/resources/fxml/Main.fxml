@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="common.MainController">
+   <children>
+      <AnchorPane layoutX="5.0" layoutY="11.0" prefHeight="800.0" prefWidth="600.0">
+         <children>
+            <Label layoutX="143.0" layoutY="41.0" text="인싸들의 레시피" textAlignment="JUSTIFY">
+               <font>
+                  <Font name="System Bold" size="45.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnMyInfo" layoutX="102.0" layoutY="191.0" mnemonicParsing="false" prefHeight="94.0" prefWidth="412.0" text="내정보" onAction="#handleButtonAction">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnRecipe" layoutX="102.0" layoutY="306.0" mnemonicParsing="false" prefHeight="94.0" prefWidth="412.0" text="레시피" onAction="#handleButtonAction">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnReview" layoutX="102.0" layoutY="419.0" mnemonicParsing="false" prefHeight="94.0" prefWidth="412.0" text="레시피후기" onAction="#handleButtonAction">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnLogout" layoutX="102.0" layoutY="536.0" mnemonicParsing="false" prefHeight="94.0" prefWidth="412.0" text="로그아웃" onAction="#handleButtonAction">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="138.0" fitWidth="126.0" layoutY="14.0">
+               <image>
+                  <Image url="@../../../../../Downloads/icon.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
