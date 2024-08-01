@@ -1,5 +1,6 @@
 package recipe.controller;
 
+import common.UserSession;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -131,7 +132,7 @@ public class CreateRecipeController implements Initializable {
 		Object[][] stepArray = setNodeStepAndIngredient(stepContainerSize, "step", stepContainer);
 
 		Recipe recipe = Recipe.builder()
-				.memberId(1L)
+				.memberId(UserSession.getInstance().getLoggedUser().getId())
 				.title(title)
 				.description(description)
 				.quantity(quantity)
