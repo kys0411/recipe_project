@@ -2,24 +2,31 @@ package recipe.controller;
 
 import common.DBConnection;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import lombok.NoArgsConstructor;
 import recipe.dto.RecipeDto;
 import recipe.repository.RecipeQueryRepository;
 import recipe.service.FindRecipeService;
 import recipe.service.GetAllRecipesService;
 
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 @NoArgsConstructor(force = true)
@@ -91,7 +98,14 @@ public class GetAllRecipesController implements Initializable {
             HBox headerBox = new HBox();
             Label title = new Label();
             title.setText(recipe.getTitle());
-            title.setStyle("-fx-font-size: 20px;");
+            title.setStyle("-fx-font-size: 20px; -fx-cursor: hand;");
+            title.setOnMouseClicked(event -> {
+                try {
+                    switchToRecipeDetail(recipe.getId(), event);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
             Label createDate = new Label();
             createDate.setText(recipe.getCreatedAt());
 
@@ -132,6 +146,22 @@ public class GetAllRecipesController implements Initializable {
             recipeContainer.getChildren()
                     .subList(1, recipeContainer.getChildren().size())
                     .clear();
+        }
+    }
+
+    private void switchToRecipeDetail(Long id, MouseEvent event) throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/recipeDetail.fxml"));
+            loader.setControllerFactory(param -> new RecipeController(id));
+            Parent root = loader.load();
+
+            Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
