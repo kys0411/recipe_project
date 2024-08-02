@@ -19,12 +19,6 @@ public class MyInfoController {
     @FXML
     private Label nicknameLabel;
     @FXML
-    private Button likerecipeButton;
-    @FXML
-    private Button recipeButton;
-    @FXML
-    private Button reviewButton;
-    @FXML
     private Button mainpageButton;
     @FXML
     private Button memberupdateButton;
@@ -42,13 +36,7 @@ public class MyInfoController {
         Button clickedButton = (Button) event.getSource();
         String fxmlFile = "";
 
-        if (clickedButton == likerecipeButton) {
-            //TODO 좋아요한 레시피 조회
-        } else if (clickedButton == recipeButton) {
-            //TODO 레시피 조회
-        } else if (clickedButton == reviewButton) {
-            //TODO 리뷰
-        } else if (clickedButton == mainpageButton) {
+        if (clickedButton == mainpageButton) {
             fxmlFile = "/fxml/Main.fxml";
         } else if (clickedButton == memberupdateButton) {
             fxmlFile = "/fxml/userupdate.fxml";
