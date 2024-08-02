@@ -32,7 +32,7 @@ public class ReviewController implements Initializable {
     @FXML
     private TableView<Review> selectReviewMember;
     @FXML
-    private Button selectMyRecipeReview;
+    private Button goMain;
     @FXML
     private TableColumn<Review, CheckBox> colCbDelete;
     @FXML
@@ -104,12 +104,7 @@ public class ReviewController implements Initializable {
 
         // 데이터 초기화
         try {
-            //List<Review> reviewList = reviewService.selectMemberReview(UserSession.getInstance().getLoggedUser().getId());
-/*
-            Review review = new Review();
-            review.getId();
-*/
-            long id = 62L;
+            long id = 1;
 
             List<Review> reviewList = reviewService.selectAllRecipeReview(id);
             if (reviewList != null) {
@@ -159,7 +154,7 @@ public class ReviewController implements Initializable {
 
                                 ReviewDetailController reviewDetailController = loader.getController();
                                 try {
-                                    reviewDetailController.selectReviewMember(reviewId,memberId);
+                                    reviewDetailController.selectDetailRecipeReview(reviewId,memberId);
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -181,19 +176,22 @@ public class ReviewController implements Initializable {
     }
 
     /*
-     * 레시피 후기 등록하기
+     * 메인화면 돌아가기
      * @param event
      */
-    public void close(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("레시피 후기 종료");
-        alert.setHeaderText("레시피 후기를 종료하시겠습니까?");
-        alert.setContentText("프로그램이 종료됩니다.");
+    public void goMain(ActionEvent event) {
+        
+        Button clickedButton = (Button) event.getSource();
+        String fxmlFile = "";
 
-        if (alert.showAndWait().get() == ButtonType.OK) {
-            System.out.println("프로그램 종료");
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.close();
+        if (clickedButton == goMain) {
+            fxmlFile = "/fxml/Main.fxml";
+        }
+
+        try {
+            switchScene(event, fxmlFile);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -285,7 +283,6 @@ public class ReviewController implements Initializable {
      * */
     public void insertRecipeReview(ActionEvent event) {
         try {
-            //switchScene(event, "/fxml/insertRecipeReview.fxml");
             switchScene(event, UI.INSERT.getPath());
 
         } catch (Exception e) {
@@ -293,34 +290,17 @@ public class ReviewController implements Initializable {
         }
 
     }
-
-    public void manageReviews() {
+    /*
+     *레시피후기 수정화면 Navigation
+     * @param event
+     * */
+    public void updateRecipeReview(ActionEvent event) {
         try {
-            // 가변적인 memberId 값을 설정하여 특정 회원의 리뷰 조회
-            long memberId = 15; // 여기서 memberId 값을 원하는 값으로 설정할 수 있습니다.
-            reviewService.selectMyRecipeReview(memberId);
-
-            // 레시피 후기 생성 예제
-            Review newReview = Review.builder()
-                    .id(1)
-                    .memberId(19)
-                    .rating(5)
-                    .content("레시피 강추!")
-                    .date(new Date())
-                    .recipeId(4)
-                    .build();
-            reviewService.insertRecipeReview(newReview);
-
-            // 레시피 후기 수정 예제
-            newReview.setContent("Updated content");
-            newReview.setRating(4);
-            reviewService.updateRecipeReview(newReview);
-
-            // 레시피 후기 삭제 예제
-            reviewService.deleteRecipeReview(newReview.getId());
+            switchScene(event, UI.UPDATE.getPath());
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 }

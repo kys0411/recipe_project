@@ -37,7 +37,7 @@
                </font>
             </TextArea>
             <Button fx:id="selectAllRecipeReview" layoutX="31.0" layoutY="704.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" onAction="#selectAllRecipeReview" text="목록" />
-            <Button layoutX="500.0" layoutY="704.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="수정" />
+            <Button fx:id="updateRecipeReview" layoutX="500.0" layoutY="704.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" onAction="#updateRecipeReview" text="수정" />
             <ImageView fitHeight="138.0" fitWidth="126.0" layoutX="20.0" layoutY="34.0">
                <image>
                   <Image url="@../reviewIcon.png" />

@@ -87,8 +87,10 @@ public class ReviewDaoImpl implements ReviewDao {
     }
 
     @Override
-    public List<Review> selectDetailRecipeReview(long memberId, long id) throws Exception {
-        List<Review> reviews = new ArrayList<>();
+    public Review selectDetailRecipeReview(long memberId, long id) throws Exception {
+    //public long selectDetailRecipeReview(long memberId, long id) throws Exception {
+        //Review review = new Review();
+        Review review = null;
         String sql = "SELECT r.review_id, r.member_id, r.recipe_id, c.recipe_name, m.nickname, " +
                 "LPAD('★', r.rating, '★') AS star_rating, r.content, r.review_date " +
                 "FROM member m, review r, recipe c " +
@@ -97,12 +99,12 @@ public class ReviewDaoImpl implements ReviewDao {
 
         try (Connection conn = dbConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setLong(1, memberId);
-            pstmt.setLong(2, id);
+            pstmt.setLong(1, id);
+            pstmt.setLong(2, memberId);
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                Review review = Review.builder()
+                review = Review.builder()
                         .id(rs.getLong("review_id"))
                         .memberId(rs.getLong("member_id"))
                         .recipeId(rs.getLong("recipe_id"))
@@ -114,12 +116,13 @@ public class ReviewDaoImpl implements ReviewDao {
                         .cbDelete(new CheckBox())
                         .build();
 
-                reviews.add(review);
+                //review.add(review);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return reviews;
+        //return selectDetailRecipeReview(memberId, id);
+        return review;
 
 
     }
