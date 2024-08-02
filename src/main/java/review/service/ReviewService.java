@@ -1,8 +1,4 @@
 package review.service;
-/*
- * 작성일 2024-08-01
- * 작성자 황석현
- * */
 
 import review.domain.Review;
 
@@ -10,8 +6,14 @@ import java.util.List;
 
 public interface ReviewService {
 
-    //등록한 레시피 후기 조회
-    List<Review> selectMemberReview(long memberId) throws Exception;
+    //등록한 레시피 후기 전체 조회
+    List<Review> selectAllRecipeReview(long id) throws Exception;
+
+    //등록한 레시피 후기 내꺼 조회
+    List<Review> selectMyRecipeReview(long memberId) throws Exception;
+
+    //등록한 레시피 상세 조회
+    List<Review> selectDetailRecipeReview(long memberId, long id) throws Exception;
 
     //레시피 후기 생성
     public void insertRecipeReview(Review review) throws Exception;

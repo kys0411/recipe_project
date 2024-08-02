@@ -24,17 +24,18 @@
         </TableView>
         <Button layoutX="9.0" layoutY="731.0" mnemonicParsing="false" onAction="#close" prefHeight="40.0" prefWidth="100.0" text="나가기" />
         <Button layoutX="539.0" layoutY="731.0" mnemonicParsing="false" onAction="#deleteRecipeReview" prefHeight="40.0" prefWidth="100.0" text="삭제" />
-        <Button layoutX="420.0" layoutY="731.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="수정" />
-        <Button layoutX="308.0" layoutY="731.0" mnemonicParsing="false" onAction="#insertRecipeReview" prefHeight="40.0" prefWidth="100.0" text="후기등록" />
-      <Label layoutX="205.0" layoutY="56.0" text="레시피 후기" textAlignment="JUSTIFY">
-         <font>
-            <Font name="System Bold" size="45.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="138.0" fitWidth="126.0" layoutX="10.0" layoutY="24.0">
-         <image>
-            <Image url="@../reviewIcon.png" />
-         </image>
-      </ImageView>
+        <Button layoutX="429.0" layoutY="731.0" mnemonicParsing="false" onAction="#insertRecipeReview" prefHeight="40.0" prefWidth="100.0" text="후기등록" />
+        <Label layoutX="205.0" layoutY="56.0" text="레시피 후기" textAlignment="JUSTIFY">
+            <font>
+                <Font name="System Bold" size="45.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="138.0" fitWidth="126.0" layoutX="10.0" layoutY="24.0">
+            <image>
+                <Image url="@../reviewIcon.png" />
+            </image>
+        </ImageView>
+        <Button fx:id="selectAllRecipeReview" layoutX="457.0" layoutY="129.0" mnemonicParsing="false" onAction="#selectAllRecipeReview" text="전체후기" />
+        <Button fx:id="selectMyRecipeReview" layoutX="557.0" layoutY="129.0" mnemonicParsing="false" onAction="#selectMyRecipeReview" text="내 후기" />
     </children>
 </AnchorPane>

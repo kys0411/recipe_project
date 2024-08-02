@@ -1,8 +1,4 @@
 package review.impl;
-/*
- * 작성일 2024-08-01
- * 작성자 황석현
- * */
 
 import common.DBConnection;
 import javafx.scene.control.CheckBox;
@@ -20,19 +16,18 @@ public class ReviewDaoImpl implements ReviewDao {
     private DBConnection dbConnection = new DBConnection();
 
     @Override
-    public List<Review> selectMemberReview(long memberId) throws Exception {
+    public List<Review> selectAllRecipeReview(long id) throws Exception {
         List<Review> reviews = new ArrayList<>();
 
         String sql = "SELECT r.review_id, r.member_id, r.recipe_id, c.recipe_name, m.nickname, " +
                 "LPAD('★', r.rating, '★') AS star_rating, r.content, r.review_date " +
                 "FROM member m, review r, recipe c " +
-                "WHERE r.member_id = m.member_id(+) AND r.recipe_id = c.recipe_id(+) AND r.member_id = ?"+
+                "WHERE r.member_id = m.member_id(+) AND r.recipe_id = c.recipe_id(+) "+
                 "ORDER BY r.review_id ASC";
 
         try (Connection conn = dbConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-            pstmt.setLong(1, memberId);
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
@@ -54,6 +49,79 @@ public class ReviewDaoImpl implements ReviewDao {
         }
 
         return reviews;
+    }
+
+    @Override
+    public List<Review> selectMyRecipeReview(long memberId) throws Exception {
+        List<Review> reviews = new ArrayList<>();
+        String sql = "SELECT r.review_id, r.member_id, r.recipe_id, c.recipe_name, m.nickname, " +
+                "LPAD('★', r.rating, '★') AS star_rating, r.content, r.review_date " +
+                "FROM member m, review r, recipe c " +
+                "WHERE r.member_id = m.member_id(+) AND r.recipe_id = c.recipe_id(+) AND r.member_id = ?"+
+                "ORDER BY r.review_id ASC";
+
+        try (Connection conn = dbConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setLong(1, memberId);
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                Review review = Review.builder()
+                        .id(rs.getLong("review_id"))
+                        .memberId(rs.getLong("member_id"))
+                        .recipeId(rs.getLong("recipe_id"))
+                        .recipeName(rs.getString("recipe_name"))
+                        .nickName(rs.getString("nickname"))
+                        .starRating(rs.getString("star_rating"))
+                        .content(rs.getString("content"))
+                        .date(rs.getDate("review_date"))
+                        .cbDelete(new CheckBox())
+                        .build();
+
+                reviews.add(review);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return reviews;
+    }
+
+    @Override
+    public List<Review> selectDetailRecipeReview(long memberId, long id) throws Exception {
+        List<Review> reviews = new ArrayList<>();
+        String sql = "SELECT r.review_id, r.member_id, r.recipe_id, c.recipe_name, m.nickname, " +
+                "LPAD('★', r.rating, '★') AS star_rating, r.content, r.review_date " +
+                "FROM member m, review r, recipe c " +
+                "WHERE r.member_id = m.member_id(+) AND r.recipe_id = c.recipe_id(+) AND r.member_id = ? AND r.review_id = ? "+
+                "ORDER BY r.review_id ASC";
+
+        try (Connection conn = dbConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setLong(1, memberId);
+            pstmt.setLong(2, id);
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                Review review = Review.builder()
+                        .id(rs.getLong("review_id"))
+                        .memberId(rs.getLong("member_id"))
+                        .recipeId(rs.getLong("recipe_id"))
+                        .recipeName(rs.getString("recipe_name"))
+                        .nickName(rs.getString("nickname"))
+                        .starRating(rs.getString("star_rating"))
+                        .content(rs.getString("content"))
+                        .date(rs.getDate("review_date"))
+                        .cbDelete(new CheckBox())
+                        .build();
+
+                reviews.add(review);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return reviews;
+
+
     }
 
     public void insertRecipeReview(Review review) throws Exception {

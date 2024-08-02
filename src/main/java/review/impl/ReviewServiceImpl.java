@@ -10,21 +10,19 @@ public class ReviewServiceImpl implements ReviewService {
     private ReviewDao reviewDao = new ReviewDaoImpl();
 
     @Override
-    public List<Review> selectMemberReview(long memberId) throws Exception {
-        List<Review> reviews = reviewDao.selectMemberReview(memberId);
+    public List<Review> selectAllRecipeReview(long id) throws Exception {
+        List<Review> reviews = reviewDao.selectAllRecipeReview(id);
+        return reviewDao.selectAllRecipeReview(id);
+    }
 
-        for (Review review : reviews) {
-            System.out.println("Review ID: " + review.getId());
-            System.out.println("Review Name: " + review.getRecipeName());
-            System.out.println("Member ID: " + review.getMemberId());
-            System.out.println("NickName : " + review.getNickName());
-            System.out.println("Rating: " + review.getRating());
-            System.out.println("Content: " + review.getContent());
-            System.out.println("Date: " + review.getDate());
-            System.out.println("Recipe ID: " + review.getRecipeId());
-            System.out.println("------------");
-        }
-        return reviewDao.selectMemberReview(memberId);
+    @Override
+    public List<Review> selectMyRecipeReview(long memberId) throws Exception {
+        return reviewDao.selectMyRecipeReview(memberId);
+    }
+
+    @Override
+    public List<Review> selectDetailRecipeReview(long memberId, long id) throws Exception {
+        return List.of();
     }
 
     @Override

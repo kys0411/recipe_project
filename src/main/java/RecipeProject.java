@@ -12,10 +12,6 @@ import review.service.ReviewService;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-/*
- * 작성일 2024-08-01
- * 작성자 황석현
- * */
 
 public class RecipeProject extends Application {
 
@@ -26,12 +22,6 @@ public class RecipeProject extends Application {
 
 		ReviewService reviewService = new ReviewServiceImpl();
 		ReviewController controller = new ReviewController();
-		controller.manageReviews();
-
-		//특정 회원의 리뷰 조회
-		long memberId = 15;
-		reviewService.selectMemberReview(memberId);
-
 		launch(args);
 	}
 
