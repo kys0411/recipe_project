@@ -12,11 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.ButtonType;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -36,6 +32,8 @@ public class ReviewController implements Initializable {
     @FXML
     private TableView<Review> selectReviewMember;
     @FXML
+    private Button selectMyRecipeReview;
+    @FXML
     private TableColumn<Review, CheckBox> colCbDelete;
     @FXML
     private TableColumn<Review, Long> reviewId;
@@ -52,15 +50,68 @@ public class ReviewController implements Initializable {
     @FXML
     private CheckBox cbAll;
 
+    /*
+     *등록한 레시피 후기 전체 조회 화면 Navigation
+     * @param event
+     * */
+    @FXML
+    public void selectAllRecipeReview(ActionEvent event) {
+        loadReviews(true);
+    }
+    /*
+     *등록한 레시피 후기 내꺼 조회 화면 Navigation
+     * @param event
+     * */
+    @FXML
+    public void selectMyRecipeReview(ActionEvent event) {
+        loadReviews(false);
+    }
+
     private ReviewService reviewService = new ReviewServiceImpl();
 
     Stage stage;
+    private void loadReviews(boolean loadAll) {
+        try {
+            List<Review> reviewList;
+            if (loadAll) {
+                reviewList = reviewService.selectAllRecipeReview(UserSession.getInstance().getLoggedUser().getId());
+            } else {
+                reviewList = reviewService.selectMyRecipeReview(UserSession.getInstance().getLoggedUser().getId());
+            }
+
+            if (reviewList != null) {
+                ObservableList<Review> list = FXCollections.observableArrayList(reviewList);
+
+                colCbDelete.setCellValueFactory(new PropertyValueFactory<>("cbDelete"));
+                reviewId.setCellValueFactory(new PropertyValueFactory<>("id"));
+                nickName.setCellValueFactory(new PropertyValueFactory<>("nickName"));
+                recipeName.setCellValueFactory(new PropertyValueFactory<>("recipeName"));
+                content.setCellValueFactory(new PropertyValueFactory<>("content"));
+                starRating.setCellValueFactory(new PropertyValueFactory<>("starRating"));
+                reviewDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+
+                selectReviewMember.setItems(list);
+                cbAll.setSelected(false);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        loadReviews(true);
+
         // 데이터 초기화
         try {
-            List<Review> reviewList = reviewService.selectMemberReview(UserSession.getInstance().getLoggedUser().getId());
+            //List<Review> reviewList = reviewService.selectMemberReview(UserSession.getInstance().getLoggedUser().getId());
+/*
+            Review review = new Review();
+            review.getId();
+*/
+            long id = 62L;
+
+            List<Review> reviewList = reviewService.selectAllRecipeReview(id);
             if (reviewList != null) {
                 for (Review review : reviewList) {
                     System.out.println(review);
@@ -101,13 +152,14 @@ public class ReviewController implements Initializable {
                             System.out.println("더블클릭");
 
                             long reviewId = selectReviewMember.getSelectionModel().getSelectedItem().getId();
+                            long memberId = selectReviewMember.getSelectionModel().getSelectedItem().getMemberId();
                             try {
                                 FXMLLoader loader = new FXMLLoader(getClass().getResource(UI.READ.getPath()));
                                 Parent root = loader.load();
 
                                 ReviewDetailController reviewDetailController = loader.getController();
                                 try {
-                                    reviewDetailController.selectReviewMember(reviewId);
+                                    reviewDetailController.selectReviewMember(reviewId,memberId);
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -177,11 +229,11 @@ public class ReviewController implements Initializable {
     }
 
     /*
-    * 화면이동 (NavigationEvent)
-    * @param event
-    * @param fxml
-    * @throws IOException
-    * */
+     * 화면이동 (NavigationEvent)
+     * @param event
+     * @param fxml
+     * @throws IOException
+     * */
     public void switchScene(ActionEvent event, String fxml) throws IOException {
         //메인(부모) url 으로부터 네비게이션 하기위한 url 경로를 받는 메서드 구현
         Parent root = FXMLLoader.load(getClass().getResource(fxml));
@@ -228,9 +280,9 @@ public class ReviewController implements Initializable {
     }
 
     /*
-    *레시피후기 등록화면 Navigation
-    * @param event
-    * */
+     *레시피후기 등록화면 Navigation
+     * @param event
+     * */
     public void insertRecipeReview(ActionEvent event) {
         try {
             //switchScene(event, "/fxml/insertRecipeReview.fxml");
@@ -246,7 +298,7 @@ public class ReviewController implements Initializable {
         try {
             // 가변적인 memberId 값을 설정하여 특정 회원의 리뷰 조회
             long memberId = 15; // 여기서 memberId 값을 원하는 값으로 설정할 수 있습니다.
-            reviewService.selectMemberReview(memberId);
+            reviewService.selectMyRecipeReview(memberId);
 
             // 레시피 후기 생성 예제
             Review newReview = Review.builder()

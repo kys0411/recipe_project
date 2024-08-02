@@ -11,10 +11,10 @@ package review.Controller;
 * */
 public enum UI {
 
-    MAIN("/fxml/RecipeReview.fxml"),
+    MAIN("/fxml/RecipeReview.fxml"), //등록한 레시피 후기 전체 조회
     INSERT("/fxml/insertRecipeReview.fxml"),
-    //READ("/fxml/selectRecipeReview.fxml"),
-    READ("/fxml/DetailMemberReview.fxml"),
+    //MY("/fxml/selectRecipeReview.fxml"), //등록한 레시피 후기 내꺼 조회
+    READ("/fxml/DetailMemberReview.fxml"), //등록한 레시피 상세 조회
     UPDATE("/fxml/updateRecipeReview.fxml");
 
     private final String path;
