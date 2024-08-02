@@ -125,4 +125,31 @@ public class RecipeQueryRepository {
 
         return recipes;
     }
+
+    public List<RecipeDto.FindAll> findRecipeByKeyword(String keyword) throws SQLException, ClassNotFoundException {
+        List<RecipeDto.FindAll> recipes = new ArrayList<>();
+        Connection conn = dbConnection.getConnection();
+
+        String sql = "SELECT * FROM recipe WHERE recipe_name LIKE ?";
+
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, "%" + keyword + "%");
+
+        ResultSet rs = pstmt.executeQuery();
+
+        while (rs.next()) {
+            RecipeDto.FindAll recipe = RecipeDto.FindAll.builder()
+                    .id(rs.getLong("recipe_id"))
+                    .title(rs.getString("recipe_name"))
+                    .difficulty(rs.getString("difficulty"))
+                    .build();
+            recipes.add(recipe);
+        }
+
+        conn.close();
+        pstmt.close();
+        rs.close();
+
+        return recipes;
+    }
 }
