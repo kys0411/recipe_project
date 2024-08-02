@@ -33,6 +33,9 @@ public class MainController {
     @FXML
     private Button btnLogout;
 
+    @FXML
+    private Button btnIngredientRecipe;
+
     private LoginService loginService = new LoginService();
 
     @FXML
@@ -57,6 +60,8 @@ public class MainController {
             fxmlFile = "/fxml/createRecipe.fxml";
         } else if (clickedButton == btnReview) {
             fxmlFile = "/fxml/recipeReview.fxml";
+        } else if (clickedButton == btnIngredientRecipe) {
+            fxmlFile = "/fxml/ingredientCombination.fxml";
         } else if (clickedButton == btnLogout) {
            loginService.logout();
             showAlert(Alert.AlertType.INFORMATION, "로그아웃", "로그아웃 되었습니다.");
