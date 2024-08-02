@@ -21,8 +21,8 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public List<Review> selectDetailRecipeReview(long memberId, long id) throws Exception {
-        return List.of();
+    public Review selectDetailRecipeReview(long memberId, long id) throws Exception {
+        return reviewDao.selectDetailRecipeReview(memberId, id);
     }
 
     @Override

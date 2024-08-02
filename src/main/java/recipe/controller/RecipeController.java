@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -168,9 +169,9 @@ public class RecipeController implements Initializable {
     
     // 뒤로가기
     @FXML
-    public void handleBackButtonClick() throws IOException {
+    public void handleBackButtonClick(MouseEvent event) throws IOException {
         //Parent mainRoot = FXMLLoader.load(getClass().getResource("fxml/RecipeReview.fxml"));
-        Parent mainRoot = FXMLLoader.load(getClass().getResource("fxml/Main.fxml"));
+        Parent mainRoot = FXMLLoader.load(getClass().getResource("/fxml/Main.fxml"));
         Stage stage = (Stage) backButton.getScene().getWindow();
         stage.setScene(new Scene(mainRoot));
     }

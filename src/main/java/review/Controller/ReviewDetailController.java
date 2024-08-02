@@ -1,9 +1,6 @@
 package review.Controller;
-/*
- * 작성일 2024-08-01
- * 작성자 황석현
- * */
 
+import com.sun.javafx.scene.SceneUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,6 +28,8 @@ public class ReviewDetailController {
     private TextArea taContent;
     @FXML
     private Button selectAllRecipeReview;
+    @FXML
+    private Button updateRecipeReview;
 
     private ReviewService reviewService = new ReviewServiceImpl();
 
@@ -49,21 +48,21 @@ public class ReviewDetailController {
         stage.show();
     }
 
-
-
-    //후기글 읽기 처리
-    public void selectReviewMember(long memberId, long id) throws Exception {
+    //후기글 읽기 처리(등록한 레시피 상세 조회)
+    public void selectDetailRecipeReview(long memberId, long id) throws Exception {
         System.out.println(memberId);
         //게시글 읽기 요청
-/*
         Review review = reviewService.selectDetailRecipeReview(memberId, id);
-        tfNickname.setText(review.getNickName());
-        tfRating.setText(String.valueOf(review.getRating()));
-        taContent.setText(review.getContent());
-*/
+        if(review != null){
+            tfNickname.setText(review.getNickName());
+            tfRating.setText(review.getStarRating());
+            taContent.setText(review.getContent());
+        }
     }
 
+    //목록 화면 이동
     public void selectAllRecipeReview(ActionEvent event) {
+
         Button clickedButton = (Button) event.getSource();
         String fxmlFile = "";
 
@@ -76,7 +75,22 @@ public class ReviewDetailController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    
+    //수정 화면 이동
+    public void updateRecipeReview(ActionEvent event) {
 
+        Button clickedButton = (Button) event.getSource();
+        String fxmlFile = "";
 
+        if (clickedButton == updateRecipeReview) {
+            fxmlFile = "/fxml/updateRecipeReview.fxml";
+        }
+
+        try {
+            switchScene(event, fxmlFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
