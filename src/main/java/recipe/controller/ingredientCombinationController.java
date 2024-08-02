@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -51,9 +52,8 @@ public class ingredientCombinationController implements Initializable {
     }
 
     @FXML
-    public void handleBackButtonClick() throws IOException {
-        //Parent mainRoot = FXMLLoader.load(getClass().getResource("fxml/RecipeReview.fxml"));
-        Parent mainRoot = FXMLLoader.load(getClass().getResource("fxml/Main.fxml"));
+    public void handleBackButtonClick(MouseEvent event) throws IOException {
+        Parent mainRoot = FXMLLoader.load(getClass().getResource("/fxml/Main.fxml"));
         Stage stage = (Stage) backButton.getScene().getWindow();
         stage.setScene(new Scene(mainRoot));
     }
