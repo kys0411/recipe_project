@@ -163,8 +163,5 @@ public class GetAllRecipesController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-
     }
 }
