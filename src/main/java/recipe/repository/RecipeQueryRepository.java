@@ -130,9 +130,11 @@ public class RecipeQueryRepository {
         List<RecipeDto.FindAll> recipes = new ArrayList<>();
         Connection conn = dbConnection.getConnection();
 
-        String sql = "SELECT * FROM recipe WHERE recipe_name LIKE '%?%'";
+        String sql = "SELECT * FROM recipe WHERE recipe_name LIKE ?";
 
         PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, "%" + keyword + "%");
+
         ResultSet rs = pstmt.executeQuery();
 
         while (rs.next()) {
@@ -140,7 +142,6 @@ public class RecipeQueryRepository {
                     .id(rs.getLong("recipe_id"))
                     .title(rs.getString("recipe_name"))
                     .difficulty(rs.getString("difficulty"))
-                    .sorting(rs.getString("sorting"))
                     .build();
             recipes.add(recipe);
         }

@@ -5,11 +5,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import lombok.NoArgsConstructor;
 import recipe.dto.RecipeDto;
 import recipe.repository.RecipeQueryRepository;
+import recipe.service.FindRecipeService;
 import recipe.service.GetAllRecipesService;
 
 import java.net.URL;
@@ -24,7 +26,11 @@ public class GetAllRecipesController implements Initializable {
     @FXML
     private ChoiceBox<String> conditionBox;
 
+    @FXML
+    private TextField searchField;
+
     private final GetAllRecipesService recipesService = new GetAllRecipesService(new RecipeQueryRepository(new DBConnection()));
+    private final FindRecipeService findRecipeService = new FindRecipeService(new RecipeQueryRepository(new DBConnection()));
 
     @FXML
     @Override
@@ -40,22 +46,28 @@ public class GetAllRecipesController implements Initializable {
                         });
 
 
-        addRecipesToRecipeContainer(null);
+        List<RecipeDto.FindAll> recipes = recipesService.getAll(null);
+        addRecipesToRecipeContainer(recipes);
     }
 
     private void handleChangeCondition(String condition) {
-        if (recipeContainer.getChildren().size() > 1) {
-            recipeContainer.getChildren()
-                    .subList(1, recipeContainer.getChildren().size())
-                    .clear();
-        }
+        clearRecipeContainer();
 
-        addRecipesToRecipeContainer(condition);
+        List<RecipeDto.FindAll> recipes = recipesService.getAll(condition);
+        addRecipesToRecipeContainer(recipes);
     }
 
-    private void addRecipesToRecipeContainer(String condition) {
-        List<RecipeDto.FindAll> recipes = recipesService.getAll(condition);
+    @FXML
+    private void handleSearchRecipe() {
+        String keyword = searchField.getText();
 
+        List<RecipeDto.FindAll> findRecipes = findRecipeService.getAllByKeyword(keyword);
+
+        clearRecipeContainer();
+        addRecipesToRecipeContainer(findRecipes);
+    }
+
+    private void addRecipesToRecipeContainer(List<RecipeDto.FindAll> recipes) {
         for (RecipeDto.FindAll recipe : recipes) {
             HBox hBox = new HBox();
             Label label = new Label();
@@ -63,6 +75,14 @@ public class GetAllRecipesController implements Initializable {
             hBox.getChildren().add(label);
 
             recipeContainer.getChildren().add(hBox);
+        }
+    }
+
+    private void clearRecipeContainer() {
+        if (recipeContainer.getChildren().size() > 1) {
+            recipeContainer.getChildren()
+                    .subList(1, recipeContainer.getChildren().size())
+                    .clear();
         }
     }
 }
