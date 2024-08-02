@@ -24,6 +24,7 @@ public interface ReviewDao {
 
     //레시피 후기 수정
     public void updateRecipeReview(Review review) throws Exception;
+    //public void updateRecipeReview(long id) throws Exception;
 
     //레시피 후기 삭제
     public long deleteRecipeReview(long reviewId) throws Exception;

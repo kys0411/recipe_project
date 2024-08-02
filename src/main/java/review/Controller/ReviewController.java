@@ -49,6 +49,14 @@ public class ReviewController implements Initializable {
     private TableColumn<Review, Date> reviewDate;
     @FXML
     private CheckBox cbAll;
+    @FXML
+    private TextField tfNickname;
+    @FXML
+    private TextField tfRating;
+    @FXML
+    private TextArea taContent;
+    @FXML
+    private Button selectAllRecipeReview;
 
     /*
      *등록한 레시피 후기 전체 조회 화면 Navigation
@@ -56,6 +64,19 @@ public class ReviewController implements Initializable {
      * */
     @FXML
     public void selectAllRecipeReview(ActionEvent event) {
+        Button clickedButton = (Button) event.getSource();
+        String fxmlFile = "";
+
+        if (clickedButton == selectAllRecipeReview) {
+            fxmlFile = "/fxml/RecipeReview.fxml";
+        }
+
+        try {
+            switchScene(event, fxmlFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         loadReviews(true);
     }
     /*
