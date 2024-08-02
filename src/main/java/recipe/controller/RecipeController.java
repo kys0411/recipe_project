@@ -19,6 +19,8 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import recipe.domain.Recipe;
 import recipe.repository.RecipeQueryRepository;
 import recipe.repository.RecipeRepository;
@@ -31,13 +33,17 @@ import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
+@NoArgsConstructor
 public class RecipeController implements Initializable {
     DBConnection dbConnection = new DBConnection();
     RecipeRepository recipeRepository = new RecipeRepository(dbConnection);
     RecipeQueryRepository recipeQueryRepository = new RecipeQueryRepository(dbConnection);
     private final FindRecipeService findRecipeService = new FindRecipeService(recipeQueryRepository);
     private final UserService userService = new UserService();
-    private final Long recipeId;
+
+    @Setter
+    private Long recipeId;
+
     @FXML
     private VBox recipeStepsVBox;
 
@@ -124,7 +130,7 @@ public class RecipeController implements Initializable {
 
     private void loadRecipeStepsFromDB() {
         try {
-            Recipe recipe = findRecipeService.getOne(10L);
+            Recipe recipe = findRecipeService.getOne(recipeId);
             handleAddStep(recipe);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();

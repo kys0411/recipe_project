@@ -100,11 +100,28 @@ public class RecipeQueryRepository {
         return ingredients;
     }
 
-    public List<RecipeDto.FindAll> findAllSortByCondition(String condition) throws SQLException, ClassNotFoundException {
+    public List<RecipeDto.FindAll> findAllSortByCondition(String cond) throws SQLException, ClassNotFoundException {
         List<RecipeDto.FindAll> recipes = new ArrayList<>();
         Connection conn = dbConnection.getConnection();
 
-        String sql = Condition.getSql(condition);
+        String sql = """
+                SELECT
+                    r.recipe_id,
+                    r.recipe_name,
+                    r.description,
+                    r.difficulty,
+                    r.creation_date,
+                    COALESCE(l.like_count, 0) AS LIKES,
+                    COALESCE(v.review_count, 0) AS reviews,
+                    COALESCE(v.avg_rating, 0) AS ratings
+                FROM
+                    recipe r
+                LEFT JOIN (SELECT recipe_id, status, COUNT(*) AS like_count FROM likes GROUP BY recipe_id, status) l
+                ON r.recipe_id = l.recipe_id and l.status = 1
+                LEFT JOIN (SELECT recipe_id, COUNT(*) AS review_count, AVG(rating) avg_rating FROM review GROUP BY recipe_id) v
+                ON r.recipe_id = v.recipe_id
+                """;
+        sql = sql + "ORDER BY " + Condition.getCondition(cond) + " desc";
 
         PreparedStatement pstmt = conn.prepareStatement(sql);
         ResultSet rs = pstmt.executeQuery();
@@ -113,8 +130,12 @@ public class RecipeQueryRepository {
             RecipeDto.FindAll recipe = RecipeDto.FindAll.builder()
                     .id(rs.getLong("recipe_id"))
                     .title(rs.getString("recipe_name"))
+                    .description(rs.getString("description"))
                     .difficulty(rs.getString("difficulty"))
-                    .sorting(rs.getString("sorting"))
+                    .likes(rs.getInt("likes"))
+                    .reviews(rs.getInt("reviews"))
+                    .rating(rs.getInt("ratings"))
+                    .createdAt(rs.getDate("creation_date").toString())
                     .build();
             recipes.add(recipe);
         }
@@ -142,6 +163,10 @@ public class RecipeQueryRepository {
                     .id(rs.getLong("recipe_id"))
                     .title(rs.getString("recipe_name"))
                     .difficulty(rs.getString("difficulty"))
+                    .likes(rs.getInt("likes"))
+                    .reviews(rs.getInt("reviews"))
+                    .rating(rs.getInt("rating"))
+                    .createdAt(rs.getDate("creation_date").toString())
                     .build();
             recipes.add(recipe);
         }

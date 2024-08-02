@@ -59,6 +59,8 @@ public class RecipeSelectRepository {
                         .description(rs.getString("description"))
                         .difficulty(Difficulty.fromDescription(rs.getString("difficulty")))
                         .quantity(rs.getString("quantity"))
+                        .createdAt(rs.getTimestamp("creation_date").toLocalDateTime())
+                        .updatedAt(rs.getTimestamp("update_date").toLocalDateTime())
                         .build();
                 recipes.add(recipe);
             }
