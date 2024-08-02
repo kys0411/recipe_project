@@ -17,29 +17,34 @@
                   <Font name="System Bold" size="45.0" />
                </font>
             </Label>
-            <Button fx:id="btnMyInfo" layoutX="119.0" layoutY="190.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="94.0" prefWidth="412.0" text="내정보">
+            <Button fx:id="btnMyInfo" layoutX="119.0" layoutY="217.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="67.0" prefWidth="203.0" text="내정보">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>
             </Button>
            
-            <Button fx:id="btnRecipe" layoutX="119.0" layoutY="294.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="94.0" prefWidth="412.0" text="레시피 조회">
+            <Button fx:id="btnRecipe" layoutX="328.0" layoutY="217.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="67.0" prefWidth="203.0" text="레시피 조회">
                <font>
                   <Font size="30.0" />
                </font>
             </Button>
-            <Button fx:id="btnCreateRecipe" layoutX="119.0" layoutY="400.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="94.0" prefWidth="412.0" text="레시피 생성">
+            <Button fx:id="btnCreateRecipe" layoutX="119.0" layoutY="291.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="67.0" prefWidth="412.0" text="레시피 생성">
                <font>
                   <Font size="30.0" />
                </font>
             </Button>
-            <Button fx:id="btnReview" layoutX="119.0" layoutY="504.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="94.0" prefWidth="412.0" text="레시피후기">
+            <Button fx:id="btnReview" layoutX="119.0" layoutY="364.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="67.0" prefWidth="412.0" text="레시피후기">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnIngredientRecipe" layoutX="118.0" layoutY="438.0" onAction="#handleButtonAction" mnemonicParsing="false" prefHeight="67.0" prefWidth="412.0" text="냉장고 파먹기">
                <font>
                   <Font size="30.0" />
                </font>
             </Button>
 
-            <Button fx:id="btnLogout" layoutX="119.0" layoutY="608.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="94.0" prefWidth="412.0" text="로그아웃">
+            <Button fx:id="btnLogout" layoutX="118.0" layoutY="514.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="67.0" prefWidth="412.0" text="로그아웃">
                <font>
                   <Font size="30.0" />
                </font>
