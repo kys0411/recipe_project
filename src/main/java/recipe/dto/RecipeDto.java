@@ -1,8 +1,11 @@
 package recipe.dto;
 
 import lombok.Builder;
+import lombok.Getter;
 
 public class RecipeDto {
+
+    @Getter
     @Builder
     public static class FindAll {
         private final Long id;
