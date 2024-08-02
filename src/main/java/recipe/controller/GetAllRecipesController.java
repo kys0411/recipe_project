@@ -3,9 +3,12 @@ package recipe.controller;
 import common.DBConnection;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import lombok.NoArgsConstructor;
@@ -16,6 +19,7 @@ import recipe.service.GetAllRecipesService;
 
 import java.net.URL;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 @NoArgsConstructor(force = true)
@@ -69,12 +73,57 @@ public class GetAllRecipesController implements Initializable {
 
     private void addRecipesToRecipeContainer(List<RecipeDto.FindAll> recipes) {
         for (RecipeDto.FindAll recipe : recipes) {
+            VBox vBox = new VBox();
             HBox hBox = new HBox();
-            Label label = new Label();
-            label.setText(recipe.getTitle());
-            hBox.getChildren().add(label);
 
-            recipeContainer.getChildren().add(hBox);
+            VBox imageBox = new VBox();
+            String relativePath = "defaultRecipeImage.jpg";
+
+            Image image = new Image(relativePath);
+            ImageView recipeImage = new ImageView(image);
+            recipeImage.setFitWidth(130);
+            recipeImage.setFitHeight(130);
+
+            imageBox.getChildren().add(recipeImage);
+
+            VBox contentBox = new VBox();
+
+            HBox headerBox = new HBox();
+            Label title = new Label();
+            title.setText(recipe.getTitle());
+            title.setStyle("-fx-font-size: 20px;");
+            Label createDate = new Label();
+            createDate.setText(recipe.getCreatedAt());
+
+            headerBox.getChildren().addAll(title, createDate);
+            HBox.setMargin(createDate, new Insets(0, 0, 0, 200));
+
+            Label description = new Label();
+            description.setText(recipe.getDescription());
+
+            HBox footerBox = new HBox();
+            Label difficulty = new Label();
+            difficulty.setText("난이도 : " + recipe.getDifficulty());
+            Label reviews = new Label();
+            reviews.setText("후기 : " + recipe.getReviews() + "개 " + "(" + recipe.getRating() + ")");
+            Label likes = new Label();
+            likes.setText(recipe.getLikes() +  " likes");
+
+            footerBox.getChildren().addAll(difficulty, reviews, likes);
+            HBox.setMargin(difficulty, new Insets(0, 50, 0, 0));
+            HBox.setMargin(reviews, new Insets(0, 50, 0, 0));
+
+            contentBox.getChildren().addAll(headerBox, description, footerBox);
+            VBox.setMargin(headerBox, new Insets(15, 0, 0, 0));
+            VBox.setMargin(description, new Insets(20, 0, 20, 0));
+
+            hBox.getChildren().addAll(imageBox, contentBox);
+            HBox.setMargin(contentBox, new Insets(0, 0, 0, 20));
+            vBox.getChildren().add(hBox);
+            VBox.setMargin(hBox, new Insets(20, 0, 0, 0));
+
+            recipeContainer.getChildren().add(vBox);
+            VBox.setMargin(vBox, new Insets(10, 0, 0, 20));
         }
     }
 
