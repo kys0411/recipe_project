@@ -52,7 +52,8 @@ public class MainController {
         if (clickedButton == btnMyInfo) {
             fxmlFile = "/fxml/myInfo.fxml";
         } else if (clickedButton == btnRecipe) {
-            fxmlFile = "/fxml/recipeDetail.fxml";
+//            fxmlFile = "/fxml/recipeDetail.fxml";
+            fxmlFile = "/fxml/getAllRecipes.fxml";
         } else if (clickedButton == btnCreateRecipe) {
             fxmlFile = "/fxml/createRecipe.fxml";
         } else if (clickedButton == btnReview) {
