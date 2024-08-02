@@ -211,7 +211,7 @@ public class RecipeController implements Initializable {
             fxmlFile = "/fxml/createRecipe.fxml";
             switchScene(event, fxmlFile);
         } else if (clickedButton == backImage) {
-            fxmlFile = "/fxml/Main.fxml";
+            fxmlFile = "/fxml/getAllRecipes.fxml";
             switchScene(event, fxmlFile);
         }
     }
