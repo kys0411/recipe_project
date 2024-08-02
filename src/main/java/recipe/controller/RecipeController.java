@@ -1,14 +1,17 @@
 package recipe.controller;
 
 import common.DBConnection;
+import common.UserSession;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.control.Alert;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -18,6 +21,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import recipe.domain.Recipe;
 import recipe.repository.RecipeQueryRepository;
+import recipe.repository.RecipeRepository;
 import recipe.service.FindRecipeService;
 import user.service.UserService;
 
@@ -29,10 +33,11 @@ import java.util.ResourceBundle;
 
 public class RecipeController implements Initializable {
     DBConnection dbConnection = new DBConnection();
+    RecipeRepository recipeRepository = new RecipeRepository(dbConnection);
     RecipeQueryRepository recipeQueryRepository = new RecipeQueryRepository(dbConnection);
     private final FindRecipeService findRecipeService = new FindRecipeService(recipeQueryRepository);
     private final UserService userService = new UserService();
-
+    private final Long recipeId;
     @FXML
     private VBox recipeStepsVBox;
 
@@ -61,18 +66,25 @@ public class RecipeController implements Initializable {
     private Text recipeUpdateText;
 
     @FXML
-    private ImageView backButton;
+    private ImageView backImage;
 
     @FXML
     private ImageView recipeImage;
 
     @FXML
-    private Button updateRecipeButton;
+    private ImageView deleteRecipeImage;
+
+    @FXML
+    private ImageView updateRecipeImage;
 
     @FXML
     private Pane ingredientPane;
 
     private static final int MAX_ITEMS_PER_HBOX = 10;
+
+    public RecipeController(Long recipeId) {
+        this.recipeId = recipeId;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -83,10 +95,24 @@ public class RecipeController implements Initializable {
         recipeImage.setClip(clip);
         loadRecipeStepsFromDB();
 
+        // 레시피 생성자인지 확인하는 작업
+        try {
+            Recipe recipe = findRecipeService.getOne(recipeId);
+            System.out.println(recipe.getId());
+            System.out.println(UserSession.getInstance().getLoggedUser().getId());
+            if (recipe.getMemberId().equals(UserSession.getInstance().getLoggedUser().getId())) {
+                updateRecipeImage.setVisible(true);
+                deleteRecipeImage.setVisible(true);
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        // 재료 조회 작업
         Object[][] ingredients = null;
 
         try {
-            ingredients = recipeQueryRepository.getIngredients(dbConnection.getConnection(), 73L);
+            ingredients = recipeQueryRepository.getIngredients(dbConnection.getConnection(), 10L);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         } catch (SQLException e) {
@@ -98,7 +124,7 @@ public class RecipeController implements Initializable {
 
     private void loadRecipeStepsFromDB() {
         try {
-            Recipe recipe = findRecipeService.getOne(73L);
+            Recipe recipe = findRecipeService.getOne(10L);
             handleAddStep(recipe);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -165,20 +191,47 @@ public class RecipeController implements Initializable {
             recipeStepsVBox.getChildren().add(newStepHBox);
         }
     }
-    
-    // 뒤로가기
+
     @FXML
-    public void handleBackButtonClick() throws IOException {
-        //Parent mainRoot = FXMLLoader.load(getClass().getResource("fxml/RecipeReview.fxml"));
-        Parent mainRoot = FXMLLoader.load(getClass().getResource("fxml/Main.fxml"));
-        Stage stage = (Stage) backButton.getScene().getWindow();
-        stage.setScene(new Scene(mainRoot));
+    private void handleImageClickEvent(MouseEvent event) throws Exception {
+        ImageView clickedButton = (ImageView) event.getSource();
+        String fxmlFile = "";
+
+        if (clickedButton == deleteRecipeImage) {
+            fxmlFile = "/fxml/Main.fxml";
+            deleteRecipe(recipeId);
+            switchScene(event, fxmlFile);
+        } else if (clickedButton == updateRecipeImage) {
+            fxmlFile = "/fxml/createRecipe.fxml";
+            switchScene(event, fxmlFile);
+        } else if (clickedButton == backImage) {
+            fxmlFile = "/fxml/Main.fxml";
+            switchScene(event, fxmlFile);
+        }
+    }
+
+    private void switchScene(MouseEvent event, String fxml) throws IOException {
+        //메인 url 으로부터 네비게이션 하기위한 url 경로를 받는 메서드
+        Parent root = FXMLLoader.load(getClass().getResource(fxml));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void deleteRecipe(Long recipeId) throws SQLException, ClassNotFoundException {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("레시피 삭제");
+        alert.setHeaderText(null);
+        alert.setContentText("레시피가 삭제 되었습니다!");
+        alert.showAndWait();
+
+        recipeRepository.deleteById(recipeId);
     }
 
     private void addIngredientsToPane(Object[][] ingredients) {
         HBox currentHBox = new HBox();
         ingredientPane.getChildren().add(currentHBox);
-
         int count = 0;
 
         for (Object[] ingredient : ingredients) {
@@ -192,13 +245,5 @@ public class RecipeController implements Initializable {
             currentHBox.getChildren().add(text);
             count++;
         }
-    }
-    
-    // 레시피 수정
-    @FXML
-    public void handleUpdateButtonClick() throws IOException {
-        Parent mainRoot = FXMLLoader.load(getClass().getResource("fxml/RecipeReview.fxml"));
-        Stage stage = (Stage) backButton.getScene().getWindow();
-        stage.setScene(new Scene(mainRoot));
     }
 }
