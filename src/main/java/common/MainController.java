@@ -64,7 +64,7 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // 인기 레시피 레시피 리스트 추가 - 6개만
-        List<RecipeDto.FindAll> recipes = recipesService.getAll("별점순");
+        List<RecipeDto.FindAll> recipes = recipesService.getAll("좋아요순");
 
         int counter = 0;
         HBox currentHBox = new HBox();
@@ -144,7 +144,7 @@ public class MainController implements Initializable {
         starImage.setFitWidth(20.0);
         starImage.setPickOnBounds(true);
         starImage.setPreserveRatio(true);
-        Text rating = new Text(String.valueOf(recipe.getRating()));
+        Text rating = new Text(String.valueOf(recipe.getRating()) + " (" + recipe.getLikes() + ") ");
         rating.setFont(new Font("LINE Seed Sans KR Bold", 12.0));
         ratingBox.getChildren().addAll(starImage, rating);
 
