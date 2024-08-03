@@ -1,6 +1,5 @@
 package user.controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,6 +8,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import user.service.LoginService;
 import common.UserSession;
@@ -22,16 +24,16 @@ public class LoginController {
     @FXML
     private PasswordField passwordPasswordField;
     @FXML
-    private Button loginButton;
+    private Pane loginButton;
+    @FXML
+    private Text joinButton;
     @FXML
     private Button cancelButton;
-    @FXML
-    private Button joinButton;
 
     private LoginService loginService = new LoginService();
 
     @FXML
-    public void loginButtonOnAction(ActionEvent actionEvent) {
+    public void loginButtonOnAction(MouseEvent mouseEvent) {
         String nickname = usernameTextField.getText();
         String password = passwordPasswordField.getText();
 
@@ -70,7 +72,7 @@ public class LoginController {
     }
 
     @FXML
-    public void joinButtonOnAction(ActionEvent actionEvent) {
+    public void joinButtonOnAction(MouseEvent mouseEvent) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/register.fxml"));
             Parent registerScreen = fxmlLoader.load();
