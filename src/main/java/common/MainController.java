@@ -42,15 +42,8 @@ public class MainController implements Initializable {
     private VBox rankRecipesRoot;
 
     @FXML
-    private Label memberLabel;
-    @FXML
     private ImageView imageMyInfo;
-    @FXML
-    private Button btnRecipe;
-    @FXML
-    private ImageView imageCreateRecipe;
-    @FXML
-    private Button btnReview;
+
     @FXML
     private ImageView imageLogout;
 
@@ -65,10 +58,8 @@ public class MainController implements Initializable {
     @FXML
     private Pane startReview;
 
-    private LoginService loginService = new LoginService();
-    private final UserService userService = new UserService();
+    private final LoginService loginService = new LoginService();
     private final GetAllRecipesService recipesService = new GetAllRecipesService(new RecipeQueryRepository(new DBConnection()));
-    private final FindRecipeService findRecipeService = new FindRecipeService(new RecipeQueryRepository(new DBConnection()));
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
