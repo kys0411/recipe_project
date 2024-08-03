@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -8,54 +10,211 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="common.MainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="950.0" prefWidth="750.0" style="-fx-background-color: #fffddc;" styleClass="root-class" stylesheets="@css/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="common.MainController">
    <children>
-      <AnchorPane layoutX="5.0" layoutY="11.0" prefHeight="800.0" prefWidth="650.0">
-         <children>
-            <Label layoutX="160.0" layoutY="45.0" text="인싸들의 레시피" textAlignment="JUSTIFY">
-               <font>
-                  <Font name="System Bold" size="45.0" />
-               </font>
-            </Label>
-            <Button fx:id="btnMyInfo" layoutX="119.0" layoutY="217.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="67.0" prefWidth="203.0" text="내정보">
-               <font>
-                  <Font name="System Bold" size="30.0" />
-               </font>
-            </Button>
-           
-            <Button fx:id="btnRecipe" layoutX="328.0" layoutY="217.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="67.0" prefWidth="203.0" text="레시피 조회">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnCreateRecipe" layoutX="119.0" layoutY="291.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="67.0" prefWidth="412.0" text="레시피 생성">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnReview" layoutX="119.0" layoutY="364.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="67.0" prefWidth="412.0" text="레시피후기">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnIngredientRecipe" layoutX="118.0" layoutY="438.0" onAction="#handleButtonAction" mnemonicParsing="false" prefHeight="67.0" prefWidth="412.0" text="냉장고 파먹기">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Button>
-
-            <Button fx:id="btnLogout" layoutX="118.0" layoutY="514.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="67.0" prefWidth="412.0" text="로그아웃">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Button>
-            <ImageView fitHeight="138.0" fitWidth="126.0" layoutY="14.0">
-               <image>
-                  <Image url="@../reviewIcon.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="memberLabel" layoutX="218.0" layoutY="122.0" prefHeight="39.0" prefWidth="209.0" text="Label" />
-         </children>
-      </AnchorPane>
+      <BorderPane prefHeight="950.0" prefWidth="750.0" style="-fx-background-color: #fffddc;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <AnchorPane prefHeight="143.0" prefWidth="690.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="166.0" fitWidth="178.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../Users/dbswn/Downloads/logo2.png" />
+                     </image>
+                  </ImageView>
+                  <TextField layoutX="301.0" layoutY="73.0" prefHeight="35.0" prefWidth="266.0" promptText="원하는 레시피를 검색하세요!" style="-fx-border-radius: 30px; -fx-border-width: 2px; -fx-border-style: solid; -fx-background-color: #fffddc; -fx-border-color: #1e785d;">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <font>
+                        <Font name="LINE Seed Sans KR Regular" size="12.0" />
+                     </font>
+                  </TextField>
+                  <Text fill="#434343" layoutX="597.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="프로필" textOrigin="TOP">
+                     <font>
+                        <Font name="LINE Seed Sans KR Bold" size="10.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#434343" layoutX="648.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="로그아웃" textOrigin="TOP">
+                     <font>
+                        <Font name="LINE Seed Sans KR Bold" size="10.0" />
+                     </font>
+                  </Text>
+                  <ImageView fx:id="imageMyInfo" fitHeight="33.0" fitWidth="36.0" layoutX="592.0" layoutY="69.0" onMouseClicked="#handleButtonAction" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/id-card-solid.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fx:id="imageLogout" fitHeight="31.0" fitWidth="33.0" layoutX="651.0" layoutY="69.0" onMouseClicked="#handleButtonAction" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/right-from-bracket-solid.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fx:id="imageSearchRecipe" fitHeight="20.0" fitWidth="16.0" layoutX="537.0" layoutY="83.0" onMouseClicked="#handleButtonAction" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/search.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </children>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </AnchorPane>
+         </top>
+         <padding>
+            <Insets left="25.0" right="30.0" top="10.0" />
+         </padding>
+         <center>
+            <StackPane style="-fx-background-color: #fffddc;">
+               <children>
+                  <ScrollPane hbarPolicy="NEVER" prefViewportHeight="777.0" prefViewportWidth="695.0" style="-fx-background-color: #fffddc;" vbarPolicy="NEVER">
+                     <content>
+                        <AnchorPane prefHeight="778.0" prefWidth="678.0" style="-fx-background-color: #fffddc;">
+                           <children>
+                              <AnchorPane prefHeight="259.0" prefWidth="637.0" style="-fx-background-color: #fffddc;">
+                                 <children>
+                                    <ImageView fitHeight="265.0" fitWidth="257.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../gireImage2.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Text layoutX="292.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: 'Gmarket Sans TTF Bold'; -fx-font-size: 24;" text="냉장고의 남은 재료가 고민인가요?">
+                              </Text>
+                                    <Text layoutX="292.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="남은 재료로 원하는 음식을 요리 해보세요!">
+                                       <font>
+                                          <Font name="LINE Seed Sans KR Regular" size="17.0" />
+                                       </font>
+                                    </Text>
+                                    <Pane fx:id="startIngredientRecipe" layoutX="524.0" layoutY="213.0" onMouseClicked="#paneHandleButtonAction" prefHeight="41.0" prefWidth="126.0" style="-fx-background-radius: 30px; -fx-background-color: #1e785d;">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <children>
+                                          <Text fill="WHITE" layoutX="28.0" layoutY="7.0" strokeType="OUTSIDE" strokeWidth="0.0" text="시작하기" textOrigin="TOP">
+                                             <font>
+                                                <Font name="LINE Seed Sans KR Bold" size="20.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </Pane>
+                                    <Text layoutX="292.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="검색한 재료로 만든 모든 레시피를 찾아볼 수 있습니다!">
+                                       <font>
+                                          <Font name="LINE Seed Sans KR Regular" size="17.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="2.0" layoutY="326.0" prefHeight="1088.0" prefWidth="658.0" style="-fx-background-color: #fffddc;">
+                                 <children>
+                                    <Text layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: 'Gmarket Sans TTF Bold'; -fx-font-size: 28;" text="인기있는 레시피!" />
+                                    <Text fill="#4a4a4a" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="좋아요를 가장 많이 받은 레시피들입니다.">
+                                       <font>
+                                          <Font name="LINE Seed Sans KR Regular" size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Pane fx:id="startGetAllRecipes" layoutX="472.0" layoutY="40.0" onMouseClicked="#paneHandleButtonAction" prefHeight="37.0" prefWidth="176.0">
+                                       <children>
+                                          <ImageView fitHeight="33.0" fitWidth="43.0" layoutX="8.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../images/forward-solid.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Text layoutX="59.0" layoutY="-5.0" strokeType="OUTSIDE" strokeWidth="0.0" text="더 보러가기!" textOrigin="TOP">
+                                             <font>
+                                                <Font name="LINE Seed Sans KR Bold" size="20.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Pane>
+                                    <VBox fx:id="rankRecipesRoot" layoutX="-8.0" layoutY="120.0" prefHeight="1000.0" prefWidth="660.0" styleClass="rankRecipe">
+                                       <padding>
+                                          <Insets right="10.0" />
+                                       </padding>
+                                       <children>
+                                          <AnchorPane prefHeight="86.0" prefWidth="650.0">
+                                             <children>
+                                                <Text layoutX="-3.0" layoutY="22.399999618530273" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: 'Gmarket Sans TTF Bold'; -fx-font-size: 28;" text="레시피들의 후기가 궁금하세요?" />
+                                                <Text fill="#4a4a4a" layoutX="-1.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="레시피를 평가 해보거나 후기를 참고해보세요!" textOrigin="TOP" wrappingWidth="274.4399719238281">
+                                                   <font>
+                                                      <Font name="LINE Seed Sans KR Regular" size="15.0" />
+                                                   </font>
+                                                </Text>
+                                                <Pane fx:id="startReview" layoutX="469.0" layoutY="3.0" onMouseClicked="#paneHandleButtonAction" prefHeight="37.0" prefWidth="180.0">
+                                                   <children>
+                                                      <ImageView fitHeight="33.0" fitWidth="43.0" layoutX="8.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../images/forward-solid.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <Text layoutX="60.0" layoutY="-5.0" strokeType="OUTSIDE" strokeWidth="0.0" text="후기 보러가기!" textOrigin="TOP" wrappingWidth="130.89999389648438">
+                                                         <font>
+                                                            <Font name="LINE Seed Sans KR Bold" size="20.0" />
+                                                         </font>
+                                                      </Text>
+                                                   </children>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
+                                                </Pane>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets left="10.0" top="30.0" />
+                                             </VBox.margin>
+                                          </AnchorPane>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </AnchorPane>
+                     </content>
+                     <BorderPane.margin>
+                        <Insets left="20.0" />
+                     </BorderPane.margin>
+                  </ScrollPane>
+                  <Pane fx:id="createRecipePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#paneHandleButtonAction" prefHeight="77.0" prefWidth="71.0" StackPane.alignment="BOTTOM_RIGHT">
+                     <children>
+                        <Circle fill="#1e785d" layoutX="37.0" layoutY="39.0" radius="38.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="4.0">
+                           <cursor>
+                              <Cursor fx:constant="MOVE" />
+                           </cursor>
+                        </Circle>
+                        <ImageView fitHeight="37.0" fitWidth="45.0" layoutX="18.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/pen.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <StackPane.margin>
+                        <Insets bottom="30.0" right="10.0" />
+                     </StackPane.margin>
+                  </Pane>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </StackPane>
+         </center>
+      </BorderPane>
    </children>
 </AnchorPane>
