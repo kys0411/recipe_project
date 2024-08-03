@@ -167,8 +167,10 @@ public class ReviewController implements Initializable {
                         if(mouseEvent.getClickCount() == 2 && selectReviewMember.getSelectionModel().getSelectedItem() != null){
                             System.out.println("더블클릭");
 
-                            long reviewId = selectReviewMember.getSelectionModel().getSelectedItem().getId();
                             long memberId = selectReviewMember.getSelectionModel().getSelectedItem().getMemberId();
+                            long reviewId = selectReviewMember.getSelectionModel().getSelectedItem().getId();
+                            //long memberId = selectReviewMember.getSelectionModel().getSelectedItem().getId();
+                            //long reviewId = selectReviewMember.getSelectionModel().getSelectedItem().getMemberId();
                             try {
                                 FXMLLoader loader = new FXMLLoader(getClass().getResource(UI.READ.getPath()));
                                 Parent root = loader.load();

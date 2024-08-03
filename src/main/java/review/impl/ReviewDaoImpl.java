@@ -125,30 +125,17 @@ public class ReviewDaoImpl implements ReviewDao {
     }
 
     public void updateRecipeReview(Review review) throws Exception {
-/*
-        String sql = "UPDATE review" +
-                    "SET rating = ? " +
-                    "content = ? " +
-                    "review_date = SYSDATE " +
-                    "WHERE review_id = ?";
+        String sql = "UPDATE review SET rating = ?, content = ?, review_date = SYSDATE WHERE review_id = ? AND member_id = ?";
         try (Connection conn = dbConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-                pstmt.setLong(1, id);
-                pstmt.setLong(2, memberId);
-                ResultSet rs = pstmt.executeQuery();
-
-                        .id(rs.getLong("review_id"))
-                    .memberId(rs.getLong("member_id"))
-                    .recipeId(rs.getLong("recipe_id"))
-
-            pstmt.setLong(1, review);
+            pstmt.setString(1, review.getStarRating());
+            pstmt.setString(2, review.getContent());
+            pstmt.setLong(3, review.getId());
+            pstmt.setLong(4, review.getMemberId());
             pstmt.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return reviewId;
-*/
-
     }
 
     public long deleteRecipeReview(long reviewId) throws Exception {

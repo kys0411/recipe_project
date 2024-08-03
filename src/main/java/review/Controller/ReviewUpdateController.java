@@ -16,7 +16,6 @@ import java.io.IOException;
 
 public class ReviewUpdateController {
 
-    public Button deleteRecipeReview;
     @FXML
     private TextField tfNickname;
     @FXML
@@ -27,6 +26,8 @@ public class ReviewUpdateController {
     private Button selectAllRecipeReview;
     @FXML
     private Button updateRecipeReview;
+    @FXML
+    private Button deleteRecipeReview;
 
     private ReviewService reviewService = new ReviewServiceImpl();
     private long reviewId;
@@ -39,7 +40,6 @@ public class ReviewUpdateController {
      * @throws IOException
      * */
     private void switchScene(ActionEvent event, String fxml) throws IOException {
-        //메인 url 으로부터 네비게이션 하기위한 url 경로를 받는 메서드
         Parent root = FXMLLoader.load(getClass().getResource(fxml));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
@@ -47,88 +47,25 @@ public class ReviewUpdateController {
         stage.show();
     }
 
-    //후기글 읽기 처리(등록한 레시피 상세 조회)
-    public void selectDetailRecipeReview(long memberId, long id) throws Exception {
-        System.out.println(memberId);
-        //게시글 읽기 요청
-        Review review = reviewService.selectDetailRecipeReview(memberId, id);
-        if(review != null){
-            tfNickname.setText(review.getNickName());
-            tfRating.setText(review.getStarRating());
-            taContent.setText(review.getContent());
-        }
+    public void setReviewData(long memberId, long reviewId, String nickname, String rating, String content) {
+        this.memberId = memberId;
+        this.reviewId = reviewId;
+        tfNickname.getText();
+        tfRating.setText(rating);
+        taContent.setText(content);
+        tfNickname.setEditable(false); // 닉네임은 수정하지 못하도록 설정
     }
 
-    //목록 화면 이동
-    public void selectAllRecipeReview(ActionEvent event) {
-
-        Button clickedButton = (Button) event.getSource();
-        String fxmlFile = "";
-
-        if (clickedButton == selectAllRecipeReview) {
-            fxmlFile = "/fxml/RecipeReview.fxml";
-        }
-
-        try {
-            switchScene(event, fxmlFile);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    
-/*    //수정 화면 이동
-    public void updateRecipeReview(ActionEvent event) {
-
-        Button clickedButton = (Button) event.getSource();
-        String fxmlFile = "";
-
-        if (clickedButton == updateRecipeReview) {
-            fxmlFile = "/fxml/updateRecipeReview.fxml";
-        }
-
-        try {
-            switchScene(event, fxmlFile);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    //글 삭제
-    public void deleteRecipeReview(ActionEvent event) {
-        String fxmlFile = "";
-        this.id = id;
-        try {
-            long review = reviewService.deleteRecipeReview(id);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("레시피 후기 삭제");
-        alert.setHeaderText("선택한 후기를 삭제하시겠습니까?");
-        alert.setContentText("이 작업은 되돌릴 수 없습니다.");
-
-        long result = 0;
-        if(alert.showAndWait().get() == ButtonType.OK) {
-            try {
-                result = reviewService.deleteRecipeReview(id);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        if (result > 0) {
-            System.out.println("글삭제 처리 성공!");
-            fxmlFile = "/fxml/RecipeReview.fxml";
-        }
-    }*/
-
-    //수정 화면 이동
+    // 후기글 수정 처리
     public void updateRecipeReview(ActionEvent event) {
         try {
+            System.out.println("후기글 수정 reviewId :"+reviewId);
+            System.out.println("후기글 수정 memberId : "+memberId);
             Review updatedReview = new Review();
             updatedReview.setId(reviewId);
             updatedReview.setMemberId(memberId);
             updatedReview.setNickName(tfNickname.getText());
+            updatedReview.setStarRating(tfRating.getText());
             updatedReview.setContent(taContent.getText());
 
             reviewService.updateRecipeReview(updatedReview);
@@ -168,5 +105,12 @@ public class ReviewUpdateController {
         }
     }
 
-
+    //목록 화면 이동
+    public void selectAllRecipeReview(ActionEvent event) {
+        try {
+            switchScene(event, "/fxml/RecipeReview.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

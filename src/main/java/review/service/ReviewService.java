@@ -20,7 +20,6 @@ public interface ReviewService {
 
     //레시피 후기 수정
     public void updateRecipeReview(Review newReview) throws Exception;
-    //public void updateRecipeReview(long id) throws Exception;
 
     //레시피 후기 삭제
     public long deleteRecipeReview(long id) throws Exception;
