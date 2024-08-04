@@ -2,6 +2,7 @@ package review.impl;
 
 import common.DBConnection;
 import javafx.scene.control.CheckBox;
+import recipe.domain.Recipe;
 import review.Dao.ReviewDao;
 import review.domain.Review;
 
@@ -120,8 +121,19 @@ public class ReviewDaoImpl implements ReviewDao {
         return review;
     }
 
+    @Override
     public void insertRecipeReview(Review review) throws Exception {
-        // 구현 필요
+        String sql = "INSERT INTO review (review_id, member_id, recipe_id, rating, content, review_date) VALUES (seq_review_id.NEXTVAL, ?, ?, ?, ?, SYSDATE)";
+        try (Connection conn = dbConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setLong(1, review.getMemberId());
+            pstmt.setLong(2, review.getRecipeId());
+            pstmt.setString(3, review.getStarRating());
+            pstmt.setString(4, review.getContent());
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void updateRecipeReview(Review review) throws Exception {
@@ -151,4 +163,26 @@ public class ReviewDaoImpl implements ReviewDao {
         }
         return reviewId;
     }
+
+    @Override
+    public List<Recipe> getAllRecipes() throws Exception {
+        List<Recipe> recipes = new ArrayList<>();
+        String sql = "SELECT recipe_id, recipe_name FROM recipe ORDER BY recipe_name ASC";
+
+        try (Connection conn = dbConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()) {
+            while (rs.next()) {
+                Recipe recipe = new Recipe();
+                recipe.setId(rs.getLong("recipe_id"));
+                recipe.setTitle(rs.getString("recipe_name"));
+                recipes.add(recipe);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e; // 예외를 다시 던져서 호출한 쪽에서 처리
+        }
+        return recipes;
+    }
+
 }

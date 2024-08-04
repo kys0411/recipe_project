@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.*?>
@@ -9,7 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 
-<AnchorPane prefHeight="800.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="review.Controller.ReviewUpdateController">
+<AnchorPane prefHeight="800.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="review.Controller.ReviewInsertController">
    <children>
       <AnchorPane layoutY="5.0" prefHeight="800.0" prefWidth="650.0">
          <children>
@@ -38,8 +37,8 @@
                   <Font size="30.0" />
                </font>
             </Label>
-            <TextField fx:id="tfRecipeName" layoutX="154.0" layoutY="206.0" prefHeight="33.0" prefWidth="241.0" promptText="레시피를 입력해 주세요." />
-            <TextField fx:id="tfNickname" layoutX="153.0" layoutY="270.0" prefHeight="33.0" prefWidth="241.0" promptText="닉네임은 수정할 수 없어요." />
+            <ComboBox fx:id="cbRecipe" layoutX="154.0" layoutY="206.0" prefHeight="33.0" prefWidth="241.0" promptText="레시피를 선택해 주세요." />
+            <TextField fx:id="tfNickname" layoutX="153.0" layoutY="270.0" prefHeight="33.0" prefWidth="262.0" promptText="닉네임을 입력해 주세요." editable="false" />
             <TextField fx:id="tfRating" layoutX="187.0" layoutY="347.0" prefHeight="33.0" prefWidth="247.0" promptText="점수를 입력해 주세요.(1~5)" />
             <TextArea fx:id="taContent" layoutX="40.0" layoutY="465.0" prefHeight="233.0" prefWidth="566.0" promptText="후기를 입력해 주세요.">
                <font>
@@ -47,11 +46,10 @@
                </font>
             </TextArea>
             <Button fx:id="selectAllRecipeReview" layoutX="32.0" layoutY="740.0" mnemonicParsing="false" onAction="#selectAllRecipeReview" prefHeight="40.0" prefWidth="100.0" text="목록" />
-            <Button fx:id="updateRecipeReview" layoutX="518.0" layoutY="740.0" mnemonicParsing="false" onAction="#updateRecipeReview" prefHeight="40.0" prefWidth="100.0" text="수정" />
-            <Button fx:id="deleteRecipeReview" layoutX="403.0" layoutY="740.0" mnemonicParsing="false" onAction="#deleteRecipeReview" prefHeight="40.0" prefWidth="100.0" text="삭제" />
+            <Button fx:id="insertRecipeReview" layoutX="518.0" layoutY="740.0" mnemonicParsing="false" onAction="#insertRecipeReview" prefHeight="40.0" prefWidth="100.0" text="등록" />
             <ImageView fitHeight="138.0" fitWidth="126.0" layoutX="20.0" layoutY="34.0">
                <image>
-                  <Image url="@../reviewIcon.png" />
+                  <Image url="@../images/reviewIcon.png" />
                </image>
             </ImageView>
          </children></AnchorPane>

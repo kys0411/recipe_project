@@ -1,5 +1,7 @@
 package recipe.domain;
 
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -8,7 +10,6 @@ import recipe.constant.Category;
 import recipe.constant.Difficulty;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter
 @Builder
@@ -26,6 +27,7 @@ public class Recipe {
 	private String quantity;
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;
+	private ComboBox comboBox = new ComboBox();
 
 	public Recipe(Long memberId,
 				  Category category,
@@ -46,4 +48,16 @@ public class Recipe {
 		this.createdAt = LocalDateTime.now();
 		this.updatedAt = null;
 	}
-}
+
+	@Override
+	public String toString() {
+		return title; // ComboBox에서 보여줄 값
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}}

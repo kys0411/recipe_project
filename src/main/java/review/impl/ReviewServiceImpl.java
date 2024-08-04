@@ -1,5 +1,6 @@
 package review.impl;
 
+import recipe.domain.Recipe;
 import review.Dao.ReviewDao;
 import review.domain.Review;
 import review.service.ReviewService;
@@ -32,12 +33,16 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     public void updateRecipeReview(Review review) throws Exception {
-    //public void updateRecipeReview(long id) throws Exception {
         reviewDao.updateRecipeReview(review);
     }
 
     @Override
     public long deleteRecipeReview(long id) throws Exception {
         return reviewDao.deleteRecipeReview(id);
+    }
+
+    @Override
+    public List<Recipe> getAllRecipes() throws Exception {
+        return reviewDao.getAllRecipes();
     }
 }
