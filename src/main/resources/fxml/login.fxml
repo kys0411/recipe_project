@@ -35,9 +35,9 @@
                   </Text>
                   <Pane fx:id="loginButton" layoutX="258.0" layoutY="71.0" onMouseClicked="#loginButtonOnAction" prefHeight="38.0" prefWidth="134.0" style="-fx-border-width: 2px; -fx-border-color: #1e785d; -fx-border-radius: 30px; -fx-border-style: solid;">
                      <children>
-                        <Text fill="#1e785d" layoutX="47.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="loginTest" text="Login" textOrigin="TOP">
+                        <Text fill="#1e785d" layoutX="40.0" layoutY="5.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" textOrigin="TOP">
                            <font>
-                              <Font name="LINE Seed Sans KR Regular" size="20.0" />
+                              <Font name="LINE Seed Sans KR Bold" size="20.0" />
                            </font>
                         </Text>
                      </children>

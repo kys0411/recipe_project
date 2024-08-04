@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'Gmarket';
+    src: url("fonts/GmarketSansTTFBold.ttf");
+}
+
+@font-face {
+    font-family: 'LineBD';
+    src: url("fonts/LINESeedKR-Bd.ttf");
+}
+
+@font-face {
+    font-family: 'Line';
+    src: url("fonts/LINESeedKR-Rg.ttf");
+}

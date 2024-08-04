@@ -104,8 +104,6 @@ public class RecipeController implements Initializable {
         // 레시피 생성자인지 확인하는 작업
         try {
             Recipe recipe = findRecipeService.getOne(recipeId);
-            System.out.println(recipe.getId());
-            System.out.println(UserSession.getInstance().getLoggedUser().getId());
             if (recipe.getMemberId().equals(UserSession.getInstance().getLoggedUser().getId())) {
                 updateRecipeImage.setVisible(true);
                 deleteRecipeImage.setVisible(true);

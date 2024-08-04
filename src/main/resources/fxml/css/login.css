@@ -1,24 +1,13 @@
 @font-face {
-    font-family: 'Mango';
-    src: url("fonts/MangoDdobak-R(ttf).ttf");
-}
-
-
-@font-face {
-    font-family: 'Pretendard';
-    src: url("fonts/Pretendard-Regular.ttf");
-}
-
-@font-face {
     font-family: 'Gmarket';
     src: url("fonts/GmarketSansTTFBold.ttf");
 }
 
-@font-face {
-    font-family: 'Mango';
-    src: url("fonts/MangoDdobak-R(ttf).ttf");
-}
 
+@font-face {
+    font-family: 'LineBD';
+    src: url("fonts/LINESeedKR-Bd.ttf");
+}
 
 @font-face {
     font-family: 'Line';
@@ -26,11 +15,6 @@
 }
 
 .root-class {
-    -fx-font-family: 'Pretendard';
-    -fx-font-size: 15;
-}
-
-.loginTest {
     -fx-font-family: 'Pretendard';
     -fx-font-size: 15;
 }
