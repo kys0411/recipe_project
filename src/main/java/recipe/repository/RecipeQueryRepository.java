@@ -151,7 +151,24 @@ public class RecipeQueryRepository {
         List<RecipeDto.FindAll> recipes = new ArrayList<>();
         Connection conn = dbConnection.getConnection();
 
-        String sql = "SELECT * FROM recipe WHERE recipe_name LIKE ?";
+        String sql = """
+                    SELECT
+                    r.recipe_id,
+                    r.recipe_name,
+                    r.description,
+                    r.difficulty,
+                    r.creation_date,
+                    COALESCE(l.like_count, 0) AS likes,
+                    COALESCE(v.review_count, 0) AS reviews,
+                    COALESCE(v.avg_rating, 0) AS ratings
+                FROM
+                    recipe r
+                LEFT JOIN (SELECT recipe_id, status, COUNT(*) AS like_count FROM likes GROUP BY recipe_id, status) l
+                ON r.recipe_id = l.recipe_id and l.status = 1
+                LEFT JOIN (SELECT recipe_id, COUNT(*) AS review_count, AVG(rating) avg_rating FROM review GROUP BY recipe_id) v
+                ON r.recipe_id = v.recipe_id
+                WHERE recipe_name LIKE ?
+                """;
 
         PreparedStatement pstmt = conn.prepareStatement(sql);
         pstmt.setString(1, "%" + keyword + "%");
@@ -165,7 +182,7 @@ public class RecipeQueryRepository {
                     .difficulty(rs.getString("difficulty"))
                     .likes(rs.getInt("likes"))
                     .reviews(rs.getInt("reviews"))
-                    .rating(rs.getInt("rating"))
+                    .rating(rs.getInt("ratings"))
                     .createdAt(rs.getDate("creation_date").toString())
                     .build();
             recipes.add(recipe);
