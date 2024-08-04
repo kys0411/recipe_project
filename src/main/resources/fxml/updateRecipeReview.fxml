@@ -8,7 +8,7 @@
 
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
-<AnchorPane prefHeight="800.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="review.Controller.ReviewController">
+<AnchorPane prefHeight="800.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="review.Controller.ReviewUpdateController">
    <children>
       <AnchorPane layoutY="5.0" prefHeight="800.0" prefWidth="650.0">
          <children>
@@ -32,7 +32,7 @@
                   <Font size="30.0" />
                </font>
             </Label>
-            <TextField fx:id="tfNickname" layoutX="153.0" layoutY="196.0" prefHeight="33.0" prefWidth="241.0" promptText="닉네임을 입력해주세요." />
+            <TextField fx:id="tfNickname" editable="false" layoutX="153.0" layoutY="196.0" prefHeight="33.0" prefWidth="241.0" promptText="닉네임을 입력해주세요." />
             <TextField fx:id="tfRating" layoutX="187.0" layoutY="273.0" prefHeight="33.0" prefWidth="247.0" promptText="점수를 입력해주세요.(1~5)" />
             <TextArea fx:id="taContent" layoutX="40.0" layoutY="404.0" prefHeight="233.0" prefWidth="566.0" promptText="후기를 입력해 주세요.">
                <font>
@@ -40,8 +40,8 @@
                </font>
             </TextArea>
             <Button fx:id="selectAllRecipeReview" layoutX="32.0" layoutY="740.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" onAction="#selectAllRecipeReview" text="목록" />
-            <Button layoutX="518.0" layoutY="740.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="수정" />
-            <Button layoutX="403.0" layoutY="740.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="삭제" />
+            <Button fx:id="updateRecipeReview" layoutX="518.0" layoutY="740.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" onAction="#updateRecipeReview" text="수정" />
+            <Button fx:id="deleteRecipeReview" layoutX="403.0" layoutY="740.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" onAction="#deleteRecipeReview" text="삭제" />
             <ImageView fitHeight="138.0" fitWidth="126.0" layoutX="20.0" layoutY="34.0">
                <image>
                   <Image url="@../reviewIcon.png" />

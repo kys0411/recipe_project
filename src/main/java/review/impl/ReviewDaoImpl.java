@@ -88,8 +88,6 @@ public class ReviewDaoImpl implements ReviewDao {
 
     @Override
     public Review selectDetailRecipeReview(long memberId, long id) throws Exception {
-    //public long selectDetailRecipeReview(long memberId, long id) throws Exception {
-        //Review review = new Review();
         Review review = null;
         String sql = "SELECT r.review_id, r.member_id, r.recipe_id, c.recipe_name, m.nickname, " +
                 "LPAD('★', r.rating, '★') AS star_rating, r.content, r.review_date " +
@@ -115,16 +113,11 @@ public class ReviewDaoImpl implements ReviewDao {
                         .date(rs.getDate("review_date"))
                         .cbDelete(new CheckBox())
                         .build();
-
-                //review.add(review);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        //return selectDetailRecipeReview(memberId, id);
         return review;
-
-
     }
 
     public void insertRecipeReview(Review review) throws Exception {
@@ -132,7 +125,17 @@ public class ReviewDaoImpl implements ReviewDao {
     }
 
     public void updateRecipeReview(Review review) throws Exception {
-        // 구현 필요
+        String sql = "UPDATE review SET rating = ?, content = ?, review_date = SYSDATE WHERE review_id = ? AND member_id = ?";
+        try (Connection conn = dbConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, review.getStarRating());
+            pstmt.setString(2, review.getContent());
+            pstmt.setLong(3, review.getId());
+            pstmt.setLong(4, review.getMemberId());
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public long deleteRecipeReview(long reviewId) throws Exception {
