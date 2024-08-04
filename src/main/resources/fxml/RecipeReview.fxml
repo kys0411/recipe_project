@@ -37,7 +37,7 @@
         </Label>
         <ImageView fitHeight="138.0" fitWidth="126.0" layoutX="10.0" layoutY="24.0">
             <image>
-                <Image url="@../reviewIcon.png" />
+                <Image url="@../images/reviewIcon.png" />
             </image>
         </ImageView>
         <Button fx:id="selectAllRecipeReview" layoutX="457.0" layoutY="129.0" mnemonicParsing="false" onAction="#selectAllRecipeReview" text="전체후기" />

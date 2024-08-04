@@ -18,7 +18,7 @@
                <children>
                   <ImageView fitHeight="166.0" fitWidth="178.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../Users/dbswn/Downloads/logo2.png" />
+                        <Image url="@../images/logo2.png" />
                      </image>
                   </ImageView>
                   <TextField layoutX="301.0" layoutY="73.0" prefHeight="35.0" prefWidth="266.0" promptText="원하는 레시피를 검색하세요!" style="-fx-border-radius: 30px; -fx-border-width: 2px; -fx-border-style: solid; -fx-background-color: #fffddc; -fx-border-color: #1e785d;">
@@ -83,7 +83,7 @@
                                  <children>
                                     <ImageView fitHeight="265.0" fitWidth="257.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../gireImage2.png" />
+                                          <Image url="@../images/gireImage2.png" />
                                        </image>
                                     </ImageView>
                                     <Text layoutX="292.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: 'Gmarket Sans TTF Bold'; -fx-font-size: 24;" text="냉장고의 남은 재료가 고민인가요?">

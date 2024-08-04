@@ -38,7 +38,7 @@ public class RecipeProject extends Application {
 			Parent root = FXMLLoader.load(fxmlLocation);
 
 			//스테이지 설정(이미지 아이콘 지정 추가)
-			Image icon = new Image("reviewIcon.png");
+			Image icon = new Image("images/reviewIcon.png");
 			stage.getIcons().add(icon);
 			stage.setTitle("Recipe Review");
 

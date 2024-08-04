@@ -15,7 +15,7 @@
                     <children>
                         <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="290.0" onMouseClicked="#handleBackButtonClick" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../back-arrow.png" />
+                                <Image url="@../images/back-arrow.png" />
                             </image>
                         </ImageView>
                         <Pane nodeOrientation="RIGHT_TO_LEFT" prefHeight="55.0" prefWidth="366.0">

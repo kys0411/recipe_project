@@ -16,7 +16,7 @@
                <children>
                         <ImageView fx:id="backImage" fitHeight="54.0" fitWidth="290.0" onMouseClicked="#handleImageClickEvent" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../back-arrow.png" />
+                                <Image url="@../images/back-arrow.png" />
                             </image>
                         </ImageView>
                   <Pane nodeOrientation="RIGHT_TO_LEFT" prefHeight="55.0" prefWidth="544.0">
@@ -25,7 +25,7 @@
                            <children>
                               <ImageView fx:id="deleteRecipeImage" fitHeight="30.0" fitWidth="52.0" onMouseClicked="#handleImageClickEvent" pickOnBounds="true" preserveRatio="true" visible="false">
                                  <image>
-                                    <Image url="@../trash-solid.png" />
+                                    <Image url="@../images/trash-solid.png" />
                                  </image>
                                  <HBox.margin>
                                     <Insets right="25.0" />
@@ -33,7 +33,7 @@
                               </ImageView>
                               <ImageView fx:id="updateRecipeImage" disable="true" fitHeight="30.0" fitWidth="52.0" onMouseClicked="#handleImageClickEvent" pickOnBounds="true" preserveRatio="true" visible="false">
                                  <image>
-                                    <Image url="@../pen-solid.png" />
+                                    <Image url="@../images/pen-solid.png" />
                                  </image>
                                  <HBox.margin>
                                     <Insets />
@@ -60,7 +60,7 @@
                                             <children>
                                                 <ImageView fx:id="recipeImage" fitHeight="253.0" fitWidth="556.0" pickOnBounds="true">
                                                     <image>
-                                                        <Image url="@../치킨.jpg" />
+                                                        <Image url="@../images/치킨.jpg" />
                                                     </image>
                                                     <StackPane.margin>
                                                         <Insets left="11.0" />
