@@ -86,7 +86,7 @@ public class ingredientCombinationController implements Initializable {
             HBox hBox = new HBox();
 
             VBox imageBox = new VBox();
-            String relativePath = "defaultRecipeImage.jpg";
+            String relativePath = "images/defaultRecipeImage.jpg";
 
             Image image = new Image(relativePath);
             ImageView recipeImage = new ImageView(image);
