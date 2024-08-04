@@ -1,159 +1,198 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="recipe.controller.CreateRecipeController">
+
+<AnchorPane prefHeight="960.0" prefWidth="774.0" stylesheets="@css/createRecipe.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="recipe.controller.CreateRecipeController">
     <children>
-        <ScrollPane prefHeight="1019.0" prefWidth="1000.0">
+        <ScrollPane prefHeight="1035.0" prefWidth="774.0">
             <content>
-                <VBox prefHeight="1288.0" prefWidth="1000.0">
+                <VBox prefHeight="1001.0" prefWidth="774.0" style="-fx-background-color: #fffddc;">
                     <children>
-                        <Label prefHeight="93.0" prefWidth="619.0" text="레시피 작성">
-                            <font>
-                                <Font size="45.0"/>
-                            </font>
-                            <VBox.margin>
-                                <Insets left="350.0"/>
-                            </VBox.margin>
-                        </Label>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
+                  <ImageView fitHeight="165.0" fitWidth="174.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                          <Image url="@../images/logo2.png" />
+                      </image>
+                     <VBox.margin>
+                        <Insets left="300.0" />
+                     </VBox.margin>
+                  </ImageView>
+                        <HBox prefHeight="66.0" prefWidth="700.0">
                             <children>
-                                <Label text="제목">
+                                <Text fill="#434343" layoutX="597.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="제목" textOrigin="TOP">
                                     <font>
-                                        <Font size="30.0"/>
+                                        <Font name="Gmarket Sans TTF Bold" size="20.0" />
+                                    </font>
+                                </Text>
+
+                                <TextField fx:id="titleField" prefHeight="18.0" prefWidth="484.0" promptText="레시피 제목을 입력하세요" style="-fx-border-radius: 30px; -fx-border-width: 2px; -fx-border-style: solid; -fx-background-color: #fffddc; -fx-border-color: #6a6a6a">
+                                    <font>
+                                        <Font size="15.0" />
                                     </font>
                                     <HBox.margin>
-                                        <Insets left="20.0"/>
-                                    </HBox.margin>
-                                </Label>
-                                <TextField fx:id="titleField" prefHeight="54.0" prefWidth="720.0"
-                                           promptText="레시피 제목을 입력하세요">
-                                    <font>
-                                        <Font size="24.0"/>
-                                    </font>
-                                    <HBox.margin>
-                                        <Insets left="20.0"/>
+                                        <Insets left="20.0" />
                                     </HBox.margin>
                                 </TextField>
                             </children>
+                     <VBox.margin>
+                        <Insets left="100.0" />
+                     </VBox.margin>
                         </HBox>
                         <Label text="설명">
                             <font>
-                                <Font size="30.0"/>
+                                <Font name="Gmarket Sans TTF Bold" size="20.0" />
                             </font>
                             <VBox.margin>
-                                <Insets left="20.0"/>
+                                <Insets left="98.0" />
                             </VBox.margin>
                         </Label>
-                        <TextArea fx:id="descriptionField" prefHeight="127.0" prefWidth="873.0"
-                                  promptText="레시피에 대한 간단한 설명을 해주세요">
+                        <TextArea fx:id="descriptionField" prefHeight="121.0" prefWidth="574.0" promptText="레시피에 대한 간단한 설명을 해주세요">
                             <font>
-                                <Font size="23.0"/>
+                                <Font size="15.0" />
                             </font>
                             <VBox.margin>
-                                <Insets left="20.0" right="20.0"/>
+                                <Insets left="100.0" right="100.0" top="10.0" />
                             </VBox.margin>
                         </TextArea>
-                        <HBox prefHeight="63.0" prefWidth="1000.0">
+                        <HBox prefHeight="63.0" prefWidth="700.0">
                             <children>
                                 <Label text="난이도">
                                     <font>
-                                        <Font size="30.0"/>
+                                        <Font name="Gmarket Sans TTF Bold" size="15.0" />
                                     </font>
+                           <padding>
+                              <Insets right="10.0" top="2.0" />
+                           </padding>
                                 </Label>
-                                <ChoiceBox fx:id="difficultyBox" prefHeight="33.0" prefWidth="165.0"/>
+                                <ChoiceBox fx:id="difficultyBox" prefHeight="15.0" prefWidth="125.0" />
                                 <Label text="인원 수">
                                     <font>
-                                        <Font size="30.0"/>
+                                        <Font name="Gmarket Sans TTF Bold" size="15.0" />
                                     </font>
+                           <padding>
+                              <Insets left="25.0" right="10.0" top="2.0" />
+                           </padding>
                                 </Label>
-                                <ChoiceBox fx:id="quantityBox" prefHeight="33.0" prefWidth="173.0"/>
+                                <ChoiceBox fx:id="quantityBox" prefHeight="15.0" prefWidth="125.0" />
                                 <Label text="카테고리">
                                     <font>
-                                        <Font size="30.0"/>
+                                        <Font name="Gmarket Sans TTF Bold" size="15.0" />
                                     </font>
+                           <padding>
+                              <Insets left="25.0" right="10.0" top="2.0" />
+                           </padding>
                                 </Label>
-                                <ChoiceBox fx:id="categoryBox" prefHeight="33.0" prefWidth="207.0"/>
+                                <ChoiceBox fx:id="categoryBox" prefHeight="15.0" prefWidth="125.0" />
                             </children>
                             <VBox.margin>
-                                <Insets left="20.0" top="20.0"/>
+                                <Insets left="20.0" top="20.0" />
                             </VBox.margin>
+                     <padding>
+                        <Insets left="60.0" top="20.0" />
+                     </padding>
                         </HBox>
+                  <Separator prefHeight="2.0" prefWidth="774.0">
+                     <VBox.margin>
+                        <Insets top="35.0" />
+                     </VBox.margin>
+                  </Separator>
                         <HBox prefHeight="35.0" prefWidth="980.0">
                             <children>
                                 <Label text="재료">
                                     <font>
-                                        <Font size="30.0"/>
+                                        <Font name="Gmarket Sans TTF Bold" size="18.0" />
                                     </font>
+                           <HBox.margin>
+                              <Insets top="1.0" />
+                           </HBox.margin>
                                 </Label>
-                                <Button fx:id="addIngredientButton" onAction="#handleAddIngredient" text="Add">
+                                <Button fx:id="addIngredientButton" onAction="#handleAddIngredient" styleClass="button-default" text="Add">
                                     <HBox.margin>
-                                        <Insets left="50.0"/>
+                                        <Insets left="40.0" />
                                     </HBox.margin>
                                 </Button>
                             </children>
                             <VBox.margin>
-                                <Insets left="20.0"/>
+                                <Insets left="100.0" top="30.0" />
                             </VBox.margin>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
                         </HBox>
                         <VBox fx:id="ingredientContainer" prefHeight="214.0" prefWidth="1000.0">
                             <children>
                                 <HBox prefHeight="30.0" prefWidth="980.0" spacing="10">
                                     <children>
-                                        <TextField prefHeight="30.0" prefWidth="200.0" promptText="재료"/>
-                                        <TextField layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="200.0"
-                                                   promptText="수량"/>
+                                        <TextField prefHeight="30.0" prefWidth="200.0" promptText="재료" style="-fx-border-radius: 30px; -fx-border-width: 1px; -fx-border-style: solid; -fx-background-color: #fffddc; -fx-border-color: #1e785d;" />
+                                        <TextField layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="200.0" promptText="수량" style="-fx-border-radius: 30px; -fx-border-width: 1px; -fx-border-style: solid; -fx-background-color: #fffddc; -fx-border-color: #1e785d;" />
                                     </children>
                                     <VBox.margin>
-                                        <Insets left="20.0" top="15.0"/>
+                                        <Insets left="20.0" top="15.0" />
                                     </VBox.margin>
-
+      
                                 </HBox>
                             </children>
+                     <padding>
+                        <Insets left="75.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
                         </VBox>
                         <HBox prefHeight="0.0" prefWidth="980.0">
                             <children>
                                 <Label text="순서">
                                     <font>
-                                        <Font size="30.0"/>
+                                        <Font name="Gmarket Sans TTF Bold" size="18.0" />
                                     </font>
+                           <HBox.margin>
+                              <Insets top="2.0" />
+                           </HBox.margin>
                                 </Label>
-                                <Button fx:id="addStepButton" mnemonicParsing="false" onAction="#handleAddStep"
-                                        text="Add">
+                                <Button fx:id="addStepButton" mnemonicParsing="false" onAction="#handleAddStep" styleClass="button-default" text="Add">
                                     <HBox.margin>
-                                        <Insets left="50.0"/>
+                                        <Insets left="40.0" />
                                     </HBox.margin>
                                 </Button>
                             </children>
                             <VBox.margin>
-                                <Insets left="20.0"/>
+                                <Insets left="100.0" />
                             </VBox.margin>
                         </HBox>
                         <VBox fx:id="stepContainer" prefHeight="235.0" prefWidth="1000.0">
                             <children>
-                                <HBox prefHeight="47.0" prefWidth="828.0">
+                                <HBox prefHeight="35.0" prefWidth="679.0">
                                     <children>
-                                        <TextField prefHeight="33.0" prefWidth="616.0" promptText="레시피 과정을 작성해주세요">
+                                        <TextField prefHeight="33.0" prefWidth="413.0" promptText="레시피 과정을 작성해주세요" style="-fx-border-radius: 30px; -fx-border-width: 1px; -fx-border-style: solid; -fx-background-color: #fffddc; -fx-border-color: #1e785d;">
                                             <HBox.margin>
-                                                <Insets/>
+                                                <Insets />
                                             </HBox.margin>
                                         </TextField>
                                     </children>
                                     <VBox.margin>
-                                        <Insets/>
+                                        <Insets />
                                     </VBox.margin>
                                 </HBox>
                             </children>
+                     <padding>
+                        <Insets left="95.0" top="15.0" />
+                     </padding>
                         </VBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="20">
+                        <HBox prefHeight="49.0" prefWidth="355.0" spacing="20">
                             <children>
-                                <Button fx:id="createButton" mnemonicParsing="false" onAction="#handleCreateRecipe"
-                                        text="생성"/>
-                                <Button mnemonicParsing="false" text="취소"/>
+                                <Button fx:id="createButton" mnemonicParsing="false" onAction="#handleCreateRecipe" prefHeight="35.0" prefWidth="70.0" styleClass="button-default" text="생성" />
+                                <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="70.0" styleClass="button-default" text="취소">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin></Button>
                             </children>
+                     <VBox.margin>
+                        <Insets left="300.0" />
+                     </VBox.margin>
                         </HBox>
                     </children>
                 </VBox>

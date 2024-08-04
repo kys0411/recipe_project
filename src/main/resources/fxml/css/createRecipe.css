@@ -1,0 +1,65 @@
+@font-face {
+    font-family: 'LineBD';
+    src: url("fonts/LINESeedKR-Bd.ttf");
+}
+
+@font-face {
+    font-family: 'Gmarket';
+    src: url("fonts/GmarketSansTTFBold.ttf");
+}
+
+@font-face {
+    font-family: 'Gmarket-Medium';
+    src: url("fonts/GmarketSansTTFMedium.ttf");
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url("fonts/Pretendard-Regular.ttf");
+}
+
+.root-class {
+    -fx-font-family: 'Pretendard';
+    -fx-font-size: 15;
+}
+
+.button-default {
+    -fx-font-family: 'Arial';
+    -fx-font-weight: bold;
+    -fx-background-color: #04694e;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 30px;
+    -fx-padding: 7px 15px;
+}
+
+.choice-box {
+    -fx-font-family: 'Pretendard';
+    -fx-background-color: #fffddc; /* 배경색 */
+    -fx-border-color: #04694e; /* 테두리 색상 */
+    -fx-border-radius: 30px; /* 테두리 둥글기 */
+    -fx-font-family: 'Pretendard'; /* 폰트 패밀리 */
+    -fx-font-size: 14px; /* 폰트 크기 */
+    -fx-text-fill: #04694e;
+}
+
+.text-area {
+    -fx-background-radius: 15; /* TextArea 전체 배경의 둥글기 */
+    -fx-border-radius: 15; /* TextArea 테두리 둥글기 */
+    -fx-border-color: #04694e; /* 테두리 색상 */
+    -fx-border-width: 2; /* 테두리 두께 */
+    -fx-background-color: #fffddc; /* 배경색 */
+    -fx-padding: 5; /* 내용물의 패딩 */
+}
+
+.text-area .content {
+    -fx-background-radius: 15; /* 내용 영역의 둥글기 */
+    -fx-border-radius: 15; /* 내용 영역 테두리 둥글기 */
+    -fx-background-insets: 1; /* 테두리 안쪽 간격 */
+    -fx-background-color: #fffddc;
+    -fx-border-color: #fffddc;
+}
+
+.choice-box .label {
+    -fx-alignment: center;  /* 기본 텍스트 가운데 정렬 */
+}

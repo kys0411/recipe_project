@@ -75,13 +75,16 @@ public class CreateRecipeController implements Initializable {
 		TextField newIngredient = new TextField();
 		newIngredient.setPromptText("재료");
 		newIngredient.setPrefSize(200, 30);
+		newIngredient.setStyle("-fx-border-radius: 30px; -fx-border-width: 1px; -fx-border-style: solid; -fx-background-color: #fffddc; -fx-border-color: #1e785d;");
 
 		TextField measurement = new TextField();
 		measurement.setPromptText("수량");
 		measurement.setPrefSize(200, 30);
+		measurement.setStyle("-fx-border-radius: 30px; -fx-border-width: 1px; -fx-border-style: solid; -fx-background-color: #fffddc; -fx-border-color: #1e785d;");
 
 		Button removeIngredientButton = new Button();
 		removeIngredientButton.setText("삭제");
+		removeIngredientButton.setStyle("-fx-font-weight: bold; -fx-background-color: #04694e; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 30px; -fx-padding: 7px 15px;");
 		removeIngredientButton.setOnAction(e -> handleRemoveIngredient(hbox));
 
 		// VBox에 추가
@@ -101,18 +104,20 @@ public class CreateRecipeController implements Initializable {
 		HBox hbox = new HBox(10);
 
 		TextField newStep = new TextField();
-		newStep.setPromptText("조리 순서를 입력해주세요");
-		newStep.setPrefSize(200, 30);
+		newStep.setPromptText("레시피 과정을 작성해주세요");
+		newStep.setStyle("-fx-border-radius: 30px; -fx-border-width: 1px; -fx-border-style: solid; -fx-background-color: #fffddc; -fx-border-color: #1e785d;");
+		newStep.setPrefSize(413, 33);
 
 		Button removeStepButton = new Button();
 		removeStepButton.setText("삭제");
+		removeStepButton.setStyle("-fx-font-weight: bold; -fx-background-color: #04694e; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 30px; -fx-padding: 7px 15px;");
 		removeStepButton.setOnAction(e -> handleRemoveStep(hbox));
 
 		// VBox에 추가
 		hbox.getChildren().addAll(newStep, removeStepButton);
 		stepContainer.getChildren().add(hbox);
 
-		VBox.setMargin(hbox, new Insets(15, 0, 0, 20));
+		VBox.setMargin(hbox, new Insets(15, 0, 0, 0));
 	}
 
 	@FXML
