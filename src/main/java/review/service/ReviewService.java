@@ -1,5 +1,6 @@
 package review.service;
 
+import recipe.domain.Recipe;
 import review.domain.Review;
 
 import java.util.List;
@@ -23,5 +24,8 @@ public interface ReviewService {
 
     //레시피 후기 삭제
     public long deleteRecipeReview(long id) throws Exception;
+
+    //레시피 전체 목록
+    List<Recipe> getAllRecipes() throws Exception;
 
 }
