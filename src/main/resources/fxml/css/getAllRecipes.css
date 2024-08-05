@@ -1,0 +1,47 @@
+@font-face {
+    font-family: 'LineBD';
+    src: url("fonts/LINESeedKR-Bd.ttf");
+}
+
+@font-face {
+    font-family: 'Gmarket';
+    src: url("fonts/GmarketSansTTFBold.ttf");
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url("fonts/Pretendard-Regular.ttf");
+}
+
+.root-class {
+    -fx-font-family: 'Pretendard';
+    -fx-font-size: 15;
+}
+
+.button-default {
+    -fx-font-family: 'Arial';
+    -fx-font-weight: bold;
+    -fx-background-color: #04694e; /* 배경 색상 */
+    -fx-text-fill: white; /* 글자 색상 */
+    -fx-font-size: 14px; /* 글자 크기 */
+    -fx-background-radius: 30px; /* 배경 모서리 둥글게 */
+    -fx-padding: 7px 15px; /* 내부 여백 */
+}
+
+.choice-box {
+    -fx-font-family: 'Pretendard';
+    -fx-background-color: #fffddc; /* 배경색 */
+    -fx-border-color: #04694e; /* 테두리 색상 */
+    -fx-border-radius: 30px; /* 테두리 둥글기 */
+    -fx-font-family: 'Pretendard'; /* 폰트 패밀리 */
+    -fx-font-size: 14px; /* 폰트 크기 */
+    -fx-text-fill: #04694e;
+}
+
+.choice-box .arrow {
+    -fx-background-color: #04694e; /* 화살표 배경색 */
+}
+
+.choice-box .label {
+    -fx-alignment: center;  /* 기본 텍스트 가운데 정렬 */
+}
