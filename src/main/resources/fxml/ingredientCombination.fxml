@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
@@ -7,102 +9,152 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="900.0" prefWidth="600.0" styleClass="root-class" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="recipe.controller.ingredientCombinationController">
+<AnchorPane prefHeight="950.0" prefWidth="750.0" style="-fx-background-color: #fffddc;" stylesheets="@css/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="recipe.controller.ingredientCombinationController">
     <children>
-        <BorderPane prefHeight="900.0" prefWidth="600.0">
+        <BorderPane prefHeight="950.0" prefWidth="750.0" style="-fx-background-color: #fffddc;">
             <top>
-                <HBox prefHeight="55.0" prefWidth="600.0">
-                    <children>
-                        <ImageView fx:id="backButton" fitHeight="54.0" fitWidth="290.0" onMouseClicked="#handleBackButtonClick" pickOnBounds="true" preserveRatio="true">
+            <AnchorPane prefHeight="95.0" prefWidth="750.0" style="-fx-border-width: 0 0 1 0; -fx-border-style: solid;">
+               <children>
+                        <ImageView fx:id="backButton" fitHeight="44.0" fitWidth="46.0" layoutX="23.0" layoutY="26.0" onMouseClicked="#handleBackButtonClick" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../images/back-arrow.png" />
                             </image>
                         </ImageView>
-                        <Pane nodeOrientation="RIGHT_TO_LEFT" prefHeight="55.0" prefWidth="366.0">
-                     <children>
-                        <Text fill="#616060" layoutY="1.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: 900; -fx-font-family: 'Pretendard';" text="식재료 활용 레시피" textOrigin="TOP">
-                           <font>
-                              <Font size="27.0" />
-                           </font>
-                        </Text>
-                     </children>
-                     <HBox.margin>
-                        <Insets top="14.0" />
-                     </HBox.margin></Pane>
-                    </children>
-                </HBox>
+                  <ImageView fitHeight="62.0" fitWidth="92.0" layoutX="345.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/logo3.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
             </top>
-            <left>
-                <VBox prefHeight="883.0" prefWidth="600.0">
+         <center>
+                <VBox layoutY="20.0" prefHeight="883.0" prefWidth="600.0" style="-fx-background-color: #fffddc;" BorderPane.alignment="CENTER">
                     <children>
-                          <VBox prefHeight="840.0" prefWidth="582.0">
-                              <children>
-                                  <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="49.0" prefWidth="586.0">
-                                      <children>
-                                              <HBox prefHeight="39.0" prefWidth="575.0" spacing="10" styleClass="search-box">
-                                                 <children>
-                                                     <TextField fx:id="searchField" prefHeight="29.0" prefWidth="474.0" promptText="Search..." styleClass="search-field" />
-                                                     <Button onAction="#handleSearch" styleClass="search-button" text="Search" />
-                                                 </children>
-                                 <HBox.margin>
-                                    <Insets left="10.0" top="10.0" />
-                                 </HBox.margin>
-                                              </HBox>
-                                      </children>
-                                      <opaqueInsets>
-                                          <Insets left="20.0" />
-                                      </opaqueInsets>
-                           <VBox.margin>
-                              <Insets left="5.0" />
-                           </VBox.margin>
-                                  </HBox>
-                        <Pane prefHeight="26.0" prefWidth="577.0">
+                  <ScrollPane hbarPolicy="NEVER" prefViewportHeight="896.0" prefViewportWidth="750.0" style="-fx-background-color: #fffddc;" vbarPolicy="NEVER">
+                     <content>
+                        <AnchorPane prefHeight="1080.0" prefWidth="635.0" style="-fx-background-color: #fffddc;">
                            <children>
-                              <Text fill="#616060" layoutX="19.0" layoutY="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="여러개의 재료 입력 시에 각 재료는 띄어쓰기로 구분해주세요" textOrigin="TOP" />
-                           </children>
-                        </Pane>
-                        <ScrollPane prefHeight="47.0" prefWidth="555.0" style="-fx-region-backgraround: 10px;">
-                          <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="58.0" prefWidth="537.0">
+                              <Pane layoutX="-2.0" layoutY="40.0" prefHeight="293.0" prefWidth="684.0">
                                  <children>
-                                    <HBox fx:id="searchIngredeintListHBox" prefHeight="56.0" prefWidth="536.0">
-                                       <padding>
-                                          <Insets left="11.0" />
-                                       </padding>
-                                    </HBox>
+                                    <Text layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: 'Gmarket Sans TTF Bold'; -fx-font-size: 28;" text="냉장고 속의 재료만 입력해주세요!" textOrigin="TOP" />
+                                    <Text fill="#4a4a4a" layoutX="4.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="최적의 레시피를 찾아드립니다." textOrigin="TOP">
+                                       <font>
+                                          <Font name="LINE Seed Sans KR Regular" size="18.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="searchField" layoutX="3.0" layoutY="129.0" prefHeight="44.0" prefWidth="474.0" promptText="냉장고 속 재료 입력" style="-fx-border-radius: 30px; -fx-border-width: 2px; -fx-border-style: solid; -fx-background-color: #fffddc; -fx-border-color: #1e785d; -fx-font-size: 15px;">
+                                       <font>
+                                          <Font name="LINE Seed Sans KR Regular" size="12.0" />
+                                       </font>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </TextField>
+                                    <ImageView fx:id="imageSearchRecipe" fitHeight="21.0" fitWidth="25.0" layoutX="440.0" layoutY="140.0" onMouseClicked="#handleSearch" pickOnBounds="true" preserveRatio="true">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <image>
+                                          <Image url="@../images/search.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Pane layoutX="3.0" layoutY="180.0">
+                                       <children>
+                                        <AnchorPane layoutY="20.0" minHeight="0.0" minWidth="0.0" prefHeight="133.0" prefWidth="688.0" style="-fx-background-color: #fffddc;">
+                                             <children>
+                                                <Text fill="#4a4a4a" layoutX="4.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="최근 검색어" textOrigin="TOP">
+                                                   <font>
+                                                      <Font name="LINE Seed Sans KR Regular" size="13.0" />
+                                                   </font>
+                                                </Text>
+                                                <VBox fx:id="ingredientAllListVBox" layoutY="37.0" prefHeight="101.0" prefWidth="624.0">
+                                                   <children>
+                                                      <HBox prefHeight="47.0" style="-fx-background-color: #fffddc;">
+                                                         <children>
+                                                            <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-border-radius: 30px; -fx-border-color: gray; -fx-padding: 5 15 6 15; -fx-alignment: center;">
+                                                               <children>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="여기에" textOrigin="TOP">
+                                                                     <font>
+                                                                        <Font name="LINE Seed Sans KR Regular" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                               <HBox.margin>
+                                                                  <Insets right="10.0" />
+                                                               </HBox.margin>
+                                                            </HBox>
+                                                            <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-border-radius: 30px; -fx-border-color: gray; -fx-padding: 5 15 6 15; -fx-alignment: center;">
+                                                               <children>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="재료를" textOrigin="TOP">
+                                                                     <font>
+                                                                        <Font name="LINE Seed Sans KR Regular" size="16.0" />
+                                                                     </font>
+                                                                     <HBox.margin>
+                                                                        <Insets />
+                                                                     </HBox.margin>
+                                                                  </Text>
+                                                               </children>
+                                                               <HBox.margin>
+                                                                  <Insets right="10.0" />
+                                                               </HBox.margin>
+                                                            </HBox>
+                                                            <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-border-radius: 30px; -fx-border-color: gray; -fx-padding: 5 15 6 15; -fx-alignment: center;">
+                                                               <children>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="입력해주세요!" textOrigin="TOP">
+                                                                     <font>
+                                                                        <Font name="LINE Seed Sans KR Regular" size="16.0" />
+                                                                     </font>
+                                                                     <HBox.margin>
+                                                                        <Insets />
+                                                                     </HBox.margin>
+                                                                  </Text>
+                                                               </children>
+                                                               <HBox.margin>
+                                                                  <Insets right="10.0" />
+                                                               </HBox.margin>
+                                                            </HBox>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                        </AnchorPane>
+                                       </children>
+                                    </Pane>
+                                    <ImageView fitHeight="213.0" fitWidth="196.0" layoutX="511.0" layoutY="-10.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/frizer.png" />
+                                       </image></ImageView>
                                  </children>
-                            </AnchorPane>
-                          </content>
-                           <VBox.margin>
-                              <Insets left="15.0" right="7.0" />
-                           </VBox.margin>
-                        </ScrollPane>
-                        <ScrollPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="613.0" prefWidth="555.0" style="-fx-background-color: #FFFFFF;">
-                           <content>
-                                <VBox fx:id="recipeContainer" prefHeight="690.0" prefWidth="537.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10px;">
-                                    <cursor>
-                                        <Cursor fx:constant="DEFAULT" />
-                                    </cursor>
-                                 <padding>
-                                    <Insets top="10.0" />
-                                 </padding>
-                                </VBox>
-                           </content>
-                           <padding>
-                              <Insets left="15.0" />
-                           </padding>
-                           <VBox.margin>
-                              <Insets left="15.0" top="30.0" />
-                           </VBox.margin>
-                        </ScrollPane>
-                              </children>
-                              <padding>
-                                  <Insets bottom="8.0" left="8.0" right="15.0" top="8.0" />
-                              </padding>
-                          </VBox>
+                              </Pane>
+                              <AnchorPane layoutX="-2.0" layoutY="365.0" prefHeight="772.0" prefWidth="685.0" style="-fx-background-color: #fffddc;">
+                                 <children>
+                                      <VBox fx:id="recipeContainer" layoutX="-1.0" layoutY="-1.0" prefHeight="798.0" prefWidth="686.0" style="-fx-background-color: #fffddc; -fx-background-radius: 10px;">
+                                          <cursor>
+                                              <Cursor fx:constant="DEFAULT" />
+                                          </cursor>
+                                       <padding>
+                                          <Insets top="10.0" />
+                                       </padding>
+                                      </VBox>
+                                    <Text fx:id="notFoundText" fill="#9e9e9e" layoutX="160.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: 'Gmarket Sans TTF Bold'; -fx-font-size: 28;" text="다른 재료도 입력 해보세요 :)" textOrigin="TOP" visible="false">
+                                       <font>
+                                          <Font name="LINE Seed Sans KR Regular" size="12.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </ScrollPane>
                     </children>
+               <BorderPane.margin>
+                  <Insets bottom="20.0" left="32.0" right="32.0" top="5.0" />
+               </BorderPane.margin>
                 </VBox>
-            </left>
+         </center>
         </BorderPane>
     </children>
 </AnchorPane>

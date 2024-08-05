@@ -7,6 +7,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -182,6 +183,7 @@ public class MainController implements Initializable {
             fxmlFile = "/fxml/myInfo.fxml";
         } else if (clickedImage == imageLogout) {
             loginService.logout();
+            showAlert(Alert.AlertType.INFORMATION, "로그아웃", "로그아웃 되었습니다.");
             fxmlFile = "/fxml/login.fxml";
         }
 
@@ -213,5 +215,14 @@ public class MainController implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+
+    private void showAlert(Alert.AlertType alertType, String title, String content) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }
